@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>GIS for Urban Planning: QGIS methods - 4&nbsp; GIS Mapping and Geovisualisation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./summary.html" rel="next">
+<link href="./Hands-on_Ex02.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">GIS Mapping and Geovisualisation</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">GIS for Urban Planning: QGIS methods</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Hands-on_Ex01.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">My First Date with QGIS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Hands-on_Ex02.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Working with GIS Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Hands-on_Ex03.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">GIS Mapping and Geovisualisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-outcome" id="toc-learning-outcome" class="nav-link active" data-scroll-target="#learning-outcome"> <span class="header-section-number">4.1</span> Learning Outcome</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"> <span class="header-section-number">4.2</span> Data</a>
+  <ul class="collapse">
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"> <span class="header-section-number">4.2.1</span> Data Preparation</a></li>
+  </ul></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"> <span class="header-section-number">4.3</span> Getting Started</a></li>
+  <li><a href="#symbolising-qualitative-gis-data-layers" id="toc-symbolising-qualitative-gis-data-layers" class="nav-link" data-scroll-target="#symbolising-qualitative-gis-data-layers"> <span class="header-section-number">4.4</span> Symbolising Qualitative GIS Data Layers</a>
+  <ul class="collapse">
+  <li><a href="#symbolising-education-gis-layer" id="toc-symbolising-education-gis-layer" class="nav-link" data-scroll-target="#symbolising-education-gis-layer"> <span class="header-section-number">4.4.1</span> Symbolising education GIS layer</a></li>
+  </ul></li>
+  <li><a href="#creating-proportional-symbol-map" id="toc-creating-proportional-symbol-map" class="nav-link" data-scroll-target="#creating-proportional-symbol-map"> <span class="header-section-number">4.5</span> Creating Proportional Symbol Map</a></li>
+  <li><a href="#choropleth-map-using-gis" id="toc-choropleth-map-using-gis" class="nav-link" data-scroll-target="#choropleth-map-using-gis"> <span class="header-section-number">4.6</span> Choropleth map using GIS</a>
+  <ul class="collapse">
+  <li><a href="#adding-geoadministrative-layer" id="toc-adding-geoadministrative-layer" class="nav-link" data-scroll-target="#adding-geoadministrative-layer"> <span class="header-section-number">4.6.1</span> Adding geoadministrative layer</a></li>
+  <li><a href="#adding-an-attribute-table-in-qgis-project" id="toc-adding-an-attribute-table-in-qgis-project" class="nav-link" data-scroll-target="#adding-an-attribute-table-in-qgis-project"> <span class="header-section-number">4.6.2</span> Adding an attribute table in QGIS project</a></li>
+  <li><a href="#creating-relational-join" id="toc-creating-relational-join" class="nav-link" data-scroll-target="#creating-relational-join"> <span class="header-section-number">4.6.3</span> Creating relational join</a></li>
+  <li><a href="#creating-a-choropleth-map" id="toc-creating-a-choropleth-map" class="nav-link" data-scroll-target="#creating-a-choropleth-map"> <span class="header-section-number">4.6.4</span> Creating a choropleth map</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">GIS Mapping and Geovisualisation</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>In this exercise, you will learn how to prepare qualitative and quantitative thematic maps using QGIS. You will also learn how to create a joint table by using the concept of georelational data model of GIS.</p>
+<section id="learning-outcome" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="learning-outcome"><span class="header-section-number">4.1</span> Learning Outcome</h2>
+<p>By the end of this session, you will be able to:</p>
+<ul>
+<li>prepare qualitative maps,</li>
+<li>create proportional symbol map,</li>
+<li>perform georelational join,</li>
+<li>Compute new field from existing fields, and</li>
+<li>prepare choropleth map.</li>
+</ul>
+</section>
+<section id="data" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="data"><span class="header-section-number">4.2</span> Data</h2>
+<p>For the purpose of this hands-on exercise, three data sets are provided. They are:</p>
+<ul>
+<li><code>education</code> provides general information of public primary schools, secondary schools and junior colleges. This data set was downloaded from Data.gov.sg and geocoded by using SLA OneMap Api.</li>
+<li><code>sgpools</code> provides information of SG Pools outlets and stores information.</li>
+<li><code>POP2020</code> provides population by age group as at June 2020. It is downloaded from Department of Statistics (DOS), Singapore. The data set provides multiple years of population data. For the purpose of this exercise, only 2020 data were extracted.</li>
+</ul>
+<p>These three data sets are in csv file format. They can be found in <code>DataTables</code> of Hand-on-Ex03 folder.</p>
+<p>Besides the above three data sets, you are required to download the following geospatial from public web sites:</p>
+<ul>
+<li><code>National Map Polygon</code> from Data.gov.sg</li>
+<li><code>Master Plan 2014 Subzone Boundary (No Sea)</code> from Data.gov.sg</li>
+<li><code>Road Section Line</code> from LTA Data Mall</li>
+</ul>
+<section id="data-preparation" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">4.2.1</span> Data Preparation</h3>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned from the previous hands-on exercise, convert the education and SGPools data sets in DataTables folder into geospatial data layer and store them into an integrated database called <code>SG</code>. The geospatial database must be in <strong>GeoPackage</strong> format.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned from the previous hands-on exercise, convert the geospatial data sets downloaded from Data.gov.sg and LTA Data Mall into the newly created <code>SG</code> database.</p>
+</blockquote>
+</section>
+</section>
+<section id="getting-started" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="getting-started"><span class="header-section-number">4.3</span> Getting Started</h2>
+<blockquote class="blockquote">
+<p>DIY: Launch QGIS. Create a new project call <code>Hands-on_Ex03</code>. Provide the project with a correct referencing system.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned from the previous hands-on exercies, import all the geospatial data in <code>SG</code> database into the newly created QGIS project.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned from the previous hands-on exercise, add OSM map layer into <code>Hands-on_Ex03</code> project.</p>
+</blockquote>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image1.jpg" class="img-fluid"></p>
+</section>
+<section id="symbolising-qualitative-gis-data-layers" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="symbolising-qualitative-gis-data-layers"><span class="header-section-number">4.4</span> Symbolising Qualitative GIS Data Layers</h2>
+<p>In this section, you will learn how to symbolise GIS data layers by using their corresponding qualitative data values.</p>
+<section id="symbolising-education-gis-layer" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="symbolising-education-gis-layer"><span class="header-section-number">4.4.1</span> Symbolising education GIS layer</h3>
+<p>The <code>type_code</code> field of <code>Education</code> layer provides us the school type information. In this section, you will learn how to use this field to symbolise <code>education</code> layer.</p>
+<ul>
+<li>At <strong>Layers</strong> panel, click on <code>Education</code> layer to make it active.</li>
+<li>Right-click on <code>Education</code> and select <strong>Properties</strong> from the context menu.</li>
+</ul>
+<p>The <strong>Layer Properties</strong> dialog window appears.</p>
+<ul>
+<li>Click on the <strong>Symbology</strong> tab.</li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img03/image2.jpg" class="img-fluid"></p>
+<ul>
+<li>Select <strong>Categorized</strong> from the <strong>Symbol drop-down</strong> list.</li>
+</ul>
+<p><img src="img03/image3.jpg" class="img-fluid"></p>
+<ul>
+<li>For <strong>Value</strong>, select <em>mainlevel_code</em> from the drop-down list.</li>
+</ul>
+<p><img src="img03/image4.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on the <strong>Classify</strong> button.</li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img03/image5.jpg" class="img-fluid"></p>
+<p>Figure above shows that <code>Education</code> layer has been categorised into five categories. They are, Junior College, Centralised Institute, Mixed Levels, Primary and Secondary.</p>
+<p>Next, you will learn how to symbolise them by using the svg vector symbol set.</p>
+<ul>
+<li>Double-click on the marker in front of <em>JUNIOR COLLEGE</em>.</li>
+</ul>
+<p>The <strong>Symbol selector</strong> dialog window appears.</p>
+<p><img src="img03/image6.jpg" class="img-fluid"></p>
+<ul>
+<li><p>From <strong>Marker</strong>, click on <strong>Simple marker</strong>.</p></li>
+<li><p>For <strong>Symbol layer type</strong>, select <strong>SVG maker</strong> from the drop-down list.</p></li>
+</ul>
+<p>Scroll down the dialog window until you can see the SVG Browser as shown below.</p>
+<p><img src="img03/image7.jpg" class="img-fluid"></p>
+<ul>
+<li>From the <strong>SVG Image</strong>, scroll-down and click on <img src="img03/image8.jpg" class="img-fluid">.</li>
+</ul>
+<blockquote class="blockquote">
+<p>DIY: Change the size value and fill colour and observe the differences.</p>
+</blockquote>
+<ul>
+<li>When you are done, click on the <strong>OK</strong> button.</li>
+</ul>
+<p>You will return to <strong>Layer Properties</strong> dialog window.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the step you had learned, change the symbols of the remaining four categories in <em>mainlevel_code</em> field.</p>
+</blockquote>
+<p>When you are done.</p>
+<ul>
+<li>At the <strong>Layer Properties</strong> dialog window, click on <strong>Apply</strong> button to update the changes.</li>
+<li>To close the <strong>Layer Properties</strong> dialog window, click on OK button.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image9.jpg" class="img-fluid"></p>
+<p>This map is popularly known as Point symbol map among the GIS and cartography communities. Prior to GIS era, this kind of map took more than a month to prepare. With GIS, it only needs less than 15 minutes to prepare. The advantage of GIS-based point symbol map is that the map can be changed easily with very little effort. GIS-based point symbol map is also highly interactive. You can navigate around the digital map and zoom in to view the distribution in greater details.</p>
+<blockquote class="blockquote">
+<p>DIY: Use the steps you had learned from the previous section, symbolise the</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Challenge: Using the steps you had learned in the previous section, symbolise RoadSectionLine layer according to Expressway and Roads.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Challenge: Using the steps you had learned in the previous section, symbolise National Map Polygon layer to show the outlines only.</p>
+</blockquote>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image10.jpg" class="img-fluid"></p>
+</section>
+</section>
+<section id="creating-proportional-symbol-map" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="creating-proportional-symbol-map"><span class="header-section-number">4.5</span> Creating Proportional Symbol Map</h2>
+<p><strong>Proportional symbol</strong> maps (also known as graduate symbol maps) are a class of maps that use the visual variable of size to represent differences in the magnitude of a discrete, abruptly changing phenomenon, e.g.&nbsp;counts of people. Like choropleth maps, you can create classed or unclassed versions of these maps. The classed ones are known as <strong>range-graded</strong> or <strong>graduated symbols</strong>, and the unclassed are called <strong>proportional symbols</strong>, where the area of the symbols are proportional to the values of the attribute being mapped.</p>
+<p>In this section, you will learn how to create a proportional symbol map showing the numbers of win by Singapore Pools’ outlets.</p>
+<blockquote class="blockquote">
+<p>DIY: Before we get started, let us switch off <code>Education</code>, <code>RoadSectionLine</code> and <code>SGOutline</code> layers.</p>
+</blockquote>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image11.jpg" class="img-fluid"></p>
+<p>Before you start to prepare the proportional symbol map, you will take a look at the attribute table of <code>SGPools</code> layer.</p>
+<ul>
+<li>At the <strong>Layers</strong> panel, right-click on <code>SGPools</code> layer.</li>
+<li>Select <strong>Open Attribute Table</strong> from the context menu.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image12.jpg" class="img-fluid"></p>
+<p>You are going to use the values in the last filed (e.g <em>Gp1Gp2Winn</em>) to create a proportional symbol map.</p>
+<ul>
+<li>Close the table by clicking on the cross icon located at the upper right corner of the table.</li>
+</ul>
+<p>Next, you are going to change the size of the point symbol by mapping the values in <em>Gp1Gp2Winn</em> field.</p>
+<ul>
+<li>At the <strong>Layers</strong> panel, right-click on <strong>SGPools</strong> layer.</li>
+<li>Select <strong>Properties</strong> from the context menu.</li>
+</ul>
+<p>The <strong>Layer Properties</strong> dialog window appears.</p>
+<ul>
+<li><p>Click on the <strong>Symbology</strong> icon.</p></li>
+<li><p>For <strong>Value</strong>, select <em>Gp1Gp2Winngs</em> from the dropdown list.</p></li>
+<li><p>For <strong>Method</strong>, select <strong>Size</strong> from the drop-down list.</p></li>
+<li><p>For <strong>Size</strong> to, type <em>10</em>.</p></li>
+<li><p>Click on <strong>Classify</strong> button.</p></li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image13.jpg" class="img-fluid"></p>
+<p>When you are ready,</p>
+<ul>
+<li>Click on <strong>Apply</strong> button to update the changes.</li>
+</ul>
+<p>In order to view the changes, you need to close the dialog window.</p>
+<ul>
+<li>Click on <strong>OK</strong> to close the <strong>Layer Properties</strong> dialog window.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image14.jpg" class="img-fluid"></p>
+<p>Notice that there are many proportional symbols were overlapping. Now, you will learn how to use the layer transparent feature of QGIS to improve the visualisation.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the step you had learned in the earlier section, open the <strong>Layer Properties</strong> of <code>SGPools</code>.</p>
+</blockquote>
+<ul>
+<li>At the <strong>Layer Properties</strong> panel, look for <strong>Layer rendering</strong> sub-panel located at the bottom ot the dialog window.</li>
+<li>Click on the little triangle in front of <strong>Layer rendering</strong> sub-panel.</li>
+</ul>
+<p>The Layer rendering subpanel extended as shown in the figure below.</p>
+<p><img src="img03/image15.jpg" class="img-fluid"></p>
+<ul>
+<li>For <strong>Opacity</strong>, type <em>80%</em>, alternatively, you can use slider to slide toward the left until it reaches 80%.</li>
+</ul>
+<p>To update the changes,</p>
+<ul>
+<li>Click on <strong>Apply</strong> button.</li>
+</ul>
+<p>Lastly,</p>
+<ul>
+<li>Click on <strong>OK</strong> button to close the dialog window.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image16.jpg" class="img-fluid"></p>
+<p>• Feel free to explore other configurations. When you are done, click on the <strong>OK</strong> button.</p>
+</section>
+<section id="choropleth-map-using-gis" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="choropleth-map-using-gis"><span class="header-section-number">4.6</span> Choropleth map using GIS</h2>
+<p><strong>Choropleth mapping</strong> involves the symbolisation of enumeration units, such as countries, provinces, states, counties or census units, using area patterns or graduated colors. For example, a social scientist may need to use a choropleth map to portray the spatial distribution of aged population of Singapore by Master Plan 2014 Subzone Boundary.</p>
+<p>The major concerns of choropleth mapping are the method of data classification, areal symbolization, and the overall map design. General rules for choropleth mapping are as follows:</p>
+<ul>
+<li>Use data that are assumed to be uniform throughout an enumeration unit.</li>
+<li>Because enumeration units vary in size, do not map totals. Use derived values, such as ratios, rates, proportions, or percentages.</li>
+<li>The best classing method depends on the data, the map reader and the purpose of the map.</li>
+<li>When classifying data, the full range of data must be included and class values should not overlap. No more than six classes are recommended.</li>
+<li>Class symbols (i.e.&nbsp;colors or patterns) must be easily distinguishable.</li>
+</ul>
+<p>In this section of the hands-on exercise, you will learn how to use QGIS to prepare a choropleth map showing the distribution of population with age 65 and above in Singapore by URA’s Master Plan 2014 subzone. You will also gain hands-on experience on the various data classification methods, symbolisation and map layout design techniques offered by QGIS.</p>
+<section id="adding-geoadministrative-layer" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="adding-geoadministrative-layer"><span class="header-section-number">4.6.1</span> Adding geoadministrative layer</h3>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned from the previous section, add <code>Master Plan 2014 Subzone Area Boundary (No Sea)</code> layer into QGIS.</p>
+</blockquote>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image17.jpg" class="img-fluid"></p>
+</section>
+<section id="adding-an-attribute-table-in-qgis-project" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="adding-an-attribute-table-in-qgis-project"><span class="header-section-number">4.6.2</span> Adding an attribute table in QGIS project</h3>
+<p>Now, you will add the POP2020.csv table into the QGIS project. It is stored in <code>\Hands-on_EX04\DataTables</code> folder and is in csv format.</p>
+<ul>
+<li>From the <strong>Layers</strong> toolbar, click <strong>Add Layer</strong> -&gt; <strong>Add Delimited Text Layer …</strong>.</li>
+</ul>
+<p>The <strong>Data Source Manager|Delimited Text</strong> dialog window appears.</p>
+<p><img src="img03/image18.jpg" class="img-fluid"></p>
+<ul>
+<li>At <strong>File Name</strong>, click on <strong>Browse</strong> button at the back.</li>
+</ul>
+<p>The <strong>Choose a Delimited Text File to Open</strong> dialog window appears.</p>
+<p>• Navigate to -on_Ex04sub folder.</p>
+<p><img src="img03/image19.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <code>POP2020</code>.<br>
+</li>
+<li>Click on the Open button.</li>
+</ul>
+<p>You will return to <strong>Data Source Manager|Delimited Text</strong> dialog window.</p>
+<p><img src="img03/image20.jpg" class="img-fluid"></p>
+<p>Notice that the dialog window is completed with many information and a preview table.</p>
+<ul>
+<li>For <strong>Geometry definition</strong>, click on the radio button in front of <strong>No geometry (attribute only table)</strong>.</li>
+<li>Click on <strong>Add</strong> button.</li>
+</ul>
+<p>Notice that a new data layer called <code>POP2020</code> has been added in the <strong>Layers</strong> panel.</p>
+<p>We will close <strong>Data Source Manager|Delimited Text</strong> dialog window.</p>
+<ul>
+<li>Click on <strong>OK</strong> button.</li>
+</ul>
+<p>Next, you will examine the structure of the data.</p>
+<p>• Right-click on <code>POP2020</code>, select <strong>Open Attribute Table</strong>.</p>
+<p>The Attribute table dialog window appears.</p>
+<p><img src="img03/image21.jpg" class="img-fluid"></p>
+</section>
+<section id="creating-relational-join" class="level3" data-number="4.6.3">
+<h3 data-number="4.6.3" class="anchored" data-anchor-id="creating-relational-join"><span class="header-section-number">4.6.3</span> Creating relational join</h3>
+<p>Now you are ready to perform relational join between the MP14_SubZone GIS layer and the POP2020 attribute layer.</p>
+<p>In order to join the attribute table of a geospatial data and an aspatial attribute table, we need to identify the common key or popularly known as <strong>unique identifier</strong> between these two data sets.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, open the attribute table of MP14_SubZone and POP2020.</p>
+</blockquote>
+<p><img src="img03/image22.jpg" class="img-fluid"></p>
+<p>With reference to the tables above, the <em>SZ</em> field of <code>POP2020</code> and <em>SUBZONE_N</em> field of <code>MP14_SUBZONE</code> can be used as the unique identifier filed. However, if you examine the data carefully, there is a problem we should take note of. That is strings in <em>SUBZONE_N</em> are all uppercase. On the other hand, strings in <em>SZ</em> field are made up of upper- and lowercases.</p>
+<p>In view of this problem, we will create a new field to change strings in <em>SZ</em> into uppercase. We will call the output field <em>SUBZONE</em>.</p>
+<ul>
+<li>At the <strong>POP2020 Feature Table</strong>, click on <strong>Open field calculator</strong> icon <img src="img/image23.jpg" class="img-fluid" style="width:5.0%"></li>
+</ul>
+<p>The <strong>Field Calculator</strong> dialog window appears.</p>
+<ul>
+<li>For <strong>Output field name</strong>, type <em>SUBZONE</em>.</li>
+<li>For <strong>Output file type</strong>, select <em>Text(string)</em> from the drop-down list.</li>
+<li>At the Expression panel, type as shown below.</li>
+</ul>
+<p><img src="img03/image24.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>Best practice: This is always a good practice to check the preview to ensure that the result is inline to what you want.</p>
+</blockquote>
+<ul>
+<li>Click on <strong>OK</strong> button when you are ready.</li>
+</ul>
+<p>Notice that a new field called SUBZONE has been added into POP2020 data table the strings are all in uppercase.</p>
+<p><img src="img03/image25.jpg" class="img-fluid"></p>
+<p>You are ready to join both tables now.</p>
+<ul>
+<li>From the <strong>Layers</strong> panel, double-click on <strong>MP14_SubZone</strong> vector layer.</li>
+</ul>
+<p>The <strong>Layer Properties</strong> dialog window appears.</p>
+<p>• From the <strong>Tab</strong> menu, click on the <strong>Joins</strong> tab.</p>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image26.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on Add new join icon <img src="img/image27.jpg" class="img-fluid" style="width:5.0%"></li>
+</ul>
+<p>The <strong>Add Vector Join</strong> dialog window appears.</p>
+<ul>
+<li>For <strong>Join Layer</strong>, select <code>POP2020</code> from the drop-down list.</li>
+<li>For <strong>Join field</strong>, select <em>SUBZONE</em> from the drop-down list.</li>
+<li>For <strong>Target field</strong>, select <strong>SUBZONE_N</strong> from the drop-down list.</li>
+</ul>
+<p><img src="img03/image28.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>OK</strong> button to perform the relational join.</li>
+</ul>
+<p>You will return to the <strong>Layer Properties</strong> dialog window.</p>
+<p>Notice that a relational joined between <code>POP2020</code> attribute table and the attribute table of <code>MP14_SubZone</code> has been created.</p>
+<ul>
+<li>At the <strong>Layer Properties</strong> dialog window, click on the OK button.</li>
+</ul>
+<p>Strange, it seems that nothing had happen!</p>
+<p>• At the <strong>Layers</strong> panel, right click on <code>MP14_SubZone</code> layer and select <strong>Open Attribute Table</strong> from the context menu.</p>
+<p>You will notice that the table now contains additional fields from POP2020 attribute layer.</p>
+<p><img src="img03/image29.jpg" class="img-fluid"></p>
+<p>Remember that this joint is temporary. It is not part of the attribute table of <code>MP14_SubZone</code> layer, but is just linked dynamically to the <code>POP2020</code> attribute layer. If you want to permanently join the attributes, you must save it as a new layer.</p>
+</section>
+<section id="creating-a-choropleth-map" class="level3" data-number="4.6.4">
+<h3 data-number="4.6.4" class="anchored" data-anchor-id="creating-a-choropleth-map"><span class="header-section-number">4.6.4</span> Creating a choropleth map</h3>
+<p>In this section, you will learn how to create a choropleth map showing the distribution of population age 65 and above by URA’s Master Plan 2014 subzone area.</p>
+<p>First, you will create a new field called Age65+ and compute its value by using the calculator function of QGIS.</p>
+<ul>
+<li>From <strong>Layers</strong> Panel, right-click on <code>MP14_SubZone</code>, select <strong>Open Attribute Table</strong> from the context menu.</li>
+</ul>
+<p>The <code>MP14_SubZone</code> attribute table appears.</p>
+<ul>
+<li>Click on <strong>Open Field Calculator</strong> icon <img src="img03/image23.jpg" class="img-fluid">.</li>
+</ul>
+<p>The Field calculator dialog window appears.</p>
+<ul>
+<li>Keep <strong>Create a new field</strong> box check.</li>
+<li>For <strong>Output filed name</strong>, type <em>Age65+</em>.</li>
+<li>For <strong>Output field type</strong>, select <em>Whole number (integer)</em> from the drop-down list.</li>
+<li>At the <strong>Expression</strong> panel, build a formula as shown below.</li>
+</ul>
+<p><img src="img03/image30.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>Gentle reminder: Check the preview to ensure that the result is what you want.</p>
+</blockquote>
+<p>To perform the computation,</p>
+<ul>
+<li>Click on the <strong>OK</strong> button.</li>
+</ul>
+<p>Notice that a new field called Age65+ has been added into the attribute table of <code>MP14_SubZone</code> table.</p>
+<p><img src="img03/image31.jpg" class="img-fluid"></p>
+<p>Before you end this session, you need to save the results into the attribute table permanently.</p>
+<ul>
+<li>From the icon bar, click on the Toggle editing mode icon <img src="img03/image32.jpg" class="img-fluid">.</li>
+</ul>
+<p>The Stop Editing dialog appears.</p>
+<p><img src="img03/image33.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>Save</strong> button.</li>
+<li>Close the attribute table of <code>MP14_SubZone</code> layer.</li>
+</ul>
+<p>You are ready to prepare the choropleth now.</p>
+<ul>
+<li>From the <strong>Layers</strong> panel, double-click on <strong>MP14_SubZone</strong> layer.</li>
+</ul>
+<p>The <strong>Layer Properties</strong> dialog window appears.</p>
+<ul>
+<li>Click on <strong>Symbology</strong> tab.</li>
+<li>At <strong>Symbol</strong> selection drop-down list, select <strong>Graduated</strong> from the drop-down list.</li>
+<li>For <strong>Value</strong>, select <em>Age65+</em> from the drop-down list.</li>
+<li>For <strong>Classes</strong>, keep it as <em>5</em>.</li>
+<li>For <strong>Color ramp</strong>, choose <em>Blues</em> or any colour of your choice from the drop-down list.</li>
+<li>For <strong>Mode</strong>, choose <strong>Natural Breaks (Jenks)</strong> from the drop-down list. • Click on <strong>Classify</strong> button.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image34.jpg" class="img-fluid"></p>
+<p>You can review the statistical distribution of the classification in histogram.</p>
+<ul>
+<li>Click on the <strong>Histogram</strong> tab.</li>
+<li>Click on <strong>Load values</strong> button.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image35.jpg" class="img-fluid"></p>
+<p>This feature is very useful for casual data analyst because the histogram helps us to understand the differences of each classification method.</p>
+<ul>
+<li>Click back <strong>Classes</strong> tab.</li>
+<li>Click on <strong>Apply</strong> button.</li>
+<li>Click on the OK button.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img03/image36.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>Challenge: Study the distribution revealed by the choropleth map. Can you identify planning subzones with high concentration of population with age 65 and above? Do these subzone tend to clusters together or randomly distributed?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned from the previous sections, create a choropleth maps of percentage of population age 65 and above.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Challenge: Compare the two choropleth maps prepared, what conclusion can you draw from the maps?</p>
+</blockquote>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Hands-on_Ex02.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Working with GIS Data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./summary.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
