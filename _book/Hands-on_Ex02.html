@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>GIS for Urban Planning: QGIS methods - 3&nbsp; Working with GIS Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./summary.html" rel="next">
+<link href="./Hands-on_Ex01.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Working with GIS Data</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">GIS for Urban Planning: QGIS methods</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Hands-on_Ex01.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">My First Date with QGIS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Hands-on_Ex02.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Working with GIS Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-outcome" id="toc-learning-outcome" class="nav-link active" data-scroll-target="#learning-outcome"> <span class="header-section-number">3.1</span> Learning Outcome</a></li>
+  <li><a href="#working-with-geospatial-data-from-data.gov.sg" id="toc-working-with-geospatial-data-from-data.gov.sg" class="nav-link" data-scroll-target="#working-with-geospatial-data-from-data.gov.sg"> <span class="header-section-number">3.2</span> Working with Geospatial Data from data.gov.sg</a>
+  <ul class="collapse">
+  <li><a href="#downloading-geospatial-data-from-data.gov.sg" id="toc-downloading-geospatial-data-from-data.gov.sg" class="nav-link" data-scroll-target="#downloading-geospatial-data-from-data.gov.sg"> <span class="header-section-number">3.2.1</span> Downloading geospatial data from data.gov.sg</a></li>
+  <li><a href="#managing-the-imported-data" id="toc-managing-the-imported-data" class="nav-link" data-scroll-target="#managing-the-imported-data"> <span class="header-section-number">3.2.2</span> Managing the imported data</a></li>
+  <li><a href="#examining-the-geospatial-data" id="toc-examining-the-geospatial-data" class="nav-link" data-scroll-target="#examining-the-geospatial-data"> <span class="header-section-number">3.2.3</span> Examining the geospatial data</a></li>
+  <li><a href="#adding-geospatial-data-from-data.gov-into-qgis" id="toc-adding-geospatial-data-from-data.gov-into-qgis" class="nav-link" data-scroll-target="#adding-geospatial-data-from-data.gov-into-qgis"> <span class="header-section-number">3.2.4</span> Adding geospatial data from data.gov into QGIS</a></li>
+  </ul></li>
+  <li><a href="#working-with-projection" id="toc-working-with-projection" class="nav-link" data-scroll-target="#working-with-projection"> <span class="header-section-number">3.3</span> Working with Projection</a>
+  <ul class="collapse">
+  <li><a href="#assigning-project-coordinate-system" id="toc-assigning-project-coordinate-system" class="nav-link" data-scroll-target="#assigning-project-coordinate-system"> <span class="header-section-number">3.3.1</span> Assigning project coordinate system</a></li>
+  <li><a href="#transforming-coordinate-system" id="toc-transforming-coordinate-system" class="nav-link" data-scroll-target="#transforming-coordinate-system"> <span class="header-section-number">3.3.2</span> Transforming coordinate system</a></li>
+  </ul></li>
+  <li><a href="#creating-geospatially-enabled-data" id="toc-creating-geospatially-enabled-data" class="nav-link" data-scroll-target="#creating-geospatially-enabled-data"> <span class="header-section-number">3.4</span> Creating Geospatially-Enabled Data</a>
+  <ul class="collapse">
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"> <span class="header-section-number">3.4.1</span> Data Preparation</a></li>
+  <li><a href="#install-the-mmqgis-plugin" id="toc-install-the-mmqgis-plugin" class="nav-link" data-scroll-target="#install-the-mmqgis-plugin"> <span class="header-section-number">3.4.2</span> Install the MMQGIS Plugin</a></li>
+  <li><a href="#geocoding-using-mmqgis-plugin" id="toc-geocoding-using-mmqgis-plugin" class="nav-link" data-scroll-target="#geocoding-using-mmqgis-plugin"> <span class="header-section-number">3.4.3</span> Geocoding using MMQGIS Plugin</a></li>
+  </ul></li>
+  <li><a href="#working-with-raster-gis-data" id="toc-working-with-raster-gis-data" class="nav-link" data-scroll-target="#working-with-raster-gis-data"> <span class="header-section-number">3.5</span> Working with Raster GIS data</a></li>
+  <li><a href="#working-with-internet-geospatial-services" id="toc-working-with-internet-geospatial-services" class="nav-link" data-scroll-target="#working-with-internet-geospatial-services"> <span class="header-section-number">3.6</span> Working with Internet Geospatial Services</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Working with GIS Data</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>A GIS is specially designed to manage geospatial data. This hands-on exercise consists of five sections. First, you will learn how to import geospatial data from different sources and file format into QGIS. At the same time, you will also learn how to check their feature type, coordinate system and other related information. You will also learn how to create a GIS data from an aspatial data by using QGIS. Next, you will learn how to transform this newly created GIS layer into Singapore National projected coordinates systems (i.e.&nbsp;SVY21). Lastly, you will also learn how to use the geocoding function of QGIS to create geospatially referenced data from a non-spatial data.</p>
+<section id="learning-outcome" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="learning-outcome"><span class="header-section-number">3.1</span> Learning Outcome</h2>
+<p>By the end of this session, you will be able to:</p>
+<ul>
+<li>work with geospatial data from data.gov.sg</li>
+<li>create geospatially-enabled data</li>
+<li>create GIS Layer from a text data with georeference information</li>
+<li>transform a GIS data onto a different projection system</li>
+<li>work with raster GIS data • work with internet geospatial services • work with geospatial database</li>
+</ul>
+</section>
+<section id="working-with-geospatial-data-from-data.gov.sg" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="working-with-geospatial-data-from-data.gov.sg"><span class="header-section-number">3.2</span> Working with Geospatial Data from data.gov.sg</h2>
+<p>In this section, you will learn how to download geospatial data from data.gov.sg and import them into QGIS.</p>
+<section id="downloading-geospatial-data-from-data.gov.sg" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="downloading-geospatial-data-from-data.gov.sg"><span class="header-section-number">3.2.1</span> Downloading geospatial data from data.gov.sg</h3>
+<p>First, you are required to download the following geospatial and aspatial data from <a href="https://data.gov.sg/">data.gov.sg</a>:</p>
+<ul>
+<li>Master Plan 2014 Subzone Boundary (No Sea),</li>
+<li>Child Care Services,</li>
+<li>Street and Places, and</li>
+<li>School Directory and Information</li>
+</ul>
+</section>
+<section id="managing-the-imported-data" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="managing-the-imported-data"><span class="header-section-number">3.2.2</span> Managing the imported data</h3>
+<p>For any GIS project, it is important for us to practice good document management. Assuming that the root directory of this project is called <code>Hands-on_Ex02</code>,</p>
+<ul>
+<li>created a sub-folder call <code>data.gov</code>.<br>
+</li>
+<li>inside <code>data.gov</code>, create two new sub-folders. Call them <code>geospatial</code> and <code>aspatial</code> respectively.</li>
+<li>place the downloaded Master Plan 2014 Subzone Boundary (No Sea), Child Care Services and Street and Places into the geospatial folder.
+<ul>
+<li>unzipped their respective zipped files,</li>
+<li>extract the unzipped files, and</li>
+<li>place them in <code>geospatial</code> folder.</li>
+</ul></li>
+<li>place the downloaded School Directory and Information zipped file into aspatial sub-folder.
+<ul>
+<li>unzipped the file,</li>
+<li>copy and paste <code>general-information-of-schools.csv</code> into <code>aspatial</code> sub-folder.</li>
+</ul></li>
+</ul>
+<p>The geospatial folder should look similar to the screenshot below.</p>
+<p><img src="img02/image1.jpg" class="img-fluid"></p>
+<p>Notice that besides the geospatial data files, I also include the metadata of the data into the folder. This is because the metadata provide useful information of the data and it is important for us to keep them for future references.</p>
+</section>
+<section id="examining-the-geospatial-data" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="examining-the-geospatial-data"><span class="header-section-number">3.2.3</span> Examining the geospatial data</h3>
+<p>Before you add the GIS data into QGIS, you should spend some time to examine the files in <code>geospatial</code> folder.</p>
+<p>Notice that the shapefile version of MP14_SUBZONE_NO_SEA_PL and StreetsandPlaces data sets are actually made up of multiples files that have the same names but with different extensions.</p>
+<p>Table below details the meaning of each file. <img src="img02/image2.jpg" class="img-fluid"> Source: https://en.wikipedia.org/wiki/Shapefile</p>
+<p>Next, you should also check the projection of the shapefile.</p>
+<ul>
+<li>Right-click on the PRJ file of <code>MP14_SUBZONE_NO_SEA_PL</code></li>
+<li>Select <em>Open with</em> -&gt; <em>NotePad</em>.</li>
+</ul>
+<p>Your NotePad should look similar to the figure below.</p>
+<p><img src="img02/image3.jpg" class="img-fluid"></p>
+<p>From the screenshot, it is clear that <code>MP14_SUBZONE_NO_SEA_PL</code> is in svy21 projected coordinate system.</p>
+<ul>
+<li>Close the NotePad.</li>
+</ul>
+<p>Different from shapefile, the geojson and kml files are editing in xml format. You can examine the content of these two files by using either Notepad or WordPad.</p>
+</section>
+<section id="adding-geospatial-data-from-data.gov-into-qgis" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="adding-geospatial-data-from-data.gov-into-qgis"><span class="header-section-number">3.2.4</span> Adding geospatial data from data.gov into QGIS</h3>
+<p>Now, we are ready to bring the geospatial data downloaded from data.giv.sg into QGIS.</p>
+<ul>
+<li>From Window Desktop, launch QGIS.</li>
+</ul>
+<p>You will start a new QGIS project.</p>
+<ul>
+<li>From the menu bar, select <strong>Project</strong> -&gt; <strong>New</strong>.</li>
+</ul>
+<p>Next, you are going to learn how to bring geospatial data sets into QGIS via the <strong>Browser</strong> panel.</p>
+<ul>
+<li>From the Browser panel, navigate to the path of Hands-on_Ex02.govas shown in the screenshot below.</li>
+</ul>
+<p><img src="img02/image4.jpg" class="img-fluid"></p>
+<ul>
+<li>Double-click on <code>child-care-services-geojson.geojson</code>.</li>
+</ul>
+<p>Notice that <code>child-care-services-geojson.geojson</code> is added in the <strong>Layer</strong> panel and display on the View window as shown below.</p>
+<p><img src="img02/image5.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, bring in <code>MP14_SUBZONE_NO_SEA_PL.shp</code> and <code>StreetsandPlaces.shp</code> into QGIS.</p>
+</blockquote>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img02/image6.jpg" class="img-fluid"></p>
+<p>Notice that <code>child-care-services-geojson</code> layers does not appear on Map View. This is because it is covered by <code>MP14_SUBZONE_NO_SEA_PL</code> layer.</p>
+<ul>
+<li>From the <strong>Layer</strong> panel, click on <code>MP14_SUBZONE_NO_SEA_PL</code> layer.</li>
+<li>Hold down the left mouse button, drag and place it below <code>child-care-services-geojson</code>.</li>
+</ul>
+<p>Now you should see all the active layers appear on the View window as shown below.</p>
+<p><img src="img02/image7.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>QGIS Tip: In order to avoid point and line feature layers being blocked away by polygon feature layer, it is always advisible to place the polygon feature layer at the botton of the layer order.</p>
+</blockquote>
+<p>It is time to save the project.</p>
+<ul>
+<li>From the menu bar, click <strong>Project</strong> -&gt; <strong>Save</strong> (Alternatively, from the icon bar, click on <strong>Save Project</strong> icon).</li>
+<li>At the <strong>Choose a QGIS project file</strong> dialog window, navigate to the root project folder, then provide a proper project name such as <code>Hands-on_Ex02</code>, remember to select <em>QGIS files (</em>.qgs)* from the <strong>Save as type:</strong> dropdown list.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img02/image8.jpg" class="img-fluid"></p>
+<ul>
+<li>click on <strong>Save</strong> button.</li>
+</ul>
+<p>Notice that the upper left corner of the top banner is labelled <code>Hands-on_Ex02</code> instead of <code>untitled</code> now.</p>
+</section>
+</section>
+<section id="working-with-projection" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="working-with-projection"><span class="header-section-number">3.3</span> Working with Projection</h2>
+<p>In this section, you will learn how to:</p>
+<ul>
+<li>assign appropriate coordinate system to the QGIS project.</li>
+<li>how to transform a GIS data set from one coordinate system to another coordinate system.</li>
+</ul>
+<section id="assigning-project-coordinate-system" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="assigning-project-coordinate-system"><span class="header-section-number">3.3.1</span> Assigning project coordinate system</h3>
+<p>If you refer to the lower left corner of the active QGIS project window, there is a high chance that the EPSG is not in <strong>3414</strong> which is the EPSG code of <strong>svy21</strong>.</p>
+<p>If there is the case, you can use the step below to assign the correct projection system for your QGIS project.</p>
+<p><img src="img02/image9.jpg" class="img-fluid"></p>
+<ul>
+<li>At the lower right corner of QGIS project banner, click on the list of <strong>Render</strong>.</li>
+</ul>
+<p>Project Properties dialog window appears.</p>
+<p><img src="img02/image10.jpg" class="img-fluid"></p>
+<ul>
+<li>From <strong>Predefined Coordinate Reference Systems</strong>, click on <strong>EPSG:3414</strong> from the list.</li>
+<li>Click on <strong>Apply</strong> button to make the change.</li>
+<li>Click on <strong>OK</strong> button to close the window.</li>
+</ul>
+<p>Notice that the projection has been updated to EPSG:3414 now.</p>
+<p><img src="img02/image11.jpg" class="img-fluid"></p>
+<p>Option:</p>
+<p>If this is the first time you use the <strong>Projection Properties</strong>, there is a high chance that the <strong>Predefined Coordinate Reference Systems</strong> is empty.</p>
+<p>In this case,</p>
+<ul>
+<li>at <strong>Filter</strong>, type <strong>3414</strong>. This will help to narrow down the search.</li>
+</ul>
+<p>Before you move on to the next section, you should save the latest changes on the project file.</p>
+<ul>
+<li>From the icon bar, click on the <strong>Save Project</strong> icon.</li>
+</ul>
+</section>
+<section id="transforming-coordinate-system" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="transforming-coordinate-system"><span class="header-section-number">3.3.2</span> Transforming coordinate system</h3>
+<p>In a GIS project, it is always a good practice to keep the geospatial data set(s) in a same projected coordinate system, using the national projected coordinate system such as svy21 of Singapore.</p>
+<p>In this section, you will learn how to transform a geospatial data set from WGS84 Geographic Coordinate System to SVY21 Projected Coordinates System. You will also learn how to save the output into a new shapefile for permanent storage purpose. For the purpose of this exercise, <code>child-care-services-geojson</code> layer will be used.</p>
+<p>First, let us verify if an appropriate projection system was used.</p>
+<ul>
+<li>From the <strong>Layers</strong> panel, right-click on <code>child-care-services-geojson</code> layer.</li>
+<li>Select <strong>Properties</strong>.</li>
+</ul>
+<p>The Layer Properties dialog window of <code>child-care-services-geojson</code> layer appears.</p>
+<p><img src="img02/image12.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>Source</strong>.</li>
+</ul>
+<p>Notice that <code>child-care-services-geojson</code> layer is in WGS geographic coordinates system and not in SVY21 projected coordinates system.</p>
+<ul>
+<li>Click on <strong>OK</strong> button to close the dialog window.</li>
+</ul>
+<p>Next, we are going export the <code>child-care-services-geojson</code> layer into a new shapefile and at the same time transform the newly created shapefile into svy21 projected coordinates systems.</p>
+<ul>
+<li>From the <strong>Layers</strong> panel, right-click on <code>child-care-services-geojson</code> layer.</li>
+<li>Select <strong>Export</strong> -&gt; <strong>Save Features As</strong> from the context menu.</li>
+</ul>
+<p>The <strong>Save Vector Layer</strong> dialog window appears.</p>
+<ul>
+<li>For <strong>Format:</strong>, select ESRI Shapefile from the drop-down list.</li>
+<li>For <strong>Save as</strong>, click on the <em>Browse</em> button.</li>
+</ul>
+<p>The <strong>Save Layer As</strong> dialog window appear.</p>
+<ul>
+<li>Navigate to <code>\SMT201\Hands-On02\data\data.gov\geospatial\</code> sub-folder.</li>
+<li>For File Name, type <code>ChildcareServices</code>.</li>
+</ul>
+<p><img src="img02/image13.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on the <strong>Save</strong> button.</li>
+</ul>
+<p>You will return to <strong>Save Vector Layer as</strong> dialog window.</p>
+<p>Now, you are going to select the appropriate projected coordinate system.</p>
+<ul>
+<li>For <strong>CRS</strong>, click on the <strong>Browse</strong> button.</li>
+</ul>
+<p>The Coordinate Reference System Selector dialog window appears.</p>
+<ul>
+<li>Click on SVY21/Singapore TM.</li>
+<li>Click on OK to update the selection.</li>
+</ul>
+<p><img src="img02/image14.jpg" class="img-fluid"></p>
+<p>Notice that the <strong>CRS</strong> is <strong>EPSG:3414 - SVY21 / SINGAPORE TM</strong> now.</p>
+<p>Keep the rest of the default option check and you are ready to convert the geospatial data set into ESRI shapefile format and at the same time transform it into SVY21 projected coordinate system.</p>
+<ul>
+<li>Click on the OK button.</li>
+</ul>
+<p>Notice that a new geospatial layer called <code>ChildcareServices</code> has been added on <code>Layers</code> panel and was plotted on the View window.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned in earlier section, check the properties of of this newly created <code>ChildcareServices</code></p>
+</blockquote>
+<p><img src="img02/image15.jpg" class="img-fluid"></p>
+<p>You screen should look similar to the screensht above.</p>
+<p>Notice that <code>ChildcareServices</code> layer is in ESRI Shapefile format and its Coordinate Reference System in SVY21 / SINGAPORE TM.</p>
+<ul>
+<li>Click on OK button to close the dialog window.</li>
+</ul>
+<blockquote class="blockquote">
+<p>DIY: You can also remove <code>child-care-services-geojson</code> layer from Layers dialog window.</p>
+</blockquote>
+</section>
+</section>
+<section id="creating-geospatially-enabled-data" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="creating-geospatially-enabled-data"><span class="header-section-number">3.4</span> Creating Geospatially-Enabled Data</h2>
+<p>By and large, business data such as polyclinics, schools and business establishments do not capture geospatial information such as x- and y- coordinates explicitly. However, it is possible to create geospatially-enabled data from them by using the geocoding technique.</p>
+<p>Geocoding is the process of finding associated geographic coordinates (often expressed as latitude and longitude) from other geographic data, such as street addresses, zip codes or postal codes (http://en.wikipedia.org/wiki/Geocoding).</p>
+<section id="data-preparation" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">3.4.1</span> Data Preparation</h3>
+<p>In this section, you will learn how to create geospatially enable data by using <code>general-information-of-schools.csv</code> you downloaded from data.gov.sg.</p>
+<p>Note: In this section, we assume that <code>general-information-of-schools.csv</code> is stored in <code>\Hands-on_Ex02\data\data.gov\aspatial\</code> sub-folder and you have Microsoft Excel installed in your computer.</p>
+<p>Let us review the content of <code>general-information-of-schools.csv</code> file.</p>
+<ul>
+<li>At File Explorer, navigate to the sub-folder where <code>general-information-of-schools.csv</code> is stored.</li>
+<li>Right-click on <code>general-information-of-schools.csv</code> file.</li>
+<li>From the context menu, select <strong>Open with</strong> -&gt; <strong>Excel</strong>.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img02/image16.jpg" class="img-fluid"></p>
+<p>Notice that <code>general-information-of-schools.csv</code> file consists of 31 fields. However, we only need to retain <code>school_name</code>, <code>address</code> and <code>postal_code</code> field.</p>
+<ul>
+<li>Use appropriate Excel function to delete the unwanted fields.</li>
+</ul>
+<p>Next, we will create two create two new fields. They are: <code>country</code> and <code>city</code>.</p>
+<ul>
+<li>Use appropriate Excel function to create two new fields. Call them <code>country</code> and <code>city</code>.</li>
+<li>Fill in the cell below <code>country</code> and <code>city</code> fields with <code>Singapore</code>.</li>
+</ul>
+<p>The final <code>general-information-of-schools.csv</code> should look similar to the screenshot below.</p>
+<p><img src="img02/image17.jpg" class="img-fluid"></p>
+<ul>
+<li>Use the <em>Save as</em> function of Excel to save the tidied csv file into Hands-on_Ex02.govsub-folder. Name the output file <code>schools.csv</code>.</li>
+</ul>
+<blockquote class="blockquote">
+<p>Note: It is important to ensure that the output file is in csv file format.</p>
+</blockquote>
+</section>
+<section id="install-the-mmqgis-plugin" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="install-the-mmqgis-plugin"><span class="header-section-number">3.4.2</span> Install the MMQGIS Plugin</h3>
+<p>Instead of using the geocoding API of SLA OneMap, in this section you will use the <em>Geocode Tools</em> of <a href="http://michaelminn.com/linux/mmqgis/"><strong>MMQGIS</strong></a> plugin developed by Michael Minn.</p>
+<p>To install the <strong>MMQGIS</strong> plugin, you will need to load the QGIS plugin repository by following the steps below.</p>
+<ul>
+<li>From the menu bar, select <strong>Plugins</strong> –&gt; <strong>Manage and Install Plugins</strong>.</li>
+</ul>
+<p>Plugins dialog window appears as shown below.</p>
+<p><img src="img02/image18.jpg" class="img-fluid"></p>
+<p>Notice that there is a long list of plugins available. We can use the Search function to locate mmqgis plugin easily.</p>
+<ul>
+<li>At Search, type <em>mmqgis</em>.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img02/image19.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p><strong>Friendly Advice:</strong> It is a good practice to read the documentation of the plugin (i.e.&nbsp;More info: homepage) thoroughly before download or/and using any QGIS plugin.</p>
+</blockquote>
+<ul>
+<li>Click on <strong>Install Plugin</strong> button to run the installer.</li>
+</ul>
+<p>After installing mmqgis plugin, remember to close the Plugin dialog window.</p>
+<ul>
+<li>Click on <strong>Close</strong> button.</li>
+</ul>
+</section>
+<section id="geocoding-using-mmqgis-plugin" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="geocoding-using-mmqgis-plugin"><span class="header-section-number">3.4.3</span> Geocoding using MMQGIS Plugin</h3>
+<p>Now, you are ready geocode <code>schools</code> dataset.</p>
+<ul>
+<li>From the menu bar, select <strong>MMQGIS</strong> -&gt; <strong>Geocode</strong> -&gt; <strong>Geocode CSV with Web Service</strong>.</li>
+</ul>
+<p>Web Service Geocode dialog window appears.</p>
+<p><img src="img02/image20.jpg" class="img-fluid"></p>
+<p>Geocode Tools of MMQGIS plugin imports addresses from a CSV file. The input CSV file should be encoded in the UTF-8 character set. Although other 8-bit encodings (like Windoze ISO-8859-x) will work if only ASCII characters are present, non-ASCII characters may cause unpredictable behavior.</p>
+<ul>
+<li>From <strong>Input CSV File (UTF-8)</strong>, click on <strong>Browse</strong> button.</li>
+</ul>
+<p><strong>Select a file</strong> dialog window appears.</p>
+<ul>
+<li>Navigate to the path where <code>schools.csv</code> reside.</li>
+<li>Click on <code>schools.csv</code>.</li>
+<li>Click on <strong>Open</strong> button.</li>
+</ul>
+<p>Your screen should similar to the screenshot below.</p>
+<p><img src="img02/image21.jpg" class="img-fluid"></p>
+<p>Notice that the <strong>Address</strong>, <strong>City</strong> and <strong>Country</strong> drop-down lists have been mapped to the corresponding field names in <code>schools.csv</code>. This explains why the data preparation performed in previous step was important and necessary.</p>
+<p><strong>MMQGIS Geocode Tool</strong> supports five geocoding services. They are: Google, OpenStreetMap/Nomination, US Census Bureau, ESRI Server and NetToolKit. Except OpenStreetMap/Nomination, the rest of the geocoding services required you to have an API key.</p>
+<p>In this exercise, OpenStreetmap/Nominatim geocoding service will be used.</p>
+<blockquote class="blockquote">
+<p>Warning: To complete this section, you will need internet access to run the geocoding process.</p>
+</blockquote>
+<ul>
+<li>For <em>Web Service</em>, select <strong>OpenStreetMap/Nominatim</strong> from the drop-down list.</li>
+</ul>
+<p>Geocode Tool will generate two output files. They are a point feature GIS data set along with a <em>Not Found CSV</em> file containing all rows that could not be geocoded (for whatever reason). We need to tell Geocode Tool where to keep these two output files.</p>
+<ul>
+<li>Use File Explorer to create a new sub-folder called geocoding in -on_Ex02&nbsp;directory.</li>
+<li>For <strong>Output File Name</strong>, click on <strong>Browse</strong> button.</li>
+</ul>
+<p><strong>Create or select a file</strong> dialog window appears.</p>
+<ul>
+<li>Navigate to the newly create <em>geocoding</em> sub-folder.</li>
+<li>For <strong>File name</strong>, type <code>geocoded_sch.shp</code>.</li>
+<li>Click on <strong>Save</strong> button.</li>
+</ul>
+<p>You also need to provide the <strong>Not Found List Output list</strong> a place holder.</p>
+<ul>
+<li>For <strong>Not Found Output list</strong>, click on <strong>Browse</strong> button.</li>
+</ul>
+<p><strong>Create or select a file</strong> dialog window appears.</p>
+<ul>
+<li>Navigate to the newly create <em>geocoding</em> sub-folder.</li>
+<li>For <strong>File name</strong>, type <code>not_found_sch.scv</code>.</li>
+<li>Click on <strong>Save</strong> button.</li>
+</ul>
+<p>The completed dialog window should look similar to the screenshot below.</p>
+<p><img src="img02/image22.jpg" class="img-fluid"></p>
+<p>Now, you are ready to perform the geocoding function.</p>
+<p>• At the <strong>Web Service Geocode</strong> dialog window, click on <strong>Apply</strong> button.</p>
+<p>When the geocoding function is completed, notice that a new shapefile layer will be added on QGIS map window. At the same time, the progress bar will indicate numbers of records that have been geocoded successfully as shown below.</p>
+<p><img src="img02/image23.jpg" class="img-fluid"></p>
+<p>The output report shows that out of the 346 schools data records, 325 of them have been geocoded successfully.</p>
+<ul>
+<li>click on <strong>Close</strong> button to closed the dialog window.</li>
+</ul>
+<p>Let us examine the layer properties of the newly created <code>geocoded_sch</code> layer.</p>
+<ul>
+<li>Hover your mouse over geocoded_sch layer, right-click and select <strong>Open Attribute Table</strong> from the context menu.</li>
+</ul>
+<p>The <strong>Attribute tabl</strong>e of <code>geocoded_sch</code> appears.</p>
+<p><img src="img02/image24.jpg" class="img-fluid"></p>
+<p>Notice that all columns from the input CSV file are added as attributes in the output shapefile. Six additional fields are added to in the shapefile. The <strong>category</strong> and <strong>type</strong> fields are internal from OpenStreetMap. They provide useful data classification for the schools data sets.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps your had learned in previous section, examine and transform the coordinate system of <code>geocoded_sch</code> data set into SVY21 projected coordinate system.</p>
+</blockquote>
+</section>
+</section>
+<section id="working-with-raster-gis-data" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="working-with-raster-gis-data"><span class="header-section-number">3.5</span> Working with Raster GIS data</h2>
+<p>Raster data such as those collected by remote sensing satellite or airplanes are one of the important data sources of a GIS project. By and large, these data are stored in image file format such as TIF, GeoTIF, JPG and GeoJPG. In this section, you will learn how to bring a raster data in GeoTIF file format into QGIS. The raster data is called Chinatown.tif. It is available in -on_Ex02sub-folder.</p>
+<ul>
+<li>Start <strong>File Explorer</strong>.</li>
+<li>Navigate to -on_Ex02sub-folder.</li>
+</ul>
+<p>You should see the following files in the sub-folders.</p>
+<p><img src="img02/image25.jpg" class="img-fluid"></p>
+<p>This is an example of images file in GeoTIF format. The geographical information of the image file (i.e.&nbsp;Chinatown.TIF) is actually contained in the Chinatown.XML file.</p>
+<ul>
+<li>Open <code>Chinatown.XML</code> using <strong>Notepad</strong>.</li>
+</ul>
+<p>It should look similar to the figure below.</p>
+<p><img src="img02/image26.jpg" class="img-fluid"></p>
+<p>It provides details information of the image file including georeference system used, the geographical extent of the data, spectral resolution of the dataset and spatial resolution of the dataset.</p>
+<p>Next, you will important Chinatown raster data into QGIS.</p>
+<ul>
+<li>From <strong>Browser</strong> panel, navigate to sub-folder as shown in the screenshot below.</li>
+</ul>
+<p><img src="img02/image27.jpg" class="img-fluid"></p>
+<ul>
+<li>Double-click on <code>Chinatown.tif</code>.</li>
+</ul>
+<p>Notice that a new raster layer called Chinatown has been added on the <strong>Layers</strong> panel. However, it is not visible on the View window. This is because it is block by the massive point features.</p>
+<p>In order to view the newly added <code>Chinatown</code> layer, we need to zoom into the extend of <code>Chinatown</code> layer.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned in Hands-on Exercise 1, zoom to the extend of <code>Chinatown</code> layer.</p>
+</blockquote>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img02/image28.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learn in the earlier sections of this hands-on exercise, examine the properties of <code>Chinatown</code> data layer.</p>
+</blockquote>
+</section>
+<section id="working-with-internet-geospatial-services" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="working-with-internet-geospatial-services"><span class="header-section-number">3.6</span> Working with Internet Geospatial Services</h2>
+<p>One of the unique feathers of a modern GIS is its capability of consuming GIS data shared over the internet. These data can be in the form of WMS, WMS or proprietary format such as Google map, Bing map and OpenStreetMap format. In this section, you will learn how to consume an OpenStreetMap (OSM) data using QGIS.</p>
+<p>DIY: Before we can use OSM service, let us display the map view by using the full extent of <code>MP14_SUBZONE_NO_SEA_PL</code> layer. This is because we will use the extend of <code>MP14_SUBZONE_NO_SEA_PL</code> as the reference to map OSM service in QGIS.</p>
+<ul>
+<li>From <strong>Browser</strong> panel, click on the triangle in front of <strong>XYZ Tiles</strong>.</li>
+</ul>
+<p>OpenStreetMap icon appears as shown in the screenshot below.</p>
+<p><img src="img02/image29.jpg" class="img-fluid"></p>
+<ul>
+<li>Double-click on <strong>OpenStreetMap</strong> icon.</li>
+</ul>
+<p>Your screen should look similar to the figure below.</p>
+<p><img src="img02/image30.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>DIY: Use the skills you had learned from previous sections, 1. Re-organise the GIS layers so that you can see the polyclinics, and childcare centres are plotted on top of OpenStreetMap layer. 2. Navigate around the map areas and look for details.</p>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Hands-on_Ex01.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">My First Date with QGIS</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./summary.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

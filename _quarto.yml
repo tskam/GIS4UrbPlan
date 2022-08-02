@@ -1,0 +1,26 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "GIS for Urban Planning: QGIS methods"
+  author: "Dr. Kam Tin Seong"
+  date: "02/08/2022"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - Hands-on_Ex01.qmd
+    - Hands-on_Ex02.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

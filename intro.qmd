@@ -1,0 +1,67 @@
+# Introduction
+
+QGIS (formally known as Quantum GIS) is a full-features open source GIS software. It is the GIS tool used in this course.
+
+This section provides you with step-by-step guide on how to download and install QGIS in your window-based computer (i.e. desktop or laptop).
+
+## Downloading QGIS installer
+
+-   Launch the web browser.
+
+-   In the address bar at the top of the window, enter http://qgis.org/ and press **Enter**.
+
+The website should look something like this:
+
+![](img/image1.jpg)
+
+-   Click on **Download Now** button.
+
+Your screen should look similar to the figure below.
+
+![](img/image2.jpg)
+
+-   Click on **QGIS Standalone Installer Version 3.26**![](img/image4.jpg).
+
+![](img/image3.jpg)
+
+After a few seconds (depend on your network speed), a pop-up window appears.
+
+![](img/image4.jpg)
+
+-   Click on the **Save File** button.
+
+When the file is downloaded, you are going to install QGIS into your computer.
+
+## Installing QGIS
+
+In this section, you will learn how to install QGIS into your computer.
+
+-   Find the QGIS installer on your computer, right-click and select **Run as administrator** from the context menu to launch the setup.
+
+-   Click on the **Yes** button when Windows prompt you with the dialog "Do you want to allow this app to make change to your device?"
+
+After a few second, the Setup Wizard dialog window appears.
+
+-   Click on the **Next** button.
+
+The next setup dialog window appears.
+
+-   Click on the **I Agree** button.
+
+The Setup dialog window appears.
+
+-   Ensure that the Destination Folder is at **C:**\Program Files\QGIS 3.26.
+-   Click on the **Next** button.
+
+The Setup dialog window should look similar to the figure below.
+
+-   Click on the check box in front of the extra datasets that you would like to install.
+-   Click on the **Install** button.
+
+QGIS will begin to install. It may take a few minutes to install so be patient.
+
+When the QGIS Setup Winzard appears
+
+-   Click on **Finish** button.
+
+Congratulations! You have installed QGIS successfully!

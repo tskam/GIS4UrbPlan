@@ -1,0 +1,3 @@
+# Preface {.unnumbered}
+
+This workbook was developed to support the teaching of SMT201 Geographic Information Systems for Urban Planning. It consists of 10 hands-on exercises. Each exercise maps closely to the topic covers in the weekly lesson.

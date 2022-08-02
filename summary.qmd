@@ -1,0 +1,3 @@
+# Summary
+
+I sincerely hope that you have fun working with QGIS so far and had gain useful hands-on experiences on how to use QGIS to meet urban planning task.
