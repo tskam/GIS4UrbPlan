@@ -1,3 +1,11 @@
-# Preface {.unnumbered}
+# Welcome {.unnumbered}
 
-This workbook was developed to support the teaching of SMT201 Geographic Information Systems for Urban Planning. It consists of 10 hands-on exercises. Each exercise maps closely to the topic covers in the weekly lesson.
+This workbook was specially designed to support the teaching needs of **SMT201 Geographic Information Systems for Urban Planning**. It consists of 10 hands-on exercises. Each exercise maps closely to the topic covers in the weekly lesson.
+
+![](img/cover.jpg)
+
+This workbook has two unique features. Firstly, all the exercises are developed based on [QGIS](https://www.qgis.org/en/site/), an open source GIS toolkit with full GIS functions including 3-D modelling, Network Analysis and image analysis. Secondly, all the use cases and data sets are from [Singapore](https://en.wikipedia.org/wiki/Singapore), one of the amazing city-state in the world with diverse culture.
+
+## License
+
+This website is (and will always be) **free to use**, and is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivs 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) License.
