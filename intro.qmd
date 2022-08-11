@@ -20,7 +20,7 @@ Your screen should look similar to the figure below.
 
 ![](img/image2.jpg)
 
--   Click on **QGIS Standalone Installer Version 3.26**![](img/image4.jpg).
+-   Click on **QGIS Standalone Installer Version 3.26**
 
 ![](img/image3.jpg)
 
@@ -30,37 +30,53 @@ After a few seconds (depend on your network speed), a pop-up window appears.
 
 -   Click on the **Save File** button.
 
-When the file is downloaded, you are going to install QGIS into your computer.
+Be patient, the downloading will take a few minutes depend on the speed of your internet.
 
 ## Installing QGIS
 
 In this section, you will learn how to install QGIS into your computer.
 
--   Find the QGIS installer on your computer, right-click and select **Run as administrator** from the context menu to launch the setup.
+-   Find the QGIS installer on your computer, right-click and select **Install** from the context menu to launch the setup.
 
 -   Click on the **Yes** button when Windows prompt you with the dialog "Do you want to allow this app to make change to your device?"
 
 After a few second, the Setup Wizard dialog window appears.
 
+![](img/image5.jpg)
+
 -   Click on the **Next** button.
 
-The next setup dialog window appears.
+The End-User License Agreement dialog window appears.
 
--   Click on the **I Agree** button.
+![](img/image6.jpg)
 
-The Setup dialog window appears.
+-   Click on the checkbox in front of **I accept the terms in the License Agreement** button.
 
--   Ensure that the Destination Folder is at **C:**\Program Files\QGIS 3.26.
+-   Then, click on **Next** button.
+
+The Destination Folder dialog window appears.
+
+![](img/image7.jpg)
+
+-   Ensure that the Destination Folder is at `C:\Program Files\QGIS 3.26.1\`
+
+-   Keep both checkboxes selected.
+
 -   Click on the **Next** button.
 
-The Setup dialog window should look similar to the figure below.
+The **Ready to install QGIS 3.26.1 'Buenos Aires'** dialog window appears.
 
--   Click on the check box in front of the extra datasets that you would like to install.
--   Click on the **Install** button.
+![](img/image8.jpg)
+
+-   Click on **Install** button to start the installation process.
+
+![](img/image9.jpg)
 
 QGIS will begin to install. It may take a few minutes to install so be patient.
 
-When the QGIS Setup Winzard appears
+When the installation is completed, a Setup Wizard window look similar to the screenshot below appears.
+
+![](img/image10.jpg)
 
 -   Click on **Finish** button.
 
