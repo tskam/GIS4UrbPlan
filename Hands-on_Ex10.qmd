@@ -1,0 +1,8 @@
+# Urban Land-use/Land-cover (LULC) Classification and Changes Detection by using digital image analysis 
+
+In this hands-on exercise, you well learn how to perform urban LULC classification and change detection by using QGIS methods.
+
+```{r echo=FALSE, eval=FALSE}
+library(pagedown)
+pagedown::chrome_print("Hands-on_Ex09.html")
+```
