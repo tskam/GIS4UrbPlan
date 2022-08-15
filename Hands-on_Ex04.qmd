@@ -1,13 +1,45 @@
-# Land Use/Land Cover (LULC) Change Detection  with Vector-based GIS Analysis
+# Beyond Mapping: Vector-based GIS Analysis for Urab Applications
 
-In this hands-on exercise, you will learn how to perform LULC change detection by using vector-based geoprocessing and GIS analysis functions of QGIS.
+The true power of GIS In this hands-on exercise, you will learn how to perform LULC change detection by using vector-based geoprocessing and GIS analysis functions of QGIS.
 
 By the end of this session, you will be able to:
 
--   prepare GIS layers by using appropriate geoprocessing functions of QGIS,
+-   perform geospatial data wrangling by using appropriate geoprocessing functions of QGIS,
 
--   detect LULC changes by using appropriate overlay and statistical analysis functions of QGIS, and
+-   perform geospatial data integration using appropriate overlay and statistical analysis functions of QGIS, and
 
--   communicate the analysis results by using appropriate geovisualisation and mapping functions of QGIS.
+-   communicate the analysis results by using appropriate geovisualisation and data visualisation functions of QGIS.
 
-## What is Land Use/Land Cover Change Detection
+## Analysing Urban Land Use by Planning Subzone
+
+### The Task
+
+Every fives years, Urban Redevelopment Authority of Singapore will publish the new Land-Use Master Plan (MP). It is the statutory land use plan which guides Singapore's development in the medium term over the next 10 to 15 years. The latest version was published in 2019 and the digital version is available at data.gov.sg.
+
+In this hands-on exercise we are interested to analyse the distribution of land-use allocation at the planning subzone level. The target planning area is is Punggol which comprises of seven subzones.
+
+Two data sets will be used in this exericse, they are:
+
+-   [Master Plan 2019 Subzone Boundary (No Sea)](https://data.gov.sg/dataset/master-plan-2019-subzone-boundary-no-sea)
+
+-   [Master Plan 2019 Land Use layer](https://data.gov.sg/dataset/master-plan-2019-land-use-layer)
+
+### Getting Started
+
+-   Create a new project folder called `Hands-on_Ex04` or any name of your choice.
+
+-   Create a new sub-folder called `data.gov` or any name of your choice.
+
+### Downloading the data sets
+
+> DIY: Using the steps you had learned from the previous hands-on exercise, (1) download both data sets, (2) place them in the newly created data.gov sub-folder, and (3) unzip both data sets.
+
+### Start a new QGIS project
+
+> DIY: Using the steps you had learned from the previous hands-on exercise:
+>
+> -   Launch QGIS.
+>
+> -   Start a new QGIS project.
+>
+> -   Save the project in Hands-on_Ex04 folder. Name the project Hands-on_Ex04 or any other name of your choice.
