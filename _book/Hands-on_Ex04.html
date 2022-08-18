@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GIS for Urban Planning: QGIS methods - 5&nbsp; Beyond Mapping: Vector-based GIS Analysis for Urab Applications</title>
+<title>GIS for Urban Planning: QGIS methods - 5&nbsp; Beyond Mapping: Vector-based GIS Analysis for Urban Applications</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beyond Mapping: Vector-based GIS Analysis for Urab Applications</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beyond Mapping: Vector-based GIS Analysis for Urban Applications</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -115,7 +115,7 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Hands-on_Ex04.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beyond Mapping: Vector-based GIS Analysis for Urab Applications</span></a>
+  <a href="./Hands-on_Ex04.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beyond Mapping: Vector-based GIS Analysis for Urban Applications</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -177,12 +177,27 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#analysing-urban-land-use-by-planning-subzone" id="toc-analysing-urban-land-use-by-planning-subzone" class="nav-link active" data-scroll-target="#analysing-urban-land-use-by-planning-subzone"> <span class="header-section-number">5.1</span> Analysing Urban Land Use by Planning Subzone</a>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started"> <span class="header-section-number">5.1</span> Getting Started</a>
   <ul class="collapse">
   <li><a href="#the-task" id="toc-the-task" class="nav-link" data-scroll-target="#the-task"> <span class="header-section-number">5.1.1</span> The Task</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"> <span class="header-section-number">5.1.2</span> Getting Started</a></li>
+  <li><a href="#creating-the-project-folder" id="toc-creating-the-project-folder" class="nav-link" data-scroll-target="#creating-the-project-folder"> <span class="header-section-number">5.1.2</span> Creating the project folder</a></li>
   <li><a href="#downloading-the-data-sets" id="toc-downloading-the-data-sets" class="nav-link" data-scroll-target="#downloading-the-data-sets"> <span class="header-section-number">5.1.3</span> Downloading the data sets</a></li>
   <li><a href="#start-a-new-qgis-project" id="toc-start-a-new-qgis-project" class="nav-link" data-scroll-target="#start-a-new-qgis-project"> <span class="header-section-number">5.1.4</span> Start a new QGIS project</a></li>
+  </ul></li>
+  <li><a href="#working-with-qgis-geoprocessing" id="toc-working-with-qgis-geoprocessing" class="nav-link" data-scroll-target="#working-with-qgis-geoprocessing"> <span class="header-section-number">5.2</span> Working with QGIS geoprocessing</a>
+  <ul class="collapse">
+  <li><a href="#geospatial-data-wrangling-with-qgis" id="toc-geospatial-data-wrangling-with-qgis" class="nav-link" data-scroll-target="#geospatial-data-wrangling-with-qgis"> <span class="header-section-number">5.2.1</span> Geospatial data wrangling with QGIS</a></li>
+  <li><a href="#saving-the-selected-features-into-geopackage-database" id="toc-saving-the-selected-features-into-geopackage-database" class="nav-link" data-scroll-target="#saving-the-selected-features-into-geopackage-database"> <span class="header-section-number">5.2.2</span> Saving the selected features into GeoPackage database</a></li>
+  </ul></li>
+  <li><a href="#geoprocessing-with-qgis" id="toc-geoprocessing-with-qgis" class="nav-link" data-scroll-target="#geoprocessing-with-qgis"> <span class="header-section-number">5.3</span> Geoprocessing with QGIS</a>
+  <ul class="collapse">
+  <li><a href="#extracting-land-use-features-within-punggol-planning-area" id="toc-extracting-land-use-features-within-punggol-planning-area" class="nav-link" data-scroll-target="#extracting-land-use-features-within-punggol-planning-area"> <span class="header-section-number">5.3.1</span> Extracting land use features within Punggol planning area</a></li>
+  </ul></li>
+  <li><a href="#data-visualisation-with-data-plotly-plugin" id="toc-data-visualisation-with-data-plotly-plugin" class="nav-link" data-scroll-target="#data-visualisation-with-data-plotly-plugin"> <span class="header-section-number">5.4</span> Data visualisation with Data Plotly plugin</a>
+  <ul class="collapse">
+  <li><a href="#installing-data-plotly-plugin" id="toc-installing-data-plotly-plugin" class="nav-link" data-scroll-target="#installing-data-plotly-plugin"> <span class="header-section-number">5.4.1</span> Installing Data Plotly plugin</a></li>
+  <li><a href="#deriving-new-field-by-using-qgis-geometry" id="toc-deriving-new-field-by-using-qgis-geometry" class="nav-link" data-scroll-target="#deriving-new-field-by-using-qgis-geometry"> <span class="header-section-number">5.4.2</span> Deriving new field by using QGIS geometry</a></li>
+  <li><a href="#plotting-a-frequency-bar-chart-using-data-plotly-plugin" id="toc-plotting-a-frequency-bar-chart-using-data-plotly-plugin" class="nav-link" data-scroll-target="#plotting-a-frequency-bar-chart-using-data-plotly-plugin"> <span class="header-section-number">5.4.3</span> Plotting a frequency bar chart using <strong>Data Plotly</strong> plugin</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -192,7 +207,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beyond Mapping: Vector-based GIS Analysis for Urab Applications</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Beyond Mapping: Vector-based GIS Analysis for Urban Applications</span></h1>
 </div>
 
 
@@ -206,27 +221,29 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>The true power of GIS In this hands-on exercise, you will learn how to perform LULC change detection by using vector-based geoprocessing and GIS analysis functions of QGIS.</p>
+<p>The true power of a GIS of is its geoprocessing and analysis capability. In this hands-on exercise, you will learn how to combine geoprocessing and GIS analysis function of QGIS to meet urban application needs.</p>
 <p>By the end of this session, you will be able to:</p>
 <ul>
-<li><p>perform geospatial data wrangling by using appropriate geoprocessing functions of QGIS,</p></li>
-<li><p>perform geospatial data integration using appropriate overlay and statistical analysis functions of QGIS, and</p></li>
-<li><p>communicate the analysis results by using appropriate geovisualisation and data visualisation functions of QGIS.</p></li>
+<li><p>extract geospatial data by using appropriate geoprocessing functions of QGIS,</p></li>
+<li><p>create a GeoPackage database and save the extracted geospatial data into GeoPackage data table,</p></li>
+<li><p>transform the referencing system of the geospatial data into from geographic coordinate system (i.e wgs84) to projected coordinate system (i.e svy21). integration using appropriate overlay and statistical analysis functions of QGIS,</p></li>
+<li><p>derive new field from geospatial properties by using QGIS attribute table tools, and</p></li>
+<li><p>prepare statistical graphic by using <strong>Data Plotly</strong> plugin of QGIS.</p></li>
 </ul>
-<section id="analysing-urban-land-use-by-planning-subzone" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="analysing-urban-land-use-by-planning-subzone"><span class="header-section-number">5.1</span> Analysing Urban Land Use by Planning Subzone</h2>
+<section id="getting-started" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="getting-started"><span class="header-section-number">5.1</span> Getting Started</h2>
 <section id="the-task" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="the-task"><span class="header-section-number">5.1.1</span> The Task</h3>
 <p>Every fives years, Urban Redevelopment Authority of Singapore will publish the new Land-Use Master Plan (MP). It is the statutory land use plan which guides Singapore’s development in the medium term over the next 10 to 15 years. The latest version was published in 2019 and the digital version is available at data.gov.sg.</p>
-<p>In this hands-on exercise we are interested to analyse the distribution of land-use allocation at the planning subzone level. The target planning area is is Punggol which comprises of seven subzones.</p>
+<p>In this hands-on exercise we are interested to understand the distribution of land areas by land-use allocation at the planning subzone level. The target planning area is Punggol area which comprises of seven subzones.</p>
 <p>Two data sets will be used in this exericse, they are:</p>
 <ul>
 <li><p><a href="https://data.gov.sg/dataset/master-plan-2019-subzone-boundary-no-sea">Master Plan 2019 Subzone Boundary (No Sea)</a></p></li>
 <li><p><a href="https://data.gov.sg/dataset/master-plan-2019-land-use-layer">Master Plan 2019 Land Use layer</a></p></li>
 </ul>
 </section>
-<section id="getting-started" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="getting-started"><span class="header-section-number">5.1.2</span> Getting Started</h3>
+<section id="creating-the-project-folder" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="creating-the-project-folder"><span class="header-section-number">5.1.2</span> Creating the project folder</h3>
 <ul>
 <li><p>Create a new project folder called <code>Hands-on_Ex04</code> or any name of your choice.</p></li>
 <li><p>Create a new sub-folder called <code>data.gov</code> or any name of your choice.</p></li>
@@ -235,7 +252,12 @@ ul.task-list{list-style: none;}
 <section id="downloading-the-data-sets" class="level3" data-number="5.1.3">
 <h3 data-number="5.1.3" class="anchored" data-anchor-id="downloading-the-data-sets"><span class="header-section-number">5.1.3</span> Downloading the data sets</h3>
 <blockquote class="blockquote">
-<p>DIY: Using the steps you had learned from the previous hands-on exercise, (1) download both data sets, (2) place them in the newly created data.gov sub-folder, and (3) unzip both data sets.</p>
+<p>DIY: Perform the following steps bu using the steps you had learned from the previous hands-on exercise:</p>
+<ol type="1">
+<li><p>download both data sets,</p></li>
+<li><p>place them in the newly created <code>data.gov</code> sub-folder, and</p></li>
+<li><p>unzip both data sets.</p></li>
+</ol>
 </blockquote>
 </section>
 <section id="start-a-new-qgis-project" class="level3" data-number="5.1.4">
@@ -245,9 +267,253 @@ ul.task-list{list-style: none;}
 <ul>
 <li><p>Launch QGIS.</p></li>
 <li><p>Start a new QGIS project.</p></li>
-<li><p>Save the project in Hands-on_Ex04 folder. Name the project Hands-on_Ex04 or any other name of your choice.</p></li>
+<li><p>Save the project in <code>Hands-on_Ex04</code> folder. Name the project <code>Hands-on_Ex04</code> or any other name of your choice.</p></li>
 </ul>
 </blockquote>
+</section>
+</section>
+<section id="working-with-qgis-geoprocessing" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="working-with-qgis-geoprocessing"><span class="header-section-number">5.2</span> Working with QGIS geoprocessing</h2>
+<section id="geospatial-data-wrangling-with-qgis" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="geospatial-data-wrangling-with-qgis"><span class="header-section-number">5.2.1</span> Geospatial data wrangling with QGIS</h3>
+<p>Now, we are going to extract planning sub-zones belong to Punggol planning area from <code>URA_MP19_SUBZONE_NO_SEA_PL</code> layer.</p>
+<ul>
+<li>From the Layer pane, right click on <code>URA_MP19_SUBZONE_NO_SEA_PL</code></li>
+<li>Select <strong>Open Attribute Table</strong> from the context menu.</li>
+</ul>
+<p>The attribute table of <code>URA_MP19_SUBZONE_NO_SEA_PL</code> appears.</p>
+<ul>
+<li>From the menu bar of attribute table of <code>URA_MP19_SUBZONE_NO_SEA_PL</code>, click on <strong>Select Features using an Expression</strong> <img src="img04/image3.jpg" class="img-fluid">icon</li>
+</ul>
+<p><strong>Select by Expression</strong> dialog window appears.</p>
+<p><img src="img04/image4.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on the black triangle in front of <em>Fields and Values</em>.</li>
+</ul>
+<p><img src="img04/image5.jpg" class="img-fluid"></p>
+<p>A list of field names appears.</p>
+<ul>
+<li>Double-click on <code>PLN_AREA_N</code> (i.e.&nbsp;Planning Area Name)</li>
+</ul>
+<p>The <strong>Expression</strong> pane should look similar to the screenshot below.</p>
+<p><img src="img04/image6.jpg" class="img-fluid" width="300"></p>
+<ul>
+<li>At the bottom of <strong>Expression</strong> pane, click on <img src="img04/image7.jpg" class="img-fluid"> icon.</li>
+</ul>
+<p>The <strong>Expression</strong> pane should look similar to the screenshot below.</p>
+<p><img src="img04/image8.jpg" class="img-fluid" width="300"></p>
+<ul>
+<li>From the right of <strong>Select by Expression</strong> dialog window, click on <strong>All Unique</strong> button.</li>
+</ul>
+<p>Notice that a complete list of unique value in the <code>PLN_AREA_N</code> appears.</p>
+<p><img src="img04/image9.jpg" class="img-fluid" width="200"></p>
+<ul>
+<li>Scroll down the list until you see <code>Punggol</code>. Double click on the word <code>Punggol</code>.</li>
+</ul>
+<p>The <strong>Expression</strong> pane should look similar to the screenshot below.</p>
+<p><img src="img04/image10.jpg" class="img-fluid" width="300"></p>
+<ul>
+<li>Click on <img src="img04/image11.jpg" class="img-fluid" width="136"> button located at the right hand corner of the dialog window.</li>
+</ul>
+<p>Notice that the top bar of the attribute table window indicates that 7 records have been selected.</p>
+<p><img src="img04/image12.jpg" class="img-fluid"></p>
+<ul>
+<li>From the <strong>Select by Expression</strong> dialog window, click on <strong>Close</strong> button located at the lower right corner.</li>
+</ul>
+<p>To confirm that the records have been selected correctly,</p>
+<ul>
+<li>From the menu bar the the attribute table, click on <img src="img04/image13.jpg" class="img-fluid" width="17"></li>
+</ul>
+<p>Notice that the selected records will be populated as shown below.</p>
+<p><img src="img04/image14.jpg" class="img-fluid"></p>
+<p>You can close the attribute table now.</p>
+<ul>
+<li>Click on the cross icon located at the upper right corner of the attribute table.</li>
+</ul>
+</section>
+<section id="saving-the-selected-features-into-geopackage-database" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="saving-the-selected-features-into-geopackage-database"><span class="header-section-number">5.2.2</span> Saving the selected features into GeoPackage database</h3>
+<p>Now we are going to save the selected features into a new data layer in a GeoPackage database.</p>
+<ul>
+<li><p>From the <strong>Layers</strong> panel, right-click on <code>URA_MP19_SUBZONE_NO_SEA_PL</code>.</p></li>
+<li><p>Select <strong>Export</strong> -&gt; <strong>Save Selected Features as..</strong> from the context menu.</p></li>
+</ul>
+<p><strong>Save Vector Layer as..</strong> dialog window appears.</p>
+<p><img src="img04/image15.jpg" class="img-fluid" width="303"></p>
+<ul>
+<li><p>For <em>Format</em>, select <code>GeoPackage</code> from the drop-down list.</p></li>
+<li><p>For <em>File Name</em>, click on the button located at the back.</p></li>
+</ul>
+<p><strong>Save Layer as</strong> dialog window appears</p>
+<p><img src="img04/image16.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Create a sub-folder in the <code>Hands-on_Ex04</code> folder. Called the newly created sub-folder <code>GeoPackage</code>.</p></li>
+<li><p>Double-click on <code>GeoPackage</code> sub-folder to navigate into the sub-folder.</p></li>
+<li><p>For <em>File name</em>, type <code>Punggol</code>.</p></li>
+<li><p>Click on <strong>Save</strong> button.</p></li>
+</ul>
+<p>Now, you will be back to <strong>Save Vector Layer as..</strong> dialog window.</p>
+<ul>
+<li>For <em>Layer name</em>, type <code>MP19 Subzone</code>.</li>
+</ul>
+<blockquote class="blockquote">
+<p>DIY: For <em>CRS</em>, using the steps you have learned, change to <code>svy21</code> projection coordinate system.</p>
+</blockquote>
+<p>The complete interface should look similar to the screenshot below.</p>
+<p><img src="img04/image17.jpg" class="img-fluid" width="315"></p>
+<ul>
+<li><p>Check to make sure that the check-box in front of <em>Save on selected features</em> is checked.</p></li>
+<li><p>When you are ready, click on <strong>Ok</strong> button to run the function.</p></li>
+</ul>
+<p>Notice that a new GIS layer called <code>Punggol --- MP19 Subzone</code> has been add on Layers pane and display on map view as shaded polygons.</p>
+<p><img src="img04/image18.jpg" class="img-fluid"></p>
+<p>By referring to <code>Hands-on_Ex04</code> folder in <strong>Browser</strong> panel, you will see that a new GeoPackage called <code>Punggol.gpkg</code> has been created with a data table called <code>MP19 Subzone</code>.</p>
+<p><img src="img04/image19.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned from previous hands-on, examine the properties of <code>MP19 Subzone</code> layer.</p>
+</blockquote>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img04/image20.jpg" class="img-fluid"></p>
+<p>Notice that the layer is in svy21 Projected Coordinate System and not in the original wgs84 Geographic Coordinate System.</p>
+</section>
+</section>
+<section id="geoprocessing-with-qgis" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="geoprocessing-with-qgis"><span class="header-section-number">5.3</span> Geoprocessing with QGIS</h2>
+<section id="extracting-land-use-features-within-punggol-planning-area" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="extracting-land-use-features-within-punggol-planning-area"><span class="header-section-number">5.3.1</span> Extracting land use features within Punggol planning area</h3>
+<p>In this section, you will learn how to use the clip operation of geoprocessing function to extract land use features fall within Punggol planning area.</p>
+<ul>
+<li>From the menu bar, select <strong>Vector</strong> -&gt; <strong>Geoprocessing Tool</strong>s -&gt; <strong>Clip</strong>.</li>
+</ul>
+<p><img src="img04/image21.jpg" class="img-fluid"></p>
+<p><strong>Clip</strong> dialog window appears.</p>
+<ul>
+<li><p>For <em>Input layer</em>, select <code>G_MP19_LAND_USE_PL</code> from the drop-down list.</p></li>
+<li><p>For <em>Overlay layer</em>, select <code>Punggol --- MP19 Subzone</code> from the drop-down list.</p></li>
+</ul>
+<p><strong>Clip</strong> dialog window should look similar to the screenshot below.</p>
+<p><img src="img04/image23.jpg" class="img-fluid"></p>
+<ul>
+<li>When you are ready to run the process, click on <strong>Run</strong> button.</li>
+</ul>
+<p>Op! It seems that the process failed to complete due to invalid geometry issue.</p>
+<p><img src="img04/image24.jpg" class="img-fluid"></p>
+<p>Less worry, this is very common in geoprocessing operations because of dirty or untidy data such as slivers. The issue can be addressed by using the Advanced options tool of QGIS’s geoprocessing operations.</p>
+<ul>
+<li><p>At <strong>Clip</strong> dialog window, click on <strong>Parameters</strong> tab.</p>
+<p><img src="img04/image25.jpg" class="img-fluid" width="199"></p></li>
+<li><p>Click on <strong>Advanced options</strong> <img src="img04/image22.jpg" class="img-fluid" width="27"> button behind Input layer.</p></li>
+</ul>
+<p><strong>Clip</strong> dialog window change as shown below.</p>
+<p><img src="images/paste-21713C8F.png" class="img-fluid"></p>
+<ul>
+<li>For <em>Invalid feature filtering</em>, select <em>Do not Filter (Better Performance)</em> from the drop-down list.</li>
+</ul>
+<p><img src="img04/image27.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>DIY: Repeat the same steps for <em>Overlay layer</em> too.</p>
+</blockquote>
+<ul>
+<li>When you are ready, click on <strong>Run</strong> button one more time.</li>
+</ul>
+<p>Be patient, there are a lot of polygon features to be extracted. If the process is completed without any error, the Log will look similar to below.</p>
+<p><img src="img04/image28.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>Close</strong> button to close the dialog window.</li>
+</ul>
+<p>When you refer to <strong>Layers</strong> panel, a new data layer called Clipped is added. Notice that there is a small marker <img src="img04/image30.jpg" class="img-fluid" width="21"> at the end of the layer name. It indicates that this layer is a virtual layer. In geoprocessing, it is always a good practice to keep the output layer a virtual layer first. After checking the correctness of the output layer, then only we will go ahead and save the layer into GeoPackage database.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, save the <code>Clipped</code> virtual layer into GeoPackage, call the data layer <code>MP19 Land Use</code>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, remove <code>Clipped</code> virtual layer, <code>URA_MP19_SUBZONE_NO_SEA_PL</code>, and <code>G_MP19_LAND_USE_PL</code> layers from the <strong>Layers</strong> panel.</p>
+</blockquote>
+<p>You screen should look similar to the screenshot below.</p>
+<p><img src="img04/image31.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned in previous hands-on, symbolise the land-use by land-use classes.</p>
+</blockquote>
+<p><img src="img04/image32.jpg" class="img-fluid"></p>
+</section>
+</section>
+<section id="data-visualisation-with-data-plotly-plugin" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="data-visualisation-with-data-plotly-plugin"><span class="header-section-number">5.4</span> Data visualisation with Data Plotly plugin</h2>
+<section id="installing-data-plotly-plugin" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="installing-data-plotly-plugin"><span class="header-section-number">5.4.1</span> Installing Data Plotly plugin</h3>
+<p>In this section, you will learn how to visualise the distribution of land-use class by area graphically by using <a href="https://github.com/ghtmtt/DataPlotly"><strong>Data Plotly</strong></a> plugin.</p>
+<ul>
+<li>At the menu bar, click on <strong>Plugins</strong> -&gt; <strong>Manage and Install plugins</strong>.</li>
+</ul>
+<p><strong>Plugins</strong> dialog window appears.</p>
+<ul>
+<li>Search for <strong>Data Plotly</strong>.</li>
+</ul>
+<p><img src="img04/image33.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>Install Plugin</strong> button to install it.</li>
+</ul>
+<p>Notice that a new icon will be added on the menu bar. Feel free to move it around and place it on the icon bar.</p>
+</section>
+<section id="deriving-new-field-by-using-qgis-geometry" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="deriving-new-field-by-using-qgis-geometry"><span class="header-section-number">5.4.2</span> Deriving new field by using QGIS geometry</h3>
+<p>In order to display the distribution of land-use class by area, we need to calculate and store the area of each polygon features in the attribute table.</p>
+<ul>
+<li><p>From the <strong>Layers</strong> panel, right-click on <code>Punggol --- MP19 LAND USE</code>.</p></li>
+<li><p>Select <strong>Open Attribute Table</strong> from the context menu.</p></li>
+</ul>
+<p>The attribute table of <code>Punggol --- MP19 LAND USE</code> layer appears.</p>
+<ul>
+<li><p>Click on <strong>Open Calculate Field</strong> <img src="img04/image35.jpg" class="img-fluid" width="26"> icon.</p></li>
+<li><p>Keep the box in front of <strong>Create a new field</strong> checked.</p></li>
+<li><p>For <em>Output field name</em>, type <code>AREA</code>.</p></li>
+<li><p>For <em>Output field</em> type, select <em>Decimal number</em> from the drop-down list.</p></li>
+</ul>
+<p><img src="img04/image36.jpg" class="img-fluid" width="261"></p>
+<ul>
+<li><p>At the <strong>Expression</strong> pane, click on the black triangle in front of <strong>Geometry</strong>.</p></li>
+<li><p>Double click on <strong>$area</strong>. (Notice that there are two area fields, one is $area and the other is area).</p></li>
+</ul>
+<p><img src="img04/image37.jpg" class="img-fluid"></p>
+<p>Notice that the <strong>Expression</strong> panel is complete with <code>\$area</code>.</p>
+<ul>
+<li>Click on <strong>Ok</strong> button.</li>
+</ul>
+<p>When the process is completed, a new field called AREA will be added in the last column of the attribute table as shown below.</p>
+<p><img src="img04/image38.jpg" class="img-fluid"></p>
+<ul>
+<li>Close the attribute table.</li>
+</ul>
+<p>Next, we will save the newly derived field.</p>
+<ul>
+<li><p>At the <strong>Layers</strong> panel, right-click on <code>Punggol --- MP19 LAND USE</code> layer.</p></li>
+<li><p>From the context menu, select <strong>Toggle Editing</strong>.</p></li>
+</ul>
+<p><strong>Toggle Editing</strong> dialog window appears.</p>
+<p><img src="img04/image39.jpg" class="img-fluid" width="177"></p>
+<ul>
+<li>Click on <strong>Save</strong> button.</li>
+</ul>
+</section>
+<section id="plotting-a-frequency-bar-chart-using-data-plotly-plugin" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="plotting-a-frequency-bar-chart-using-data-plotly-plugin"><span class="header-section-number">5.4.3</span> Plotting a frequency bar chart using <strong>Data Plotly</strong> plugin</h3>
+<p>Now, we are ready to create the statistical plot by using Data Plotly plugin.</p>
+<ul>
+<li>From the icon bar, click on <strong>Data Plotly</strong> icon.</li>
+</ul>
+<p><strong>Data Plotly</strong> dialog window appears.</p>
+<ul>
+<li><p>For <em>Plot type</em>, select <code>Bar Plot</code> from the drop-down list.</p></li>
+<li><p>For <em>Layer</em>, select <code>Punggol -- MP19 LAND USE</code> from the drop-down list.</p></li>
+<li><p>For <em>X field</em>, select <code>LU_DESC</code> from the drop-down list.</p></li>
+<li><p>For <em>Y field</em>, select <code>AREA</code> from the drop-down list.</p></li>
+</ul>
+<p><img src="img04/image40.jpg" class="img-fluid"></p>
+<ul>
+<li>When you are ready, click on <strong>Create Plot</strong> button.</li>
+</ul>
+<p>A bar chart look similar to the screenshot below appears.</p>
+<p><img src="img04/image41.jpg" class="img-fluid"></p>
+<p>Well done! You have create a bar chart showing the distribution of land areas by land-use class within Punggol planning area.</p>
 
 
 </section>

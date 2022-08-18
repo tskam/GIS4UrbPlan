@@ -1,22 +1,26 @@
-# Beyond Mapping: Vector-based GIS Analysis for Urab Applications
+# Beyond Mapping: Vector-based GIS Analysis for Urban Applications
 
-The true power of GIS In this hands-on exercise, you will learn how to perform LULC change detection by using vector-based geoprocessing and GIS analysis functions of QGIS.
+The true power of a GIS of is its geoprocessing and analysis capability. In this hands-on exercise, you will learn how to combine geoprocessing and GIS analysis function of QGIS to meet urban application needs.
 
 By the end of this session, you will be able to:
 
--   perform geospatial data wrangling by using appropriate geoprocessing functions of QGIS,
+-   extract geospatial data by using appropriate geoprocessing functions of QGIS,
 
--   perform geospatial data integration using appropriate overlay and statistical analysis functions of QGIS, and
+-   create a GeoPackage database and save the extracted geospatial data into GeoPackage data table,
 
--   communicate the analysis results by using appropriate geovisualisation and data visualisation functions of QGIS.
+-   transform the referencing system of the geospatial data into from geographic coordinate system (i.e wgs84) to projected coordinate system (i.e svy21). integration using appropriate overlay and statistical analysis functions of QGIS,
 
-## Analysing Urban Land Use by Planning Subzone
+-   derive new field from geospatial properties by using QGIS attribute table tools, and
+
+-   prepare statistical graphic by using **Data Plotly** plugin of QGIS.
+
+## Getting Started
 
 ### The Task
 
 Every fives years, Urban Redevelopment Authority of Singapore will publish the new Land-Use Master Plan (MP). It is the statutory land use plan which guides Singapore's development in the medium term over the next 10 to 15 years. The latest version was published in 2019 and the digital version is available at data.gov.sg.
 
-In this hands-on exercise we are interested to analyse the distribution of land-use allocation at the planning subzone level. The target planning area is is Punggol which comprises of seven subzones.
+In this hands-on exercise we are interested to understand the distribution of land areas by land-use allocation at the planning subzone level. The target planning area is Punggol area which comprises of seven subzones.
 
 Two data sets will be used in this exericse, they are:
 
@@ -24,7 +28,7 @@ Two data sets will be used in this exericse, they are:
 
 -   [Master Plan 2019 Land Use layer](https://data.gov.sg/dataset/master-plan-2019-land-use-layer)
 
-### Getting Started
+### Creating the project folder
 
 -   Create a new project folder called `Hands-on_Ex04` or any name of your choice.
 
@@ -32,7 +36,13 @@ Two data sets will be used in this exericse, they are:
 
 ### Downloading the data sets
 
-> DIY: Using the steps you had learned from the previous hands-on exercise, (1) download both data sets, (2) place them in the newly created data.gov sub-folder, and (3) unzip both data sets.
+> DIY: Perform the following steps bu using the steps you had learned from the previous hands-on exercise: 
+>
+>(1) download both data sets, 
+>
+>(2) place them in the newly created `data.gov` sub-folder, and 
+>
+>(3) unzip both data sets.
 
 ### Start a new QGIS project
 
@@ -42,4 +52,284 @@ Two data sets will be used in this exericse, they are:
 >
 > -   Start a new QGIS project.
 >
-> -   Save the project in Hands-on_Ex04 folder. Name the project Hands-on_Ex04 or any other name of your choice.
+> -   Save the project in `Hands-on_Ex04` folder. Name the project `Hands-on_Ex04` or any other name of your choice.
+
+## Working with QGIS geoprocessing
+### Geospatial data wrangling with QGIS
+
+Now, we are going to extract planning sub-zones belong to Punggol planning area from `URA_MP19_SUBZONE_NO_SEA_PL` layer.
+
+-   From the Layer pane, right click on `URA_MP19_SUBZONE_NO_SEA_PL`
+-   Select **Open Attribute Table** from the context menu.
+
+The attribute table of `URA_MP19_SUBZONE_NO_SEA_PL` appears.
+
+-   From the menu bar of attribute table of `URA_MP19_SUBZONE_NO_SEA_PL`, click on **Select Features using an Expression** ![](img04/image3.jpg)icon
+
+**Select by Expression** dialog window appears.
+
+![](img04/image4.jpg)
+
+-   Click on the black triangle in front of *Fields and Values*.
+
+![](img04/image5.jpg)
+
+A list of field names appears.
+
+-   Double-click on `PLN_AREA_N` (i.e. Planning Area Name)
+
+The **Expression** pane should look similar to the screenshot below.
+
+![](img04/image6.jpg){width="300"}
+
+-   At the bottom of **Expression** pane, click on ![](img04/image7.jpg) icon.
+
+The **Expression** pane should look similar to the screenshot below.
+
+![](img04/image8.jpg){width="300"}
+
+-   From the right of **Select by Expression** dialog window, click on **All Unique** button.
+
+Notice that a complete list of unique value in the `PLN_AREA_N` appears.
+
+![](img04/image9.jpg){width="200"}
+
+-   Scroll down the list until you see `Punggol`. Double click on the word `Punggol`.
+
+The **Expression** pane should look similar to the screenshot below.
+
+![](img04/image10.jpg){width="300"}
+
+-   Click on ![](img04/image11.jpg){width="136"} button located at the right hand corner of the dialog window.
+
+Notice that the top bar of the attribute table window indicates that 7 records have been selected.
+
+![](img04/image12.jpg)
+
+-   From the **Select by Expression** dialog window, click on **Close** button located at the lower right corner.
+
+To confirm that the records have been selected correctly,
+
+-   From the menu bar the the attribute table, click on ![](img04/image13.jpg){width="17"}
+
+Notice that the selected records will be populated as shown below.
+
+![](img04/image14.jpg)
+
+You can close the attribute table now.
+
+-   Click on the cross icon located at the upper right corner of the attribute table.
+
+### Saving the selected features into GeoPackage database
+
+Now we are going to save the selected features into a new data layer in a GeoPackage database.
+
+-   From the **Layers** panel, right-click on `URA_MP19_SUBZONE_NO_SEA_PL`.
+
+-   Select **Export** -\> **Save Selected Features as..** from the context menu.
+
+**Save Vector Layer as..** dialog window appears.
+
+![](img04/image15.jpg){width="303"}
+
+-   For *Format*, select `GeoPackage` from the drop-down list.
+
+-   For *File Name*, click on the button located at the back.
+
+**Save Layer as** dialog window appears
+
+![](img04/image16.jpg)
+
+-   Create a sub-folder in the `Hands-on_Ex04` folder. Called the newly created sub-folder `GeoPackage`.
+
+-   Double-click on `GeoPackage` sub-folder to navigate into the sub-folder.
+
+-   For *File name*, type `Punggol`.
+
+-   Click on **Save** button.
+
+Now, you will be back to **Save Vector Layer as..** dialog window.
+
+-   For *Layer name*, type `MP19 Subzone`.
+
+> DIY: For *CRS*, using the steps you have learned, change to `svy21` projection coordinate system.
+
+The complete interface should look similar to the screenshot below.
+
+![](img04/image17.jpg){width="315"}
+
+-   Check to make sure that the check-box in front of *Save on selected features* is checked.
+
+-   When you are ready, click on **Ok** button to run the function.
+
+Notice that a new GIS layer called `Punggol --- MP19 Subzone` has been add on Layers pane and display on map view as shaded polygons.
+
+![](img04/image18.jpg)
+
+By referring to `Hands-on_Ex04` folder in **Browser** panel, you will see that a new GeoPackage called `Punggol.gpkg` has been created with a data table called `MP19 Subzone`.
+
+![](img04/image19.jpg)
+
+>DIY: Using the steps you had learned from previous hands-on, examine the properties of `MP19 Subzone` layer.
+
+Your screen should look similar to the screenshot below.
+
+![](img04/image20.jpg)
+
+Notice that the layer is in svy21 Projected Coordinate System and not in the original wgs84 Geographic Coordinate System.
+
+## Geoprocessing with QGIS
+### Extracting land use features within Punggol planning area
+
+In this section, you will learn how to use the clip operation of geoprocessing function to extract land use features fall within Punggol planning area.
+
+-   From the menu bar, select **Vector** -\> **Geoprocessing Tool**s -\> **Clip**.
+
+![](img04/image21.jpg)
+
+**Clip** dialog window appears.
+
+-   For *Input layer*, select `G_MP19_LAND_USE_PL` from the drop-down list.
+
+-   For *Overlay layer*, select `Punggol --- MP19 Subzone` from the drop-down list.
+
+**Clip** dialog window should look similar to the screenshot below.
+
+![](img04/image23.jpg)
+
+-   When you are ready to run the process, click on **Run** button.
+
+Op! It seems that the process failed to complete due to invalid geometry issue.
+
+![](img04/image24.jpg)
+
+Less worry, this is very common in geoprocessing operations because of dirty or untidy data such as slivers. The issue can be addressed by using the Advanced options tool of QGIS's geoprocessing operations.
+
+-   At **Clip** dialog window, click on **Parameters** tab.
+
+    ![](img04/image25.jpg){width="199"}
+
+-   Click on **Advanced options** ![](img04/image22.jpg){width="27"} button behind Input layer.
+
+**Clip** dialog window change as shown below.
+
+![](images/paste-21713C8F.png)
+
+-   For *Invalid feature filtering*, select *Do not Filter (Better Performance)* from the drop-down list.
+
+![](img04/image27.jpg)
+
+>DIY: Repeat the same steps for *Overlay layer* too.
+
+-   When you are ready, click on **Run** button one more time.
+
+Be patient, there are a lot of polygon features to be extracted. If the process is completed without any error, the Log will look similar to below.
+
+![](img04/image28.jpg)
+
+-   Click on **Close** button to close the dialog window.
+
+When you refer to **Layers** panel, a new data layer called Clipped is added. Notice that there is a small marker ![](img04/image30.jpg){width="21"} at the end of the layer name. It indicates that this layer is a virtual layer. In geoprocessing, it is always a good practice to keep the output layer a virtual layer first. After checking the correctness of the output layer, then only we will go ahead and save the layer into GeoPackage database.
+
+>DIY: Using the steps you had learned, save the `Clipped` virtual layer into GeoPackage, call the data layer `MP19 Land Use`.
+
+>DIY: Using the steps you had learned, remove `Clipped` virtual layer, `URA_MP19_SUBZONE_NO_SEA_PL`, and `G_MP19_LAND_USE_PL` layers from the **Layers** panel.
+
+You screen should look similar to the screenshot below.
+
+![](img04/image31.jpg)
+
+>DIY: Using the steps you had learned in previous hands-on, symbolise the land-use by land-use classes.
+
+![](img04/image32.jpg)
+
+## Data visualisation with Data Plotly plugin
+### Installing Data Plotly plugin
+
+In this section, you will learn how to visualise the distribution of land-use class by area graphically by using [**Data Plotly**](https://github.com/ghtmtt/DataPlotly) plugin.
+
+-   At the menu bar, click on **Plugins** -\> **Manage and Install plugins**.
+
+**Plugins** dialog window appears.
+
+-   Search for **Data Plotly**.
+
+![](img04/image33.jpg)
+
+-   Click on **Install Plugin** button to install it.
+
+Notice that a new icon will be added on the menu bar. Feel free to move it around and place it on the icon bar.
+
+### Deriving new field by using QGIS geometry
+
+In order to display the distribution of land-use class by area, we need to calculate and store the area of each polygon features in the attribute table.
+
+-   From the **Layers** panel, right-click on `Punggol --- MP19 LAND USE`.
+
+-   Select **Open Attribute Table** from the context menu.
+
+The attribute table of `Punggol --- MP19 LAND USE` layer appears.
+
+-   Click on **Open Calculate Field** ![](img04/image35.jpg){width="26"} icon.
+
+-   Keep the box in front of **Create a new field** checked.
+
+-   For *Output field name*, type `AREA`.
+
+-   For *Output field* type, select *Decimal number* from the drop-down list.
+
+![](img04/image36.jpg){width="261"}
+
+-   At the **Expression** pane, click on the black triangle in front of **Geometry**.
+
+-   Double click on **\$area**. (Notice that there are two area fields, one is \$area and the other is area).
+
+![](img04/image37.jpg)
+
+Notice that the **Expression** panel is complete with `\$area`.
+
+-   Click on **Ok** button.
+
+When the process is completed, a new field called AREA will be added in the last column of the attribute table as shown below.
+
+![](img04/image38.jpg)
+
+-   Close the attribute table.
+
+Next, we will save the newly derived field.
+
+-   At the **Layers** panel, right-click on `Punggol --- MP19 LAND USE` layer.
+
+-   From the context menu, select **Toggle Editing**.
+
+**Toggle Editing** dialog window appears.
+
+![](img04/image39.jpg){width="177"}
+
+-   Click on **Save** button.
+
+### Plotting a frequency bar chart using **Data Plotly** plugin
+
+Now, we are ready to create the statistical plot by using Data Plotly plugin.
+
+-   From the icon bar, click on **Data Plotly** icon.
+
+**Data Plotly** dialog window appears.
+
+-   For *Plot type*, select `Bar Plot` from the drop-down list.
+
+-   For *Layer*, select `Punggol -- MP19 LAND USE` from the drop-down list.
+
+-   For *X field*, select `LU_DESC` from the drop-down list.
+
+-   For *Y field*, select `AREA` from the drop-down list.
+
+![](img04/image40.jpg)
+
+-   When you are ready, click on **Create Plot** button.
+
+A bar chart look similar to the screenshot below appears.
+
+![](img04/image41.jpg)
+
+Well done! You have create a bar chart showing the distribution of land areas by land-use class within Punggol planning area.
