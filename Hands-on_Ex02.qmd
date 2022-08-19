@@ -353,7 +353,7 @@ You also need to provide the **Not Found List Output list** a place holder.
 **Create or select a file** dialog window appears.
 
 -   Navigate to the newly create *geocoding* sub-folder.
--   For **File name**, type `not_found_sch.scv`.
+-   For **File name**, type `not_found_sch.csv`.
 -   Click on **Save** button.
 
 The completed dialog window should look similar to the screenshot below.
