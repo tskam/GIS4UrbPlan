@@ -20,7 +20,7 @@ For the purpose of this hands-on exercise, three data sets are provided. They ar
 -   `sgpools` provides information of SG Pools outlets and stores information.
 -   `POP2020` provides population by age group as at June 2020. It is downloaded from Department of Statistics (DOS), Singapore. The data set provides multiple years of population data. For the purpose of this exercise, only 2020 data were extracted.
 
-These three data sets are in csv file format. They can be found in `DataTables` of Hand-on-Ex03 folder.
+These three data sets are in csv file format. They can be found in `DataTables` of Hand-on_Ex03 folder.
 
 Besides the above three data sets, you are required to download the following geospatial from public web sites:
 
