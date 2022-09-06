@@ -36,13 +36,13 @@ Two data sets will be used in this exericse, they are:
 
 ### Downloading the data sets
 
-> DIY: Perform the following steps bu using the steps you had learned from the previous hands-on exercise: 
+> DIY: Perform the following steps bu using the steps you had learned from the previous hands-on exercise:
 >
->(1) download both data sets, 
+> (1) download both data sets,
 >
->(2) place them in the newly created `data.gov` sub-folder, and 
+> (2) place them in the newly created `data.gov` sub-folder, and
 >
->(3) unzip both data sets.
+> (3) unzip both data sets.
 
 ### Start a new QGIS project
 
@@ -55,6 +55,7 @@ Two data sets will be used in this exericse, they are:
 > -   Save the project in `Hands-on_Ex04` folder. Name the project `Hands-on_Ex04` or any other name of your choice.
 
 ## Working with QGIS geoprocessing
+
 ### Geospatial data wrangling with QGIS
 
 Now, we are going to extract planning sub-zones belong to Punggol planning area from `URA_MP19_SUBZONE_NO_SEA_PL` layer.
@@ -170,7 +171,7 @@ By referring to `Hands-on_Ex04` folder in **Browser** panel, you will see that a
 
 ![](img04/image19.jpg)
 
->DIY: Using the steps you had learned from previous hands-on, examine the properties of `MP19 Subzone` layer.
+> DIY: Using the steps you had learned from previous hands-on, examine the properties of `MP19 Subzone` layer.
 
 Your screen should look similar to the screenshot below.
 
@@ -179,6 +180,7 @@ Your screen should look similar to the screenshot below.
 Notice that the layer is in svy21 Projected Coordinate System and not in the original wgs84 Geographic Coordinate System.
 
 ## Geoprocessing with QGIS
+
 ### Extracting land use features within Punggol planning area
 
 In this section, you will learn how to use the clip operation of geoprocessing function to extract land use features fall within Punggol planning area.
@@ -219,7 +221,7 @@ Less worry, this is very common in geoprocessing operations because of dirty or 
 
 ![](img04/image27.jpg)
 
->DIY: Repeat the same steps for *Overlay layer* too.
+> DIY: Repeat the same steps for *Overlay layer* too.
 
 -   When you are ready, click on **Run** button one more time.
 
@@ -231,19 +233,20 @@ Be patient, there are a lot of polygon features to be extracted. If the process 
 
 When you refer to **Layers** panel, a new data layer called Clipped is added. Notice that there is a small marker ![](img04/image30.jpg){width="21"} at the end of the layer name. It indicates that this layer is a virtual layer. In geoprocessing, it is always a good practice to keep the output layer a virtual layer first. After checking the correctness of the output layer, then only we will go ahead and save the layer into GeoPackage database.
 
->DIY: Using the steps you had learned, save the `Clipped` virtual layer into GeoPackage, call the data layer `MP19 Land Use`.
+> DIY: Using the steps you had learned, save the `Clipped` virtual layer into GeoPackage, call the data layer `MP19 Land Use`.
 
->DIY: Using the steps you had learned, remove `Clipped` virtual layer, `URA_MP19_SUBZONE_NO_SEA_PL`, and `G_MP19_LAND_USE_PL` layers from the **Layers** panel.
+> DIY: Using the steps you had learned, remove `Clipped` virtual layer, `URA_MP19_SUBZONE_NO_SEA_PL`, and `G_MP19_LAND_USE_PL` layers from the **Layers** panel.
 
 You screen should look similar to the screenshot below.
 
 ![](img04/image31.jpg)
 
->DIY: Using the steps you had learned in previous hands-on, symbolise the land-use by land-use classes.
+> DIY: Using the steps you had learned in previous hands-on, symbolise the land-use by land-use classes.
 
 ![](img04/image32.jpg)
 
 ## Data visualisation with Data Plotly plugin
+
 ### Installing Data Plotly plugin
 
 In this section, you will learn how to visualise the distribution of land-use class by area graphically by using [**Data Plotly**](https://github.com/ghtmtt/DataPlotly) plugin.
@@ -333,3 +336,308 @@ A bar chart look similar to the screenshot below appears.
 ![](img04/image41.jpg)
 
 Well done! You have create a bar chart showing the distribution of land areas by land-use class within Punggol planning area.
+
+## Working with QGIS Print Layout
+
+In this section, you will learn how to use QGIS **Print Layout** platform to create a land use map for printing or publishing purposes.
+
+### Preparing the print windows
+
+Before we make a map using Print Layout, it is important for us to ensure that an appropriate coordinate referencing system is used. For the purpose of this hands-on exercise, let us use SVY21 as the coordinate referencing system.
+
+-   Ensure that EPSG: 3414 is indicated at the lower right corner on QGIS's Window.
+
+![](img04/image42.jpg)
+
+-   Next, reshape QGIS Window until the white spaces in the GIS layer as minimum as possibe.
+
+![](img04/image43.jpg)
+
+### Starts a new QGIS print layout
+
+-   From the menu bar, select Project -\> New Print Layout.
+
+Create Print Layout dialog window appears.
+
+![](img04/image44.jpg){width="372"}
+
+-   Provide the layout an appropriate title such as Punggol Land Use.
+
+-   Click on OK button when it is ready.
+
+A new Print Layout dialog window appears.
+
+![](img04/image45.jpg)
+
+-   From the menu bar, click on on Zoom full button ![](img04/image48.jpg){width="21" height="25"} to display the full extent of Print Layout window.
+
+### Adding a map layer
+
+Next, we will add the Land Use map layer onto the layout.
+
+-   From menu bar, select **Add Item** -\> **Add Map**.
+
+![](img04/image46.jpg){width="463"}
+
+-   Once the Add Map mode is active, hold the left mouse button and drag a rectangle where you want to insert the map like shown below.
+
+![](img04/image47.jpg)
+
+-   Release your left finger from the left mouse button.
+
+Your screen should look similar to the screenshot below.
+
+![](img04/image49.jpg)
+
+Notice that a new item called Map 1 has been added on the items panel.
+
+### Changing the main properties
+
+Let us adjust the map scale.
+
+-   From the **Item Properties** panel, look for **Main Properties** then enter `30000` as *Scale* value. (Note: Use other rounding values deem appropriate for your layout)
+
+![](img04/image50.jpg){width="583"}
+
+In order to prevent the view on the layout changes when we turn on/off some layers or change their styles, it is important for us to lock the layers and styles.
+
+-   Scroll the Main Properties panel down until Layers appears.
+-   Click on the check box in front of *Lock layers* and *Lock styles for layers*.
+
+![](img04/image51.jpg)
+
+### Adding grid reference
+
+Next, we will add grid reference for the map.
+
+-   From the **Items Properties** panel, scroll down until **Grids** sub-panel appears.
+
+-   Click on ![](img04/image52.jpg){width="85" height="25"}
+
+A new grid frame called Grid 1 is added as shown below.
+
+![](images/paste-FE1E269B.png)
+
+Next ,we are going to add a 1000m by 1000m grid on the layout.
+
+-   Click on **Modify Grid** button.
+
+-   Scroll down until Appearance sub-panel appears.
+
+-   For **X**, enter 1000.
+
+-   For **Y**, enter 1000.
+
+![](img04/image54.jpg){width="592"}
+
+Next, we will change the line colour to gray.
+
+-   Click on the drop-down list behind **Line style**.
+
+![](img04/image55.jpg)
+
+The colour panel appears.
+
+![](img04/image56.jpg){width="223"}
+
+-   Choose one of the light gray colour from the panel.
+
+Notice that a light gray grid frame is added on the layout.
+
+![](img04/image57.jpg)
+
+Next, we are going to turn on the coordinates.
+
+-   Scroll down the **Map Grid Properties** panel until **Draw Coordinates** sub-panel appears.
+
+-   Click on the check-box in front of **Draw Coordinates**.
+
+Your screen should look similar to the screenshot below.
+
+![](img04/image58.jpg)
+
+By default the grid reference appears on the four axis of the map layout. We are going to turn off the grid reference on the right and bottom of the layout.
+
+-   From the **Right** sub-panel, click on the drop-down list and select *Disable*.
+
+![](img04/image59.jpg)
+
+Notice that the right grid reference disappeared.
+
+![](img04/image60.jpg)
+
+> DIY: Repeat the step you learned to turn off the bottom grid reference.
+
+The map layout should look similar to the screenshot below.
+
+![](img04/image61.jpg)
+
+### Adding map legend
+
+Now, we are going to add map legend onto the layout.
+
+-   From the menu bar, select **Add Item** -\> **Add Legend**.
+
+![](img04/image62.jpg)
+
+-   Press on the left mouse button, drag a window on the right hand side of the map layout as shown below.
+
+![](img04/image63.jpg)
+
+-   Release the left mouse button.
+
+The map legend will be added onto the layout.
+
+![](img04/image64.jpg)
+
+Since this layout will focus on Land Use Map alone, we are going to remove other unrelated items from the legend.
+
+-   From **Legend Items** sub-panel, click on the check-box in front of *Only show items inside linked map*.
+
+![](img04/image65.jpg)
+
+Notice that Punggol-MP19 Subzone disappeared from the legend.
+
+### Adding statistical graphic
+
+One of the nice feature of QGIS layout is it allows statistical graphic to be added onto the layout.
+
+-   From menu bar, select Add Item -\> Add Plot Item.
+
+![](img04/image66.jpg)
+
+-   Press on left mouse button and drag a window at the lower right corner of the layout as shown below.
+
+![](img04/image67.jpg)
+
+-   Release the left mouse button.
+
+-   From the Items panel, click on *scatter,* then click on **Setup Selected Plot** button.
+
+![](img04/image68.jpg)
+
+-   For **Plot type**, click on the drop-down list and select **Bar Plot**.
+
+![](img04/image69.jpg)
+
+-   For *X field,* select LU_DESC from the drop-down list.
+
+-   For *Y field*, select AREA from the drop-down list.
+
+![](img04/image70.jpg)
+
+-   At the **Properties** sub-panel, click on **Update Plot** button.
+
+![](img04/image71.jpg)
+
+Notice that a bar chart showing distribution of Land use class by area has been added onto the layout.
+
+![](img04/image72.jpg)
+
+### Adding scale bar
+
+Now we are going to add scale bar onto the layout.
+
+-   From the menu bar, select **Add Item** -\> **Add Scale Bar**.
+
+![](img04/image73.jpg)
+
+-   Press on the left mouse button, drag a window at the lower left corner of the layout as shown below.
+
+![](img04/image74.jpg)
+
+-   Release the left mouse button.
+
+Notice that a scale bar has been added onto the lower left corner of the layout.
+
+![](img04/image75.jpg)
+
+Let us change the scale label to km.
+
+-   From **Unit** sub-panel, click on the drop-down list behind *Scalebar units* and select *Kilometers* from the drop-down list.
+
+![](img04/image76.jpg)
+
+Next, we are going to increase the scale bar segment from 2 to 4.
+
+-   From **Segment** sub-panel, at *right*, type *4*.
+
+![](img04/image77.jpg)
+
+Notice that the scale bar at the lower left corner of the layout change to four segments.
+
+![](img04/image78.jpg)
+
+### Adding north arrow
+
+Next, we will add a north arrow on top of the scale bar.
+
+-   From the menu bar, select **Add Item** -\> **Add North Arrow**.
+
+![](img04/image79.jpg)
+
+-   Press on the left mouse button and drag a small window onto of the scale bar.
+
+![](img04/image80.jpg)
+
+-   Release the left mouse button.
+
+Notice that a north arrow has been added onto the layout.
+
+![](img04/image81.jpg)
+
+### Adding layout title and caption
+
+Next, we are going to add layout title.
+
+-   From the menu bar, select **Add Item** -\> **Add Label**.
+
+![](img04/image82.jpg)
+
+-   Press on the left mouse button and drag a small but long window at the top of the map box.
+
+![](img04/image83.jpg)
+
+-   At the Main Properties, type the following text.
+
+![](img04/image84.jpg)
+
+Next, we are going change to a bigger font size.
+
+-   From the appearance sub-panel, click on the drop-down list behind Font.
+
+![](img04/image85.jpg)
+
+The Font size window appears.
+
+-   Change the font size to *24*.
+
+![](img04/image86.jpg){width="253"}
+
+Next, change the title horizontal alignment to centre and vertical alignment to middle.
+
+-   For *Horizontal alignment*, click on the radio button in front of *Center*.
+
+-   For *Vertical alignment*, click on the radio button in front of *Middle*.
+
+![](img04/image87.jpg)
+
+The print layout should look similar to the screenshot below.
+
+![](img04/image88.jpg)
+
+> DIY: Using the steps you learned, add a caption below the scale bar. The caption should mention the data source such as "Source: URA MP2019, digital version was downloaded from data.gov.sg"
+
+The final layout should look similar to the screenshot below.
+
+![](img04/image89.jpg)
+
+-   Lastly, remember to click on the Save ![](img04/image90.jpg){width="30" height="30"} button to save the layout.
+
+### Exporting print layout
+
+In QGIS, the composed map layout can be exported into three formats, namely: Image, SVG and PDF.
+
+-   To export, click on **File** from the menu bar and select on of the format list below.
+
+![](img04/image91.jpg){width="244"}
