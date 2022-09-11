@@ -147,16 +147,6 @@ Notice that a new temporary layer called Centroid is added onto Layers panel and
 
 Before you move on to the next section, remember to remove the temporary `Centroids` layer.
 
-## Accessibility Analysis with Vector-based GIS Analysis
-
-In this section, you will perform the following tasks:
-
-- computing flying distance between hexagon centroids and eldercare centres, and 
-- creating choropleth map for visualising the geographic accessibility to eldercare centre.
-
-
-
-
 ## Shortest Path Analysis
 
 In this section, you will perform the following tasks:
