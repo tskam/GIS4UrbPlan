@@ -213,6 +213,15 @@ ul.task-list{list-style: none;}
   <li><a href="#adding-layout-title-and-caption" id="toc-adding-layout-title-and-caption" class="nav-link" data-scroll-target="#adding-layout-title-and-caption"> <span class="header-section-number">5.5.10</span> Adding layout title and caption</a></li>
   <li><a href="#exporting-print-layout" id="toc-exporting-print-layout" class="nav-link" data-scroll-target="#exporting-print-layout"> <span class="header-section-number">5.5.11</span> Exporting print layout</a></li>
   </ul></li>
+  <li><a href="#distance-analysis-with-vector-based-gis" id="toc-distance-analysis-with-vector-based-gis" class="nav-link" data-scroll-target="#distance-analysis-with-vector-based-gis"> <span class="header-section-number">5.6</span> Distance Analysis with Vector-based GIS</a>
+  <ul class="collapse">
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"> <span class="header-section-number">5.6.1</span> The data</a></li>
+  <li><a href="#preparing-pre-school-location-layer" id="toc-preparing-pre-school-location-layer" class="nav-link" data-scroll-target="#preparing-pre-school-location-layer"> <span class="header-section-number">5.6.2</span> Preparing pre-school location layer</a></li>
+  <li><a href="#preparing-residential-building-layer" id="toc-preparing-residential-building-layer" class="nav-link" data-scroll-target="#preparing-residential-building-layer"> <span class="header-section-number">5.6.3</span> Preparing residential building layer</a></li>
+  <li><a href="#deriving-centroids-of-residentail-polygon-features" id="toc-deriving-centroids-of-residentail-polygon-features" class="nav-link" data-scroll-target="#deriving-centroids-of-residentail-polygon-features"> <span class="header-section-number">5.6.4</span> Deriving centroids of residentail polygon features</a></li>
+  <li><a href="#computing-distance-matrix" id="toc-computing-distance-matrix" class="nav-link" data-scroll-target="#computing-distance-matrix"> <span class="header-section-number">5.6.5</span> Computing distance matrix</a></li>
+  <li><a href="#symbolosing-distance-values" id="toc-symbolosing-distance-values" class="nav-link" data-scroll-target="#symbolosing-distance-values"> <span class="header-section-number">5.6.6</span> Symbolosing distance values</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -266,7 +275,7 @@ ul.task-list{list-style: none;}
 <section id="downloading-the-data-sets" class="level3" data-number="5.1.3">
 <h3 data-number="5.1.3" class="anchored" data-anchor-id="downloading-the-data-sets"><span class="header-section-number">5.1.3</span> Downloading the data sets</h3>
 <blockquote class="blockquote">
-<p>DIY: Perform the following steps bu using the steps you had learned from the previous hands-on exercise:</p>
+<p>DIY: Perform the following steps by using the steps you had learned from the previous hands-on exercise:</p>
 <ol type="1">
 <li><p>download both data sets,</p></li>
 <li><p>place them in the newly created <code>data.gov</code> sub-folder, and</p></li>
@@ -793,6 +802,257 @@ ul.task-list{list-style: none;}
 <li>To export, click on <strong>File</strong> from the menu bar and select on of the format list below.</li>
 </ul>
 <p><img src="img04/image91.jpg" class="img-fluid" width="244"></p>
+</section>
+</section>
+<section id="distance-analysis-with-vector-based-gis" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="distance-analysis-with-vector-based-gis"><span class="header-section-number">5.6</span> Distance Analysis with Vector-based GIS</h2>
+<p>Distance analysis is fundamental to most GIS applications. In its simplest form, distance is a measure of how far away one thing is from another. A straight line is the shortest possible measure of the distance between two locations. In this section, you will learn how to apply distance analysis function of QGIS to determine the accessibility to pre-school from residential buildings within Punggol Planning Area.</p>
+<section id="the-data" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="the-data"><span class="header-section-number">5.6.1</span> The data</h3>
+<p>For the purpose of this study, beside Punggol Planning Subzone layer, the following data will be used:</p>
+<ul>
+<li><a href="https://data.gov.sg/dataset/pre-schools-location">Pre-Schools Location</a> from data.gov.sg.</li>
+<li>Buildings layer of osm from <a href="https://download.geofabrik.de/asia/malaysia-singapore-brunei.html">geofabrik</a>.</li>
+</ul>
+</section>
+<section id="preparing-pre-school-location-layer" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="preparing-pre-school-location-layer"><span class="header-section-number">5.6.2</span> Preparing pre-school location layer</h3>
+<blockquote class="blockquote">
+<p>DIY: Perform the following steps by using the steps you had learned from the previous hands-on exercise:</p>
+<p>- download Pre-school Locations from data.gov.sg,</p>
+<p>- place them in the newly created data.gov sub-folder, and</p>
+<p>- unzip the data set and import the kml version into QGIS.</p>
+</blockquote>
+<p>Notice that the pre-school location layer shows all prep-school locations in Singapore. For the purpose of this study, we are going to extract pre-schools located within Punggol Planning Area.</p>
+<p><img src="img04/image92.jpg" class="img-fluid" width="873"></p>
+<p>Instead of using Clip operation of QGIS to extract pre-schools located with Punggol Planning Area, in this section, you will learn how to work with Spatial Query operators of QGIS.</p>
+<ul>
+<li>From the menu bar, select <strong>Vector</strong> -&gt; <strong>Research Tools</strong> -&gt; <strong>Select by Location</strong>.</li>
+</ul>
+<p><img src="img04/image93.jpg" class="img-fluid" width="893"></p>
+<p>The Select by Location dialog window appears.</p>
+<ul>
+<li>For <em>Select features from</em>, select <code>PRESCOOLS_LOCATION</code> from the drop-down list.</li>
+<li>Click on the check-box in front of <em>Intersect</em>. Students are encouraged to explore other operators.</li>
+<li>For <em>By comparing to the features from</em>, select <code>MP19 Subzone</code> from the drop-down list.</li>
+</ul>
+<p><img src="img04/image94.jpg" class="img-fluid"></p>
+<ul>
+<li>When you are ready, click on <strong>Run</strong> button.</li>
+</ul>
+<p>When the spatial query process completed, QGIS indicates that 71 features have been selected and are highlighted on the map view similar to the screenshot below.</p>
+<p><img src="img04/image95.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on the <strong>Close</strong> button to close the dialog window.</li>
+</ul>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned in previous section,</p>
+<ul>
+<li><p>save the selected pre-school location features into <code>Punggol Geopackage</code>. Name the data layer as <code>Pre-schools</code>. Be warn: Check the Coordinates Referencing System of the input GIS data, if necessary an appropriate Projected Coordinates System.</p></li>
+<li><p>remove <code>PRESCHOOL_LOCATIONS</code> from <strong>Layers Panel</strong></p></li>
+</ul>
+</blockquote>
+<p>Next, let us view the GIS layers in full extend.</p>
+<ul>
+<li>From the icon bar, click on Zoom Full <img src="img04/image96.jpg" class="img-fluid" width="23"> icon.</li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img04/image97.jpg" class="img-fluid"></p>
+</section>
+<section id="preparing-residential-building-layer" class="level3" data-number="5.6.3">
+<h3 data-number="5.6.3" class="anchored" data-anchor-id="preparing-residential-building-layer"><span class="header-section-number">5.6.3</span> Preparing residential building layer</h3>
+<p>Next, we will extract the residential building layer from the building data set provided by osm.</p>
+<blockquote class="blockquote">
+<p>Using the steps you had learned,</p>
+<ul>
+<li><p>down, unzip and save the osm shapefiles into a folder called <code>shapefile</code> in the project folder.</p></li>
+<li><p>import <code>gis_osm_buildings_a_free_1</code> shapefile into QGIS.</p></li>
+</ul>
+</blockquote>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img04/image98.jpg" class="img-fluid"></p>
+<p>The downloaded <code>gis_osm_buildings_a_free_1</code> layer covers Singapore, East Malaysia, West Malaysia (both Sabah and Sarawak states) and Brunei Darussalam. However, we are only interested on residential buildings located within Punggol Planning Area.</p>
+<blockquote class="blockquote">
+<p>DIY:</p>
+<ul>
+<li><p>Using Spatial Query function of QGIS, select buildings fall within Punggol Planning Area,</p></li>
+<li><p>Export the selected buildings features into Punggol Geopackage and call it <code>Buildings</code>. Be warn: Check the Coordinates Referencing System of the input GIS data, if necessary an appropriate Projected Coordinates System.</p></li>
+<li><p>Remember to remove <code>gis_osm_buildings_a_free_1</code> layer from QGIS Layers panel.</p></li>
+</ul>
+</blockquote>
+<p>Next, let us view the GIS layers in full extend.</p>
+<ul>
+<li>From the icon bar, click on Zoom Full <img src="img04/image96.jpg" class="img-fluid" width="23"> icon.</li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img04/image99.jpg" class="img-fluid"></p>
+<p>Now, we are going to use the selection by attribute operator of QGIS to select buildings belong to <code>residential</code> type.</p>
+<ul>
+<li>From <strong>Layers</strong> panel, right-click on <code>Buildings</code> layer.</li>
+<li>Select <strong>Open Attribute Table</strong> from the context menu.</li>
+</ul>
+<p>The attribute table of <code>Buildings</code> layer appears.</p>
+<p><img src="img04/image100.jpg" class="img-fluid"></p>
+<ul>
+<li>From the menu bar of the attribute table, click on <strong>Select features using an expression</strong> icon <img src="img04/image101.jpg" width="23" height="25">.</li>
+</ul>
+<p>The Select by Expression dialog window appears.</p>
+<p><img src="img04/image102.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Click on the black triangle in front of <strong>Fields and Values</strong>.</p></li>
+<li><p>Double click on <code>type</code>.</p></li>
+<li><p>Click on <strong>=</strong> button.</p></li>
+<li><p>Click on <strong>All Unique</strong> button.</p></li>
+<li><p>Scroll the slider until <code>residential</code> appears.</p></li>
+<li><p>Double-click on <code>residential</code>.</p></li>
+</ul>
+<p>The expression should look similar to the screenshot below.</p>
+<p><img src="img04/image103.jpg" class="img-fluid"></p>
+<p>When you are ready,</p>
+<ul>
+<li>Click on <strong>Select features</strong> button to run the operation.</li>
+</ul>
+<p>If the process completed successfully, QGIS will indicate the number of features selected at the top of the attribute table and the selected features’ records will be highlighted as shown in the screenshot below.</p>
+<p><img src="img04/image104.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Close the Selection by Expression dialog windows.</p></li>
+<li><p>Close the attribute table.</p></li>
+</ul>
+<p>Before we continue, it is important to save the selected residential features into a new data layer in Punggol Geopackage.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, export the selected residential features into Punggol Geopackage and call it <code>Residential</code>. Be warn: Check the Coordinates Referencing System of the input GIS data, if necessary an appropriate Projected Coordinates System.</p>
+</blockquote>
+<ul>
+<li>Switch off <code>Buildings</code> layer because they are no longer needed.</li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img04/image105.jpg" class="img-fluid"></p>
+</section>
+<section id="deriving-centroids-of-residentail-polygon-features" class="level3" data-number="5.6.4">
+<h3 data-number="5.6.4" class="anchored" data-anchor-id="deriving-centroids-of-residentail-polygon-features"><span class="header-section-number">5.6.4</span> Deriving centroids of residentail polygon features</h3>
+<p>In order to calculate the distance between the residential polygon features to the pre-school point features, we need to derive the centroid of the residential polygon features first.</p>
+<ul>
+<li>From the menu bar, select Vector -&gt; Geomtry Tools -&gt; Centroids.</li>
+</ul>
+<p><img src="img04/image106.jpg" class="img-fluid"></p>
+<p>The <strong>Centroids</strong> dialog window appears.</p>
+<ul>
+<li>For <em>Input layer</em>, select Residential from the drop-down list.</li>
+</ul>
+<p><img src="img04/image107.jpg" class="img-fluid"></p>
+<ul>
+<li>When you are ready to run the operation, click on <strong>Run</strong> button.</li>
+</ul>
+<p>Before you can blink your eyes the operation has done and a new layer called has been added onto Layers panel and display on View window as shown below.</p>
+<p><img src="img04/image108.jpg" class="img-fluid"></p>
+<ul>
+<li>Close Centroids dialog window.</li>
+</ul>
+<p>From the screenshot above, it seems that the residential building centroids were sucessfully derived. However, if we zoom in closer you will notice that there are three centroids were located outside of the footprint of the residential buildings. Obviously, the built in Centroids function of QGIS failed to derive the centroid properly when the shape of the polygon is an odd shape.</p>
+<p><img src="img04/image109.jpg" class="img-fluid"></p>
+<p>The good news is that there is a QGIS plugin called <strong>realcentroid</strong> which is able to address the limitation of <strong>Centroid</strong> function.</p>
+<ul>
+<li>From menu bar, select <strong>Plugins</strong> -&gt; <strong>Manage and Install Plugins</strong>.</li>
+</ul>
+<p><img src="img04/image110.jpg" class="img-fluid" width="306"></p>
+<ul>
+<li>Search for <strong>realcentroid</strong> then click on <strong>Install Plugin</strong> button.</li>
+</ul>
+<p><img src="img04/image111.jpg" class="img-fluid"></p>
+<ul>
+<li>After the installation completed, click on Close button to close the dialog window.</li>
+</ul>
+<p>Now we are ready to use realcentroid tool to derive the centroids of building polygon features.</p>
+<ul>
+<li>From menu bar, select <strong>Vector</strong> -&gt; <strong>realcentroid</strong> -&gt; <strong>RealCentroid</strong>.</li>
+</ul>
+<p><img src="img04/image112.jpg" class="img-fluid" width="390"></p>
+<p>The realcentroid dialog window appears.</p>
+<ul>
+<li>For <em>Polygon layer</em>, select Residential from the drop-down list.</li>
+</ul>
+<p><img src="img04/image113.jpg" class="img-fluid" width="270"></p>
+<ul>
+<li>Fro <em>Output point on surface</em> layer, click on <strong>Browse</strong> button.</li>
+</ul>
+<p>The Output shape file dialog window appears.</p>
+<ul>
+<li><p>Navigate to shapefile folder. If you have yet to create one, then go ahead to create the shapefile folder.</p></li>
+<li><p>Call the output shapefile <code>residential_centroid</code>.</p></li>
+</ul>
+<p><img src="img04/image114.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>Save</strong> button.</li>
+</ul>
+<p>The dialog window close.</p>
+<ul>
+<li><p>From the realcentroid dialog window, click on check box in front of <strong>Add to map canvas</strong>. This will add the newly derive layer onto Layers panel and View display when the shapefile is ready.</p></li>
+<li><p>Click on <strong>OK</strong> button.</p></li>
+</ul>
+<p>After a few second, residential_centroid will be added on Layer panel and display on View window.</p>
+<p>Notice that all the centroids are located within the residential footprint as shown below.</p>
+<p><img src="img04/image115.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned from previous section, save residentail_centroid shapefile into GeoPackage. Then remove centroid and residential_centroid shapefile from QGIS Layers panel.</p>
+</blockquote>
+</section>
+<section id="computing-distance-matrix" class="level3" data-number="5.6.5">
+<h3 data-number="5.6.5" class="anchored" data-anchor-id="computing-distance-matrix"><span class="header-section-number">5.6.5</span> Computing distance matrix</h3>
+<p>Now we are ready to compute the distances between residential centroids and pre-school point features.</p>
+<ul>
+<li>From the menu bar, select <strong>Vector</strong> -&gt; <strong>Analysis Tools</strong> -&gt; <strong>Distance Matrix</strong>.</li>
+</ul>
+<p><img src="img04/image116.jpg" class="img-fluid"></p>
+<p>The Distance Matrix dialog window appears.</p>
+<ul>
+<li><p>For <em>Input point layer</em>, select <code>Punggol - residential centroid</code> from the drop-down list.</p></li>
+<li><p>For <em>Target point layer</em>, select <code>Pre-school</code> from the drop-down list.</p></li>
+</ul>
+<p><img src="img04/image117.jpg" class="img-fluid"></p>
+<ul>
+<li>For <em>Output matrix type</em>, select <strong>Summary distance matrix (mean, std. dev., min, max)</strong> from the drop-down list.</li>
+</ul>
+<p><img src="img04/image118.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>Note: You are encouraged to explore all the three options so that you can understand when to change to alternative output.</p>
+</blockquote>
+<ul>
+<li>When you are ready to run the operation, click on <strong>Run</strong> button.</li>
+</ul>
+<p>After a few second, the process log appears on Distance Matrix indicates that the operation has completed successfully.</p>
+<p><img src="img04/image119.jpg" class="img-fluid"></p>
+<p>At the same time a temporarily layer called Distance matrix will be added on <strong>Layers</strong> panel and displayed on <strong>View</strong> window.</p>
+<p><img src="img04/image120.jpg" class="img-fluid"></p>
+<ul>
+<li>At the <strong>Distance Matrix</strong> dialog window, click on <strong>Close</strong> button to close the dialog window.</li>
+</ul>
+<p>Let us examine the output Distance matrix layer.</p>
+<ul>
+<li>From <strong>Layers</strong> panel, right-click on <code>Distance matix</code> and select <strong>Open Attribute Table</strong> from the context menu.</li>
+</ul>
+<p>The attribute table of Distance matrix appears.</p>
+<p><img src="img04/image121.jpg" class="img-fluid"></p>
+<p>The attribute table consists of five columns, namely:</p>
+<ul>
+<li><p>InputID: the fid of the input layer (i.e.&nbsp;residential centroid)</p></li>
+<li><p>MEAN: mean distance from a residential centroid to the 71 pre-schools.</p></li>
+<li><p>STDEV: standard deviation of distances from a residential centroid to the 71 pre-schools.</p></li>
+<li><p>MIN: minimum of distances from a residential centroid to the 71 pre-schools.</p></li>
+<li><p>MAX: maximum of distances from a residential centroid to the 71 pre-schools.</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, save the temporarily <code>Distance matrix</code> into GeoPackage and call it <code>Dismat Residential</code>. Then, remove <code>Distance matrix</code> from Layers panel.</p>
+</blockquote>
+</section>
+<section id="symbolosing-distance-values" class="level3" data-number="5.6.6">
+<h3 data-number="5.6.6" class="anchored" data-anchor-id="symbolosing-distance-values"><span class="header-section-number">5.6.6</span> Symbolosing distance values</h3>
+<p>Lastly, we are going to symbolise <code>Dismat Residential</code> layer by using appropriate statistical mapping techniques.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the quantitative mapping you had learned in previous hands-on exercise, symbolising <code>Dismat Residential</code> layer by using values from <em>MIN</em> field.</p>
+</blockquote>
+<p>Your map should look similar to the screenshot below.</p>
+<p><img src="img04/image122.jpg" class="img-fluid"></p>
+<p>Interesting to note that despite there are four pre-schools located at the Northshore sub-zone however, there are several residential blocks have relatively poor accessibility to pre-schools. (Fruit for Thought!)</p>
 
 
 </section>

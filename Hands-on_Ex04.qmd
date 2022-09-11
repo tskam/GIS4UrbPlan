@@ -36,7 +36,7 @@ Two data sets will be used in this exericse, they are:
 
 ### Downloading the data sets
 
-> DIY: Perform the following steps bu using the steps you had learned from the previous hands-on exercise:
+> DIY: Perform the following steps by using the steps you had learned from the previous hands-on exercise:
 >
 > (1) download both data sets,
 >
@@ -641,3 +641,293 @@ In QGIS, the composed map layout can be exported into three formats, namely: Ima
 -   To export, click on **File** from the menu bar and select on of the format list below.
 
 ![](img04/image91.jpg){width="244"}
+
+## Distance Analysis with Vector-based GIS
+
+Distance analysis is fundamental to most GIS applications. In its simplest form, distance is a measure of how far away one thing is from another. A straight line is the shortest possible measure of the distance between two locations. In this section, you will learn how to apply distance analysis function of QGIS to determine the accessibility to pre-school from residential buildings within Punggol Planning Area.
+
+### The data
+
+For the purpose of this study, beside Punggol Planning Subzone layer, the following data will be used:
+
+-   [Pre-Schools Location](https://data.gov.sg/dataset/pre-schools-location) from data.gov.sg.
+-   Buildings layer of osm from [geofabrik](https://download.geofabrik.de/asia/malaysia-singapore-brunei.html).
+
+### Preparing pre-school location layer
+
+> DIY: Perform the following steps by using the steps you had learned from the previous hands-on exercise:
+>
+> \- download Pre-school Locations from data.gov.sg,
+>
+> \- place them in the newly created data.gov sub-folder, and
+>
+> \- unzip the data set and import the kml version into QGIS.
+
+Notice that the pre-school location layer shows all prep-school locations in Singapore. For the purpose of this study, we are going to extract pre-schools located within Punggol Planning Area.
+
+![](img04/image92.jpg){width="873"}
+
+Instead of using Clip operation of QGIS to extract pre-schools located with Punggol Planning Area, in this section, you will learn how to work with Spatial Query operators of QGIS.
+
+-   From the menu bar, select **Vector** -\> **Research Tools** -\> **Select by Location**.
+
+![](img04/image93.jpg){width="893"}
+
+The Select by Location dialog window appears.
+
+-   For *Select features from*, select `PRESCOOLS_LOCATION` from the drop-down list.
+-   Click on the check-box in front of *Intersect*. Students are encouraged to explore other operators.
+-   For *By comparing to the features from*, select `MP19 Subzone` from the drop-down list.
+
+![](img04/image94.jpg)
+
+-   When you are ready, click on **Run** button.
+
+When the spatial query process completed, QGIS indicates that 71 features have been selected and are highlighted on the map view similar to the screenshot below.
+
+![](img04/image95.jpg)
+
+-   Click on the **Close** button to close the dialog window.
+
+> DIY: Using the steps you had learned in previous section,
+>
+> -   save the selected pre-school location features into `Punggol Geopackage`. Name the data layer as `Pre-schools`. Be warn: Check the Coordinates Referencing System of the input GIS data, if necessary an appropriate Projected Coordinates System.
+>
+> -   remove `PRESCHOOL_LOCATIONS` from **Layers Panel**
+
+Next, let us view the GIS layers in full extend.
+
+-   From the icon bar, click on Zoom Full ![](img04/image96.jpg){width="23"} icon.
+
+Your screen should look similar to the screenshot below.
+
+![](img04/image97.jpg)
+
+### Preparing residential building layer
+
+Next, we will extract the residential building layer from the building data set provided by osm.
+
+> Using the steps you had learned,
+>
+> -   down, unzip and save the osm shapefiles into a folder called `shapefile` in the project folder.
+>
+> -   import `gis_osm_buildings_a_free_1` shapefile into QGIS.
+
+Your screen should look similar to the screenshot below.
+
+![](img04/image98.jpg)
+
+The downloaded `gis_osm_buildings_a_free_1` layer covers Singapore, East Malaysia, West Malaysia (both Sabah and Sarawak states) and Brunei Darussalam. However, we are only interested on residential buildings located within Punggol Planning Area.
+
+> DIY:
+>
+> -   Using Spatial Query function of QGIS, select buildings fall within Punggol Planning Area,
+>
+> -   Export the selected buildings features into Punggol Geopackage and call it `Buildings`. Be warn: Check the Coordinates Referencing System of the input GIS data, if necessary an appropriate Projected Coordinates System.
+>
+> -   Remember to remove `gis_osm_buildings_a_free_1` layer from QGIS Layers panel.
+
+Next, let us view the GIS layers in full extend.
+
+-   From the icon bar, click on Zoom Full ![](img04/image96.jpg){width="23"} icon.
+
+Your screen should look similar to the screenshot below.
+
+![](img04/image99.jpg)
+
+Now, we are going to use the selection by attribute operator of QGIS to select buildings belong to `residential` type.
+
+-   From **Layers** panel, right-click on `Buildings` layer.
+-   Select **Open Attribute Table** from the context menu.
+
+The attribute table of `Buildings` layer appears.
+
+![](img04/image100.jpg)
+
+-   From the menu bar of the attribute table, click on **Select features using an expression** icon ![](img04/image101.jpg){width="23" height="25"}.
+
+The Select by Expression dialog window appears.
+
+![](img04/image102.jpg)
+
+-   Click on the black triangle in front of **Fields and Values**.
+
+-   Double click on `type`.
+
+-   Click on **=** button.
+
+-   Click on **All Unique** button.
+
+-   Scroll the slider until `residential` appears.
+
+-   Double-click on `residential`.
+
+The expression should look similar to the screenshot below.
+
+![](img04/image103.jpg)
+
+When you are ready,
+
+-   Click on **Select features** button to run the operation.
+
+If the process completed successfully, QGIS will indicate the number of features selected at the top of the attribute table and the selected features' records will be highlighted as shown in the screenshot below.
+
+![](img04/image104.jpg)
+
+-   Close the Selection by Expression dialog windows.
+
+-   Close the attribute table.
+
+Before we continue, it is important to save the selected residential features into a new data layer in Punggol Geopackage.
+
+> DIY: Using the steps you had learned, export the selected residential features into Punggol Geopackage and call it `Residential`. Be warn: Check the Coordinates Referencing System of the input GIS data, if necessary an appropriate Projected Coordinates System.
+
+-   Switch off `Buildings` layer because they are no longer needed.
+
+Your screen should look similar to the screenshot below.
+
+![](img04/image105.jpg)
+
+### Deriving centroids of residentail polygon features
+
+In order to calculate the distance between the residential polygon features to the pre-school point features, we need to derive the centroid of the residential polygon features first.
+
+-   From the menu bar, select Vector -\> Geomtry Tools -\> Centroids.
+
+![](img04/image106.jpg)
+
+The **Centroids** dialog window appears.
+
+-   For *Input layer*, select Residential from the drop-down list.
+
+![](img04/image107.jpg)
+
+-   When you are ready to run the operation, click on **Run** button.
+
+Before you can blink your eyes the operation has done and a new layer called has been added onto Layers panel and display on View window as shown below.
+
+![](img04/image108.jpg)
+
+-   Close Centroids dialog window.
+
+From the screenshot above, it seems that the residential building centroids were sucessfully derived. However, if we zoom in closer you will notice that there are three centroids were located outside of the footprint of the residential buildings. Obviously, the built in Centroids function of QGIS failed to derive the centroid properly when the shape of the polygon is an odd shape.
+
+![](img04/image109.jpg)
+
+The good news is that there is a QGIS plugin called **realcentroid** which is able to address the limitation of **Centroid** function.
+
+-   From menu bar, select **Plugins** -\> **Manage and Install Plugins**.
+
+![](img04/image110.jpg){width="306"}
+
+-   Search for **realcentroid** then click on **Install Plugin** button.
+
+![](img04/image111.jpg)
+
+-   After the installation completed, click on Close button to close the dialog window.
+
+Now we are ready to use realcentroid tool to derive the centroids of building polygon features.
+
+-   From menu bar, select **Vector** -\> **realcentroid** -\> **RealCentroid**.
+
+![](img04/image112.jpg){width="390"}
+
+The realcentroid dialog window appears.
+
+-   For *Polygon layer*, select Residential from the drop-down list.
+
+![](img04/image113.jpg){width="270"}
+
+-   Fro *Output point on surface* layer, click on **Browse** button.
+
+The Output shape file dialog window appears.
+
+-   Navigate to shapefile folder. If you have yet to create one, then go ahead to create the shapefile folder.
+
+-   Call the output shapefile `residential_centroid`.
+
+![](img04/image114.jpg)
+
+-   Click on **Save** button.
+
+The dialog window close.
+
+-   From the realcentroid dialog window, click on check box in front of **Add to map canvas**. This will add the newly derive layer onto Layers panel and View display when the shapefile is ready.
+
+-   Click on **OK** button.
+
+After a few second, residential_centroid will be added on Layer panel and display on View window.
+
+Notice that all the centroids are located within the residential footprint as shown below.
+
+![](img04/image115.jpg)
+
+> DIY: Using the steps you had learned from previous section, save residentail_centroid shapefile into GeoPackage. Then remove centroid and residential_centroid shapefile from QGIS Layers panel.
+
+### Computing distance matrix
+
+Now we are ready to compute the distances between residential centroids and pre-school point features.
+
+-   From the menu bar, select **Vector** -\> **Analysis Tools** -\> **Distance Matrix**.
+
+![](img04/image116.jpg)
+
+The Distance Matrix dialog window appears.
+
+-   For *Input point layer*, select `Punggol - residential centroid` from the drop-down list.
+
+-   For *Target point layer*, select `Pre-school` from the drop-down list.
+
+![](img04/image117.jpg)
+
+-   For *Output matrix type*, select **Summary distance matrix (mean, std. dev., min, max)** from the drop-down list.
+
+![](img04/image118.jpg)
+
+> Note: You are encouraged to explore all the three options so that you can understand when to change to alternative output.
+
+-   When you are ready to run the operation, click on **Run** button.
+
+After a few second, the process log appears on Distance Matrix indicates that the operation has completed successfully.
+
+![](img04/image119.jpg)
+
+At the same time a temporarily layer called Distance matrix will be added on **Layers** panel and displayed on **View** window.
+
+![](img04/image120.jpg)
+
+-   At the **Distance Matrix** dialog window, click on **Close** button to close the dialog window.
+
+Let us examine the output Distance matrix layer.
+
+-   From **Layers** panel, right-click on `Distance matix` and select **Open Attribute Table** from the context menu.
+
+The attribute table of Distance matrix appears.
+
+![](img04/image121.jpg)
+
+The attribute table consists of five columns, namely:
+
+-   InputID: the fid of the input layer (i.e. residential centroid)
+
+-   MEAN: mean distance from a residential centroid to the 71 pre-schools.
+
+-   STDEV: standard deviation of distances from a residential centroid to the 71 pre-schools.
+
+-   MIN: minimum of distances from a residential centroid to the 71 pre-schools.
+
+-   MAX: maximum of distances from a residential centroid to the 71 pre-schools.
+
+> DIY: Using the steps you had learned, save the temporarily `Distance matrix` into GeoPackage and call it `Dismat Residential`. Then, remove `Distance matrix` from Layers panel.
+
+### Symbolosing distance values
+
+Lastly, we are going to symbolise `Dismat Residential` layer by using appropriate statistical mapping techniques.
+
+> DIY: Using the quantitative mapping you had learned in previous hands-on exercise, symbolising `Dismat Residential` layer by using values from *MIN* field.
+
+Your map should look similar to the screenshot below.
+
+![](img04/image122.jpg)
+
+Interesting to note that despite there are four pre-schools located at the Northshore sub-zone however, there are several residential blocks have relatively poor accessibility to pre-schools. (Fruit for Thought!)
