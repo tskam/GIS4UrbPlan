@@ -195,6 +195,12 @@ ul.task-list{list-style: none;}
   <li><a href="#creating-relational-join" id="toc-creating-relational-join" class="nav-link" data-scroll-target="#creating-relational-join"> <span class="header-section-number">4.6.3</span> Creating relational join</a></li>
   <li><a href="#creating-a-choropleth-map" id="toc-creating-a-choropleth-map" class="nav-link" data-scroll-target="#creating-a-choropleth-map"> <span class="header-section-number">4.6.4</span> Creating a choropleth map</a></li>
   </ul></li>
+  <li><a href="#data-preparation-using-sql" id="toc-data-preparation-using-sql" class="nav-link" data-scroll-target="#data-preparation-using-sql"> <span class="header-section-number">4.7</span> Data Preparation using SQL</a>
+  <ul class="collapse">
+  <li><a href="#importing-the-data-into-qgis" id="toc-importing-the-data-into-qgis" class="nav-link" data-scroll-target="#importing-the-data-into-qgis"> <span class="header-section-number">4.7.1</span> Importing the data into QGIS</a></li>
+  <li><a href="#examining-the-content-of-the-data" id="toc-examining-the-content-of-the-data" class="nav-link" data-scroll-target="#examining-the-content-of-the-data"> <span class="header-section-number">4.7.2</span> Examining the content of the data</a></li>
+  <li><a href="#deriving-total-population-by-planning-area-and-sub-zone" id="toc-deriving-total-population-by-planning-area-and-sub-zone" class="nav-link" data-scroll-target="#deriving-total-population-by-planning-area-and-sub-zone"> <span class="header-section-number">4.7.3</span> Deriving total population by planning area and sub-zone</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -606,6 +612,103 @@ ul.task-list{list-style: none;}
 </blockquote>
 <blockquote class="blockquote">
 <p>Challenge: Compare the two choropleth maps prepared, what conclusion can you draw from the maps?</p>
+</blockquote>
+</section>
+</section>
+<section id="data-preparation-using-sql" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="data-preparation-using-sql"><span class="header-section-number">4.7</span> Data Preparation using SQL</h2>
+<p>In this section, you will learn how to write SQL to prepare data to meet our mapping needs. For the purpose of this exercise, <a href="https://www.singstat.gov.sg/-/media/files/find_data/population/statistical_tables/respopagesex2000to2010.ashx">Singapore Residents by Planning Area / Subzone, Single Year of Age and Sex, June 2000-2010</a> will be use. It can be downloaded from this <a href="https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data">link</a> of Department of Statistics, Singapore.</p>
+<section id="importing-the-data-into-qgis" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="importing-the-data-into-qgis"><span class="header-section-number">4.7.1</span> Importing the data into QGIS</h3>
+<ul>
+<li>From the menu bar, select <strong>Layer</strong> -&gt; <strong>All Layer</strong> -&gt; <strong>Add Delimited Text Layer</strong>.</li>
+</ul>
+<p><img src="img03/image37.jpg" class="img-fluid"></p>
+<p><strong>Data Source Manager</strong> dialog window appears.</p>
+<ul>
+<li><p>For <strong>File name</strong>, navigate to the location where the data is reside.</p></li>
+<li><p>For <strong>File Format</strong>, click on the radio button in front of <strong>CSV (comma separated values)</strong>.</p></li>
+<li><p>For <strong>Geometry Definition</strong>, click on the radio button in front of <strong>No geometry (attribute only table)</strong>.</p></li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img03/image38.jpg" class="img-fluid"></p>
+<ul>
+<li>When you are ready, click on <strong>Add</strong> button.</li>
+</ul>
+<p>Notice that a new data layer called <em>respopagesex2000to2010</em> has been added into <strong>Layers</strong> panel.</p>
+<p><img src="img03/image39.jpg" class="img-fluid" width="262"></p>
+<ul>
+<li>Before moving on to next step, at <strong>Data Source Manager</strong> dialog window click on <strong>Close</strong> button to close the dialog window.</li>
+</ul>
+</section>
+<section id="examining-the-content-of-the-data" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="examining-the-content-of-the-data"><span class="header-section-number">4.7.2</span> Examining the content of the data</h3>
+<p>Next, we are going to examine the content of the data table.</p>
+<ul>
+<li>At Layers panel, right-click on <em>respopagesex2000to2010</em> and select Open Attribute Table from the context menu.</li>
+</ul>
+<p>The attribute table of <em>respopagesex2000to2010</em> appears.</p>
+<p><img src="img03/image40.jpg" class="img-fluid"></p>
+<p>Notice that there are a total of six columns (or known as fields) and 622986 rows (or known as records).</p>
+</section>
+<section id="deriving-total-population-by-planning-area-and-sub-zone" class="level3" data-number="4.7.3">
+<h3 data-number="4.7.3" class="anchored" data-anchor-id="deriving-total-population-by-planning-area-and-sub-zone"><span class="header-section-number">4.7.3</span> Deriving total population by planning area and sub-zone</h3>
+<p>Next, we are going to derive a data table that aggregating the population figure for 2000 by planning area (i.e.&nbsp;PA) and planning subzone (i.e SZ) by SQL in DB Manager tool of QGIS. Before getting started, you are encouraged to read this <a href="https://docs.qgis.org/3.22/en/docs/user_manual/plugins/core_plugins/plugins_db_manager.html">link</a>.</p>
+<ul>
+<li><p>From the menu bar, select <strong>Database</strong> -&gt; <strong>DB Manager</strong>.</p>
+<p><img src="img03/image41.jpg" class="img-fluid" width="219"></p></li>
+</ul>
+<p>DB manager dialog window appears.</p>
+<ul>
+<li>From <strong>Providers</strong> panel, click on <strong>Virtual Layers</strong> -&gt; <strong>Project layers</strong> -&gt; <em>respopagesex2000to2010.</em></li>
+</ul>
+<p>Your screen should look similar to the screenshot below. If necessary click on the <strong>Info</strong> tab.</p>
+<p><img src="img03/image42.jpg" class="img-fluid"></p>
+<p>Notice that the beauty of DB Manager is that beside GeoPackage, Oracle Spatial PostGIS and SpatialLite, it is also able to work with Virtual Layers in the Layer panel.</p>
+<p>Next we are going to write the first SQL.</p>
+<ul>
+<li>Click on <strong>SQL Window</strong> button.</li>
+</ul>
+<p><img src="img03/image43.jpg" class="img-fluid" width="337"></p>
+<p>Notice that Query (Project layers) appears.</p>
+<p><img src="img03/image44.jpg" class="img-fluid"></p>
+<ul>
+<li>Type the SQL below onto Query panel.</li>
+</ul>
+<p><img src="img03/image45.jpg" class="img-fluid" width="412"></p>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img03/image46.jpg" class="img-fluid"></p>
+<ul>
+<li>When you are ready, click on <strong>Execute</strong> button.</li>
+</ul>
+<p>After a short while, the query results appears as shown below.</p>
+<p><img src="img03/image47.jpg" class="img-fluid"></p>
+<p>Now you are going to add the query into Layers panel.</p>
+<ul>
+<li>Click on the check-box in front of <strong>Load as new layer</strong>.</li>
+</ul>
+<p>Notice that a sub-panel is added onto DB Manager dialog window.</p>
+<p><img src="img03/image48.jpg" class="img-fluid"></p>
+<ul>
+<li><p>By default, the check-box in front of <strong>Geometry column</strong> is checked. Click on the check-box to un-check it. This is because our data table has no geometry.</p></li>
+<li><p>Lastly, click on <strong>Load</strong> button.</p></li>
+</ul>
+<p>Notice that a QueryLayer has been added into Layers panel.</p>
+<p><img src="img03/image50.jpg" class="img-fluid" width="276"></p>
+<p>Now, we are going to save it into Geopackage.</p>
+<ul>
+<li>From Layers panel, right-click on <em>QueryLayer</em> then select <strong>Export</strong> -&gt; <strong>Save Features As</strong> from the context menu.</li>
+</ul>
+<p><img src="img03/image51.jpg" class="img-fluid"></p>
+<p>In general the steps for saving <em>QeuryLayer</em> is rather similar to saving geospatial data into Geopackage except for <strong>Geometry type</strong>, <strong>No Geometry</strong> should be selected from the drop-down list.</p>
+<p><img src="img03/image52.jpg" class="img-fluid" width="372"></p>
+<ul>
+<li>Lastly, click on <strong>OK</strong> button to run the process.</li>
+</ul>
+<p>When the operation completed, a new data layer called TOTPOP2000 will be added into Layers panel as shown below.</p>
+<p><img src="img03/image53.jpg" class="img-fluid" width="311"></p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, remove QueryLayer from Layer panel.</p>
 </blockquote>
 
 

@@ -434,3 +434,122 @@ Your screen should look similar to the figure below.
 > DIY: Using the steps you had learned from the previous sections, create a choropleth maps of percentage of population age 65 and above.
 
 > Challenge: Compare the two choropleth maps prepared, what conclusion can you draw from the maps?
+
+## Data Preparation using SQL
+
+In this section, you will learn how to write SQL to prepare data to meet our mapping needs. For the purpose of this exercise, [Singapore Residents by Planning Area / Subzone, Single Year of Age and Sex, June 2000-2010](https://www.singstat.gov.sg/-/media/files/find_data/population/statistical_tables/respopagesex2000to2010.ashx) will be use. It can be downloaded from this [link](https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data) of Department of Statistics, Singapore.
+
+### Importing the data into QGIS
+
+-   From the menu bar, select **Layer** -\> **All Layer** -\> **Add Delimited Text Layer**.
+
+![](img03/image37.jpg)
+
+**Data Source Manager** dialog window appears.
+
+-   For **File name**, navigate to the location where the data is reside.
+
+-   For **File Format**, click on the radio button in front of **CSV (comma separated values)**.
+
+-   For **Geometry Definition**, click on the radio button in front of **No geometry (attribute only table)**.
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image38.jpg)
+
+-   When you are ready, click on **Add** button.
+
+Notice that a new data layer called *respopagesex2000to2010* has been added into **Layers** panel.
+
+![](img03/image39.jpg){width="262"}
+
+-   Before moving on to next step, at **Data Source Manager** dialog window click on **Close** button to close the dialog window.
+
+### Examining the content of the data
+
+Next, we are going to examine the content of the data table.
+
+-   At Layers panel, right-click on *respopagesex2000to2010* and select Open Attribute Table from the context menu.
+
+The attribute table of *respopagesex2000to2010* appears.
+
+![](img03/image40.jpg)
+
+Notice that there are a total of six columns (or known as fields) and 622986 rows (or known as records).
+
+### Deriving total population by planning area and sub-zone
+
+Next, we are going to derive a data table that aggregating the population figure for 2000 by planning area (i.e. PA) and planning subzone (i.e SZ) by SQL in DB Manager tool of QGIS. Before getting started, you are encouraged to read this [link](https://docs.qgis.org/3.22/en/docs/user_manual/plugins/core_plugins/plugins_db_manager.html).
+
+-   From the menu bar, select **Database** -\> **DB Manager**.
+
+    ![](img03/image41.jpg){width="219"}
+
+DB manager dialog window appears.
+
+-   From **Providers** panel, click on **Virtual Layers** -\> **Project layers** -\> *respopagesex2000to2010.*
+
+Your screen should look similar to the screenshot below. If necessary click on the **Info** tab.
+
+![](img03/image42.jpg)
+
+Notice that the beauty of DB Manager is that beside GeoPackage, Oracle Spatial PostGIS and SpatialLite, it is also able to work with Virtual Layers in the Layer panel.
+
+Next we are going to write the first SQL.
+
+-   Click on **SQL Window** button.
+
+![](img03/image43.jpg){width="337"}
+
+Notice that Query (Project layers) appears.
+
+![](img03/image44.jpg)
+
+-   Type the SQL below onto Query panel.
+
+![](img03/image45.jpg){width="412"}
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image46.jpg)
+
+-   When you are ready, click on **Execute** button.
+
+After a short while, the query results appears as shown below.
+
+![](img03/image47.jpg)
+
+Now you are going to add the query into Layers panel.
+
+-   Click on the check-box in front of **Load as new layer**.
+
+Notice that a sub-panel is added onto DB Manager dialog window.
+
+![](img03/image48.jpg)
+
+-   By default, the check-box in front of **Geometry column** is checked. Click on the check-box to un-check it. This is because our data table has no geometry.
+
+-   Lastly, click on **Load** button.
+
+Notice that a QueryLayer has been added into Layers panel.
+
+![](img03/image50.jpg){width="276"}
+
+Now, we are going to save it into Geopackage.
+
+-   From Layers panel, right-click on *QueryLayer* then select **Export** -\> **Save Features As** from the context menu.
+
+![](img03/image51.jpg)
+
+In general the steps for saving *QeuryLayer* is rather similar to saving geospatial data into Geopackage except for **Geometry type**, **No Geometry** should be selected from the drop-down list.
+
+![](img03/image52.jpg){width="372"}
+
+-   Lastly, click on **OK** button to run the process.
+
+When the operation completed, a new data layer called TOTPOP2000 will be added into Layers panel as shown below.
+
+![](img03/image53.jpg){width="311"}
+
+>DIY: Using the steps you had learned, remove QueryLayer from Layer panel.
+
