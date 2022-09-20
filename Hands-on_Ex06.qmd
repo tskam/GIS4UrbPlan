@@ -1,6 +1,6 @@
 # Cartographic Modelling with Raster-based GIS
 
-The true power of a GIS is its analytical capability. IN this hands-on exercise, you will learn how to perform raster-based GIS analysis also popularly known as mapthematics by using QGIS.
+The true power of a GIS is its analytical capability. In this hands-on exercise, you will learn how to perform raster-based GIS analysis also popularly known as mapthematics by using QGIS.
 
 By the end of this session, you will be able to:
 
@@ -221,3 +221,371 @@ The Identify Results window reveals that the value of the selected grid is 50.
 ![](img06/image21.jpg){width="373"}
 
 > DIY: Using the skills you had learned from previous section, save the Proximity Map into Geopackage format.
+
+## Terrain Analysis and Visualisation
+
+Elevation and related terrain variables are important in most people lives. Terrain determines the natural availability and location of surface water, and hence soil moisture and drainage. Terrain also strongly influences the location and nature of transportation networks, and the cost and methods of house and road construction. Prior to the introduction of GIS, the modelling and analysis of terrain data was a very mathematically demanding process which was usually only performed by geoscience and mapping science specialists. Today, modern GIS tool such as QGIS has made terrain modelling, anaysis and mapping relatively easy to perform by casual data analysts. In this section, you will learn how to:
+
+-   download Digital Elevation Model (DEM) data from online open source repository,
+-   mosaic multiple DEM data into one,
+-   extract DEM for a study area,
+-   compute terrain parameters such as slope, aspect, and hillshading, and
+-   perform visibility analysis.
+
+### Downloading DEM data from USGS Earth Explorer
+
+There are four DEM data can be obtained free of charge. They are:
+
+-   [Shuttle Radar Topography Mission (SRTM)](https://gisgeography.com/srtm-shuttle-radar-topography-mission/) 30-meter digital elevation model data from the [USGS Earth Explorer](https://earthexplorer.usgs.gov/).
+-   [ASTER Global Digital Elevation Model (GDEM)](https://asterweb.jpl.nasa.gov/gdem.asp) data from from the [USGS Earth Explorer](https://earthexplorer.usgs.gov/).
+-   JAXA's Global ALOS 3D World the [JAXA Global ALOS](https://www.eorc.jaxa.jp/ALOS/en/index_e.htm) portal.
+-   [Light Detection and Ranging (LiDAR)](https://www.usgs.gov/faqs/what-lidar-data-and-where-can-i-download-it) by vising the [link](https://gisgeography.com/top-6-free-lidar-data-sources/).
+
+For the purpose of this hands-on exercise, you will learn how to download SRTM 30m DEM from USGS Earth Explorer portal.
+
+-   Click on [USGS Earth Explorer](https://earthexplorer.usgs.gov/).
+
+Earth Explorer homepage opens.
+
+![](img06/image22.jpg)
+
+Before you can download any data set from this portal, you need to register.
+
+-   Click on **Login** button located at the upper-right corner of the webpage.
+
+The registration page appears.
+
+![](img06/image23.jpg)
+
+-   Complete the online registration including verify the registration.
+
+Now you are ready to select and download the DEM data sets covering Singapore.
+
+-   Return to USGS EarthExplorer.
+
+#### Setting the area of interest
+
+-   By combining zooming and panning functions of your mouse, navigate to Singapore until your screen look similar to the screenshot below.
+
+![](img06/image24.jpg)
+
+-   Now, select the **Use Map** button.
+
+![](img06/image25.jpg)
+
+Notice that the Singapore including the outer islands, part of Johore Bahru and Batam Island are now selected
+
+![](img06/image26.jpg)
+
+#### Selecting the DEM data to download
+
+Next, we will select which data set to download.
+
+-   Click on **Dataset** tab.
+
+![](img06/image27.jpg){width="312"}
+
+-   Next, click on the cross in front of *Digital Elevation*.
+
+-   Further click on *SRTM*.
+
+-   Lastly, click on the check-box in front of *SRTM 1 Arc-Second Global*.
+
+Your selection should look similar to the screenshot below.
+
+![](img06/image28.jpg){width="379"}
+
+#### Downloading the selected data
+
+Now, we a ready to download the selected data.
+
+-   Click on **Results** tab.
+
+![](img06/image29.jpg){width="327"}
+
+Notice that two data sets are found and list below.
+
+![](img06/image30.jpg){width="410"}
+
+Technically, you can download them at one goal. However, in this section, let us download them one by one.
+
+-   At *SRTM1N00E103V3* pane, click on ![](img06/image31.jpg){width="17" height="24"}.
+
+The Loading Option popup window appears.
+
+![](img06/image32.jpg){width="286"}
+
+Since we are going to perform raster processing on the data, it is recommended to download the GeoTIFF version, which will be the largest file size.
+
+-   Click on the Download button in front of GeoTIFF 1 Arc-second (24.76 MiB).
+
+> DIY: Using the steps you had learned, download *SRTM1N00E104V3* data.
+
+-   Create a new sub-folder called *DEM* in the hands-on exercise folder.
+
+-   Move both downloaded data onto the newly created *DEM* sub-folder.
+
+### Importing DEM data into QGIS
+
+Let us import both data into QGIS.
+
+-   From the menu bar, select **Layer** -\> **Add Layer** -\> **Add Raster Layer**.
+
+![](img06/image33.jpg)
+
+**Data Source Manager\|Raster** dialog window appears.
+
+![](img06/image34.jpg)
+
+-   Click on the icon at the back of *Raster dataset(s)*.
+
+**Open GDAL Supported Raster Dataset(s)** dialog window appears.
+
+![](img06/image35.jpg)
+
+-   Press on ctrl key and click on both *n01_e104_1arc_v3* and *n01_e103_1arc_v3* data sets.
+
+-   Click on **Open** button.
+
+You will return to **Data Source Manager\|Raster** dialog window.
+
+-   Click on **Add** button.
+
+Notice that the two DEM layers have been added in QGIS.
+
+![](img06/image36.jpg)
+
+-   Click on **Close** button to close the dialog window.
+
+### Combining adjacent raster layers into one
+
+Now, we are going to combine both DEM layers into a single DEM layer by using the **merge** function of QGIS.
+
+-   From the menu bar, select **Raster** -\> **Miscellaneous** -\> **Merge**.
+
+![](img06/image37.jpg){width="412"}
+
+Merge dialog window appears.
+
+![](img06/image38.jpg){width="581"}
+
+-   For *Input layers*, click on the icon behind.
+
+Merge dialog window appears.
+
+-   Click on the checlboxes in front of n01_e103_1arc_v3 and n01_e104_1arc_v3
+
+![](img06/image39.jpg)
+
+-   For *Output data type*, select *Int16* from the drop-down list.
+
+![](img06/image40.jpg)
+
+-   When you are ready to execute the operation, click on **Run** button.
+
+-   Click on **Close** button when **Merge** dialog window prompted that the process finished without any error.
+
+![](img06/image41.jpg)
+
+Your screen should look similar to the screenshot below.
+
+![](img06/image42.jpg)
+
+By default, the DEM layer has a poor contrast, as a result, the layer appears very dark. We can hardly see anything.
+
+-   At the lower right corner of the View window, select 1:50000 from the drop down list.
+
+![](img06/image43.jpg){width="285"}
+
+Your screen should look similar to the screenshot below.
+
+![](img06/image44.jpg)
+
+-   From the **Layers** panel, right-click on *Merged*, then select **Stretch Using Current Extent** from the context menu.
+
+![](img06/image45.jpg)
+
+Now, you can see *Merged* layer clearly.
+
+![](img06/image46.jpg)
+
+> DIY: Using the method you had learned, display the view with full extend.
+
+Your screen should look similar to the screenshot below.
+
+![](img06/image47.jpg)
+
+### Extracting raster data layer
+
+Notice that Merged layer include part of West Malaysia and Batam Island of Indonesia. Next, you will learn how to extract DEM raster layer with Singapore.
+
+First, we are going to select area within Singapore mainly from Coastal Outline layer.
+
+-   From the icon bar, click on **Select Feature(s)** icon.
+
+![](img06/image48.jpg){width="353"}
+
+-   Hover the mouse at the centre of Singapore island then click on the left mouse button to select.
+
+Your screen should look similar to the screenshot below.
+
+![](img06/image49.jpg)
+
+Next, we are going to use the raster data wrangling tool to extract DEM layer falls within Singapore main island.
+
+-   From the menu bar, select **Raster** -\> **Extraction** -\> **Clip Raster by Mask Layer**.
+
+![](img06/image50.jpg){width="469"}
+
+**Clip Raster by Mask Layer** dialog window appears.
+
+-   For **Input layer**, select *Merged* from the drop-down list.
+
+-   For **Mask layer**, select *CostalOutline* from the drop-down list.
+
+-   Because we are interested to extract only area falls within Singapore main island, it is important to click on the checkbox in front of **Select features only**.
+
+![](img06/image51.jpg)
+
+Your screen should look similar to the screenshot below.
+
+-   Keep the rest as default, then click on Run button to execute the process.
+
+![](img06/image52.jpg){width="448"}
+
+-   Close the dialog window if the process completed without any error.
+
+Notice that a new layer called *Clipped* has been added on **Layers** panel and display on **View** window.
+
+> DIY: Using the steps you had learned, save the *Clipped* layer into Geopackage database. Call the raster layer DEM.
+
+> DIY: Using the steps you had learned, remove the raw DEM layers, temporaly *Merged* and *Clipped* layers from QGIS.
+
+### Visibility Analysis with Raster GIS
+
+Visibility analysis is a widely used function in GIS. It identifies areas that can or cannot be seen from a single (or a set of) viewpoint(s). The clearly visible parts of an observer's surrounding area, as well as hidden parts, may thus be evaluated.\
+Visibility analysis proves useful when selecting the best or optimal locations in urban studies, e.g., placement of various facilities which should be made visible (nice, interesting places) or those which should be rather hidden (e.g. wind turbines). Apart from architecture, visibility analysis is useful for tourism purposes, archaeology, communication engineering, and may be highly serviceable in the military.
+
+In this section, you will learn how to perform visibility between two Satellite Earth Stations by using QGIS.
+
+#### Importing the Satellite Earth Station GIS data
+
+First, you need to import the Satellite Earth Station shapefile into QGIS.
+
+> DIY: Using the steps you had learned, import Satellite_Earth_Station shapefile from shapefile folder into QGIS.
+
+Your screen should look similar to the screenshot below.
+
+![](img06/image54.jpg)
+
+#### Installing Visual Analysis plugin
+
+Next, you will install Visibility Analysis plugin.
+
+-   From the menu bar, select **Plugins** -\> **Manage and Install Plugin**.
+
+![](img06/image55.jpg){width="347"}
+
+Plugin dialog window appears.
+
+![](img06/image56.jpg)
+
+-   At **Search** bar, type *Visibilit*y.
+
+-   Click on Visibility Analysis then click on Install Plugin button.
+
+-   Clock the dialog window after the installation completed.
+
+#### Creating viewpoint layer
+
+Before we can perform visibility analysis, a viewpoint layer must be created.
+
+-   From the menu bar, select **Processing** -\> **Toolbox**.
+
+![](img06/image57.jpg)
+
+Notice that **Processing Toolbox** panel is added on the right of the **View** window.
+
+![](img06/image58.jpg)
+
+-   At the **Processing Toolbox** panel, click on the black triangle in front **Visibility Analysis** to expand the menu options.
+
+-   Then, click on the triangle next to **Create viewpoints** and double-click on **Create viewpoints** tool.
+
+![](img06/image59.jpg){width="307"}
+
+**Create Viewpoints** dialog window appears.
+
+-   For **Observer location(s)**, select *Satellite_Earth_Station* from the drop-down list.
+
+-   For **Digital elevation model**, select *DEM* from the drop-down list.
+
+-   For **Radius of analysis, meter**s, type *70000*.
+
+-   For **Observer height, meters**, type *5*.
+
+Your screen should look similar to the screenshot below.
+
+![](img06/image60.jpg)
+
+-   When you are ready to run the function, click on **Run** button.
+
+-   When the process ended without any error message, click on **Close** button to close the dialog window.
+
+Notice that a new temporary layer called *Output* layer has been added in the Layers panel and display on View window,
+
+![](img06/image61.jpg)
+
+Let us examine the content of the attribute table of this newly derived GIS layer.
+
+-   From the **Layers** panel, right-click on *Output layer* then select **Open Attribute Table** from the context menu.
+
+Attribute table of Output layer appears.
+
+![](img06/image62.jpg){width="1235"}
+
+Notice that two new fields have been added into the attribute table of Output layer. They are *observ_hgt* and *radius*. Also note that the field name *POI_ID* has changed to *ID*.
+
+> DIY: Using the steps you had learned, save Output layer into Geopackage format. Name the layer *Viewpoints*. Also, remember to remove *Output layer* from **Layers** panel.
+
+Now we are ready to perform visibility analysis by using **Viewshed** function of Visibility Analysis plugin.
+
+-   From Processing toolbox, click on **Visibility analysis** -\> **Analysis** -\> **Viewshed**.
+
+![](img06/image63.jpg){width="270"}
+
+Viewshed dialog window appears.
+
+-   For **Analysis type**, select *Binary viewshed* from the drop-down list.
+
+This option will output a raster with values 0 and 1. 0 indicates not visible locations and 1 indicates visible locations.
+
+-   For **Observer location(s)**, select *Viewpoints* from the drop-down list.
+
+-   For **Digital elevation model**, select *DEM* from the drop-down list,
+
+**Be warn:** It is important to ensure that the CRS of both the Observer location(s) layer and Digital elevation layer are the same.
+
+-   For **Combining multiple outputs**, select *Addition* from the drop-down list because multiple viewpoints are used.
+
+![](img06/image64.jpg)
+
+-   When you are ready to run the function, click on **Run** button.
+
+When the process ended, read the process log to ensure that the process has been completed without any error.
+
+-   Click on Close button to close the dialog window.
+
+Notice that a new binary raster layer called *Output file* has been added into Layers panel and display on View window.
+
+![](img06/image65.jpg)
+
+> DIY: Using the steps you had learned, save *Output file* temporary layer into Geopackage format. Name the layer *Visibility layer*.
+
+#### Symbolising raster layer
+
+By default Visibility layer is shaded with gray colour. Now, we are going to symbolise Visibility layer.
+
+-   From **Layers** panel, right-click on *Visibility* and select **Properties** from the context menu.
+
+-   

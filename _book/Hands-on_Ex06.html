@@ -189,6 +189,14 @@ ul.task-list{list-style: none;}
   <li><a href="#rasterising-a-vector-gis-data-layer" id="toc-rasterising-a-vector-gis-data-layer" class="nav-link" data-scroll-target="#rasterising-a-vector-gis-data-layer"> <span class="header-section-number">7.3</span> Rasterising a vector GIS data layer</a></li>
   <li><a href="#accessibility-modelling-using-raster-based-gis-analysis" id="toc-accessibility-modelling-using-raster-based-gis-analysis" class="nav-link" data-scroll-target="#accessibility-modelling-using-raster-based-gis-analysis"> <span class="header-section-number">7.4</span> Accessibility Modelling using Raster-based GIS Analysis</a></li>
   <li><a href="#creating-proximity-layer-using-raster-gis-analysis" id="toc-creating-proximity-layer-using-raster-gis-analysis" class="nav-link" data-scroll-target="#creating-proximity-layer-using-raster-gis-analysis"> <span class="header-section-number">7.5</span> Creating proximity layer using raster GIS analysis</a></li>
+  <li><a href="#terrain-analysis-and-visualisation" id="toc-terrain-analysis-and-visualisation" class="nav-link" data-scroll-target="#terrain-analysis-and-visualisation"> <span class="header-section-number">7.6</span> Terrain Analysis and Visualisation</a>
+  <ul class="collapse">
+  <li><a href="#downloading-dem-data-from-usgs-earth-explorer" id="toc-downloading-dem-data-from-usgs-earth-explorer" class="nav-link" data-scroll-target="#downloading-dem-data-from-usgs-earth-explorer"> <span class="header-section-number">7.6.1</span> Downloading DEM data from USGS Earth Explorer</a></li>
+  <li><a href="#importing-dem-data-into-qgis" id="toc-importing-dem-data-into-qgis" class="nav-link" data-scroll-target="#importing-dem-data-into-qgis"> <span class="header-section-number">7.6.2</span> Importing DEM data into QGIS</a></li>
+  <li><a href="#combining-adjacent-raster-layers-into-one" id="toc-combining-adjacent-raster-layers-into-one" class="nav-link" data-scroll-target="#combining-adjacent-raster-layers-into-one"> <span class="header-section-number">7.6.3</span> Combining adjacent raster layers into one</a></li>
+  <li><a href="#extracting-raster-data-layer" id="toc-extracting-raster-data-layer" class="nav-link" data-scroll-target="#extracting-raster-data-layer"> <span class="header-section-number">7.6.4</span> Extracting raster data layer</a></li>
+  <li><a href="#visibility-analysis-with-raster-gis" id="toc-visibility-analysis-with-raster-gis" class="nav-link" data-scroll-target="#visibility-analysis-with-raster-gis"> <span class="header-section-number">7.6.5</span> Visibility Analysis with Raster GIS</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -211,7 +219,7 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>The true power of a GIS is its analytical capability. IN this hands-on exercise, you will learn how to perform raster-based GIS analysis also popularly known as mapthematics by using QGIS.</p>
+<p>The true power of a GIS is its analytical capability. In this hands-on exercise, you will learn how to perform raster-based GIS analysis also popularly known as mapthematics by using QGIS.</p>
 <p>By the end of this session, you will be able to:</p>
 <ul>
 <li><p>create a raster data from a vector GIS layer,</p></li>
@@ -407,8 +415,328 @@ ul.task-list{list-style: none;}
 <blockquote class="blockquote">
 <p>DIY: Using the skills you had learned from previous section, save the Proximity Map into Geopackage format.</p>
 </blockquote>
+</section>
+<section id="terrain-analysis-and-visualisation" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="terrain-analysis-and-visualisation"><span class="header-section-number">7.6</span> Terrain Analysis and Visualisation</h2>
+<p>Elevation and related terrain variables are important in most people lives. Terrain determines the natural availability and location of surface water, and hence soil moisture and drainage. Terrain also strongly influences the location and nature of transportation networks, and the cost and methods of house and road construction. Prior to the introduction of GIS, the modelling and analysis of terrain data was a very mathematically demanding process which was usually only performed by geoscience and mapping science specialists. Today, modern GIS tool such as QGIS has made terrain modelling, anaysis and mapping relatively easy to perform by casual data analysts. In this section, you will learn how to:</p>
+<ul>
+<li>download Digital Elevation Model (DEM) data from online open source repository,</li>
+<li>mosaic multiple DEM data into one,</li>
+<li>extract DEM for a study area,</li>
+<li>compute terrain parameters such as slope, aspect, and hillshading, and</li>
+<li>perform visibility analysis.</li>
+</ul>
+<section id="downloading-dem-data-from-usgs-earth-explorer" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="downloading-dem-data-from-usgs-earth-explorer"><span class="header-section-number">7.6.1</span> Downloading DEM data from USGS Earth Explorer</h3>
+<p>There are four DEM data can be obtained free of charge. They are:</p>
+<ul>
+<li><a href="https://gisgeography.com/srtm-shuttle-radar-topography-mission/">Shuttle Radar Topography Mission (SRTM)</a> 30-meter digital elevation model data from the <a href="https://earthexplorer.usgs.gov/">USGS Earth Explorer</a>.</li>
+<li><a href="https://asterweb.jpl.nasa.gov/gdem.asp">ASTER Global Digital Elevation Model (GDEM)</a> data from from the <a href="https://earthexplorer.usgs.gov/">USGS Earth Explorer</a>.</li>
+<li>JAXA’s Global ALOS 3D World the <a href="https://www.eorc.jaxa.jp/ALOS/en/index_e.htm">JAXA Global ALOS</a> portal.</li>
+<li><a href="https://www.usgs.gov/faqs/what-lidar-data-and-where-can-i-download-it">Light Detection and Ranging (LiDAR)</a> by vising the <a href="https://gisgeography.com/top-6-free-lidar-data-sources/">link</a>.</li>
+</ul>
+<p>For the purpose of this hands-on exercise, you will learn how to download SRTM 30m DEM from USGS Earth Explorer portal.</p>
+<ul>
+<li>Click on <a href="https://earthexplorer.usgs.gov/">USGS Earth Explorer</a>.</li>
+</ul>
+<p>Earth Explorer homepage opens.</p>
+<p><img src="img06/image22.jpg" class="img-fluid"></p>
+<p>Before you can download any data set from this portal, you need to register.</p>
+<ul>
+<li>Click on <strong>Login</strong> button located at the upper-right corner of the webpage.</li>
+</ul>
+<p>The registration page appears.</p>
+<p><img src="img06/image23.jpg" class="img-fluid"></p>
+<ul>
+<li>Complete the online registration including verify the registration.</li>
+</ul>
+<p>Now you are ready to select and download the DEM data sets covering Singapore.</p>
+<ul>
+<li>Return to USGS EarthExplorer.</li>
+</ul>
+<section id="setting-the-area-of-interest" class="level4" data-number="7.6.1.1">
+<h4 data-number="7.6.1.1" class="anchored" data-anchor-id="setting-the-area-of-interest"><span class="header-section-number">7.6.1.1</span> Setting the area of interest</h4>
+<ul>
+<li>By combining zooming and panning functions of your mouse, navigate to Singapore until your screen look similar to the screenshot below.</li>
+</ul>
+<p><img src="img06/image24.jpg" class="img-fluid"></p>
+<ul>
+<li>Now, select the <strong>Use Map</strong> button.</li>
+</ul>
+<p><img src="img06/image25.jpg" class="img-fluid"></p>
+<p>Notice that the Singapore including the outer islands, part of Johore Bahru and Batam Island are now selected</p>
+<p><img src="img06/image26.jpg" class="img-fluid"></p>
+</section>
+<section id="selecting-the-dem-data-to-download" class="level4" data-number="7.6.1.2">
+<h4 data-number="7.6.1.2" class="anchored" data-anchor-id="selecting-the-dem-data-to-download"><span class="header-section-number">7.6.1.2</span> Selecting the DEM data to download</h4>
+<p>Next, we will select which data set to download.</p>
+<ul>
+<li>Click on <strong>Dataset</strong> tab.</li>
+</ul>
+<p><img src="img06/image27.jpg" class="img-fluid" width="312"></p>
+<ul>
+<li><p>Next, click on the cross in front of <em>Digital Elevation</em>.</p></li>
+<li><p>Further click on <em>SRTM</em>.</p></li>
+<li><p>Lastly, click on the check-box in front of <em>SRTM 1 Arc-Second Global</em>.</p></li>
+</ul>
+<p>Your selection should look similar to the screenshot below.</p>
+<p><img src="img06/image28.jpg" class="img-fluid" width="379"></p>
+</section>
+<section id="downloading-the-selected-data" class="level4" data-number="7.6.1.3">
+<h4 data-number="7.6.1.3" class="anchored" data-anchor-id="downloading-the-selected-data"><span class="header-section-number">7.6.1.3</span> Downloading the selected data</h4>
+<p>Now, we a ready to download the selected data.</p>
+<ul>
+<li>Click on <strong>Results</strong> tab.</li>
+</ul>
+<p><img src="img06/image29.jpg" class="img-fluid" width="327"></p>
+<p>Notice that two data sets are found and list below.</p>
+<p><img src="img06/image30.jpg" class="img-fluid" width="410"></p>
+<p>Technically, you can download them at one goal. However, in this section, let us download them one by one.</p>
+<ul>
+<li>At <em>SRTM1N00E103V3</em> pane, click on <img src="img06/image31.jpg" width="17" height="24">.</li>
+</ul>
+<p>The Loading Option popup window appears.</p>
+<p><img src="img06/image32.jpg" class="img-fluid" width="286"></p>
+<p>Since we are going to perform raster processing on the data, it is recommended to download the GeoTIFF version, which will be the largest file size.</p>
+<ul>
+<li>Click on the Download button in front of GeoTIFF 1 Arc-second (24.76 MiB).</li>
+</ul>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, download <em>SRTM1N00E104V3</em> data.</p>
+</blockquote>
+<ul>
+<li><p>Create a new sub-folder called <em>DEM</em> in the hands-on exercise folder.</p></li>
+<li><p>Move both downloaded data onto the newly created <em>DEM</em> sub-folder.</p></li>
+</ul>
+</section>
+</section>
+<section id="importing-dem-data-into-qgis" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="importing-dem-data-into-qgis"><span class="header-section-number">7.6.2</span> Importing DEM data into QGIS</h3>
+<p>Let us import both data into QGIS.</p>
+<ul>
+<li>From the menu bar, select <strong>Layer</strong> -&gt; <strong>Add Layer</strong> -&gt; <strong>Add Raster Layer</strong>.</li>
+</ul>
+<p><img src="img06/image33.jpg" class="img-fluid"></p>
+<p><strong>Data Source Manager|Raster</strong> dialog window appears.</p>
+<p><img src="img06/image34.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on the icon at the back of <em>Raster dataset(s)</em>.</li>
+</ul>
+<p><strong>Open GDAL Supported Raster Dataset(s)</strong> dialog window appears.</p>
+<p><img src="img06/image35.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Press on ctrl key and click on both <em>n01_e104_1arc_v3</em> and <em>n01_e103_1arc_v3</em> data sets.</p></li>
+<li><p>Click on <strong>Open</strong> button.</p></li>
+</ul>
+<p>You will return to <strong>Data Source Manager|Raster</strong> dialog window.</p>
+<ul>
+<li>Click on <strong>Add</strong> button.</li>
+</ul>
+<p>Notice that the two DEM layers have been added in QGIS.</p>
+<p><img src="img06/image36.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>Close</strong> button to close the dialog window.</li>
+</ul>
+</section>
+<section id="combining-adjacent-raster-layers-into-one" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="combining-adjacent-raster-layers-into-one"><span class="header-section-number">7.6.3</span> Combining adjacent raster layers into one</h3>
+<p>Now, we are going to combine both DEM layers into a single DEM layer by using the <strong>merge</strong> function of QGIS.</p>
+<ul>
+<li>From the menu bar, select <strong>Raster</strong> -&gt; <strong>Miscellaneous</strong> -&gt; <strong>Merge</strong>.</li>
+</ul>
+<p><img src="img06/image37.jpg" class="img-fluid" width="412"></p>
+<p>Merge dialog window appears.</p>
+<p><img src="img06/image38.jpg" class="img-fluid" width="581"></p>
+<ul>
+<li>For <em>Input layers</em>, click on the icon behind.</li>
+</ul>
+<p>Merge dialog window appears.</p>
+<ul>
+<li>Click on the checlboxes in front of n01_e103_1arc_v3 and n01_e104_1arc_v3</li>
+</ul>
+<p><img src="img06/image39.jpg" class="img-fluid"></p>
+<ul>
+<li>For <em>Output data type</em>, select <em>Int16</em> from the drop-down list.</li>
+</ul>
+<p><img src="img06/image40.jpg" class="img-fluid"></p>
+<ul>
+<li><p>When you are ready to execute the operation, click on <strong>Run</strong> button.</p></li>
+<li><p>Click on <strong>Close</strong> button when <strong>Merge</strong> dialog window prompted that the process finished without any error.</p></li>
+</ul>
+<p><img src="img06/image41.jpg" class="img-fluid"></p>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img06/image42.jpg" class="img-fluid"></p>
+<p>By default, the DEM layer has a poor contrast, as a result, the layer appears very dark. We can hardly see anything.</p>
+<ul>
+<li>At the lower right corner of the View window, select 1:50000 from the drop down list.</li>
+</ul>
+<p><img src="img06/image43.jpg" class="img-fluid" width="285"></p>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img06/image44.jpg" class="img-fluid"></p>
+<ul>
+<li>From the <strong>Layers</strong> panel, right-click on <em>Merged</em>, then select <strong>Stretch Using Current Extent</strong> from the context menu.</li>
+</ul>
+<p><img src="img06/image45.jpg" class="img-fluid"></p>
+<p>Now, you can see <em>Merged</em> layer clearly.</p>
+<p><img src="img06/image46.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>DIY: Using the method you had learned, display the view with full extend.</p>
+</blockquote>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img06/image47.jpg" class="img-fluid"></p>
+</section>
+<section id="extracting-raster-data-layer" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="extracting-raster-data-layer"><span class="header-section-number">7.6.4</span> Extracting raster data layer</h3>
+<p>Notice that Merged layer include part of West Malaysia and Batam Island of Indonesia. Next, you will learn how to extract DEM raster layer with Singapore.</p>
+<p>First, we are going to select area within Singapore mainly from Coastal Outline layer.</p>
+<ul>
+<li>From the icon bar, click on <strong>Select Feature(s)</strong> icon.</li>
+</ul>
+<p><img src="img06/image48.jpg" class="img-fluid" width="353"></p>
+<ul>
+<li>Hover the mouse at the centre of Singapore island then click on the left mouse button to select.</li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img06/image49.jpg" class="img-fluid"></p>
+<p>Next, we are going to use the raster data wrangling tool to extract DEM layer falls within Singapore main island.</p>
+<ul>
+<li>From the menu bar, select <strong>Raster</strong> -&gt; <strong>Extraction</strong> -&gt; <strong>Clip Raster by Mask Layer</strong>.</li>
+</ul>
+<p><img src="img06/image50.jpg" class="img-fluid" width="469"></p>
+<p><strong>Clip Raster by Mask Layer</strong> dialog window appears.</p>
+<ul>
+<li><p>For <strong>Input layer</strong>, select <em>Merged</em> from the drop-down list.</p></li>
+<li><p>For <strong>Mask layer</strong>, select <em>CostalOutline</em> from the drop-down list.</p></li>
+<li><p>Because we are interested to extract only area falls within Singapore main island, it is important to click on the checkbox in front of <strong>Select features only</strong>.</p></li>
+</ul>
+<p><img src="img06/image51.jpg" class="img-fluid"></p>
+<p>Your screen should look similar to the screenshot below.</p>
+<ul>
+<li>Keep the rest as default, then click on Run button to execute the process.</li>
+</ul>
+<p><img src="img06/image52.jpg" class="img-fluid" width="448"></p>
+<ul>
+<li>Close the dialog window if the process completed without any error.</li>
+</ul>
+<p>Notice that a new layer called <em>Clipped</em> has been added on <strong>Layers</strong> panel and display on <strong>View</strong> window.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, save the <em>Clipped</em> layer into Geopackage database. Call the raster layer DEM.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, remove the raw DEM layers, temporaly <em>Merged</em> and <em>Clipped</em> layers from QGIS.</p>
+</blockquote>
+</section>
+<section id="visibility-analysis-with-raster-gis" class="level3" data-number="7.6.5">
+<h3 data-number="7.6.5" class="anchored" data-anchor-id="visibility-analysis-with-raster-gis"><span class="header-section-number">7.6.5</span> Visibility Analysis with Raster GIS</h3>
+<p>Visibility analysis is a widely used function in GIS. It identifies areas that can or cannot be seen from a single (or a set of) viewpoint(s). The clearly visible parts of an observer’s surrounding area, as well as hidden parts, may thus be evaluated.<br>
+Visibility analysis proves useful when selecting the best or optimal locations in urban studies, e.g., placement of various facilities which should be made visible (nice, interesting places) or those which should be rather hidden (e.g.&nbsp;wind turbines). Apart from architecture, visibility analysis is useful for tourism purposes, archaeology, communication engineering, and may be highly serviceable in the military.</p>
+<p>In this section, you will learn how to perform visibility between two Satellite Earth Stations by using QGIS.</p>
+<section id="importing-the-satellite-earth-station-gis-data" class="level4" data-number="7.6.5.1">
+<h4 data-number="7.6.5.1" class="anchored" data-anchor-id="importing-the-satellite-earth-station-gis-data"><span class="header-section-number">7.6.5.1</span> Importing the Satellite Earth Station GIS data</h4>
+<p>First, you need to import the Satellite Earth Station shapefile into QGIS.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, import Satellite_Earth_Station shapefile from shapefile folder into QGIS.</p>
+</blockquote>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img06/image54.jpg" class="img-fluid"></p>
+</section>
+<section id="installing-visual-analysis-plugin" class="level4" data-number="7.6.5.2">
+<h4 data-number="7.6.5.2" class="anchored" data-anchor-id="installing-visual-analysis-plugin"><span class="header-section-number">7.6.5.2</span> Installing Visual Analysis plugin</h4>
+<p>Next, you will install Visibility Analysis plugin.</p>
+<ul>
+<li>From the menu bar, select <strong>Plugins</strong> -&gt; <strong>Manage and Install Plugin</strong>.</li>
+</ul>
+<p><img src="img06/image55.jpg" class="img-fluid" width="347"></p>
+<p>Plugin dialog window appears.</p>
+<p><img src="img06/image56.jpg" class="img-fluid"></p>
+<ul>
+<li><p>At <strong>Search</strong> bar, type <em>Visibilit</em>y.</p></li>
+<li><p>Click on Visibility Analysis then click on Install Plugin button.</p></li>
+<li><p>Clock the dialog window after the installation completed.</p></li>
+</ul>
+</section>
+<section id="creating-viewpoint-layer" class="level4" data-number="7.6.5.3">
+<h4 data-number="7.6.5.3" class="anchored" data-anchor-id="creating-viewpoint-layer"><span class="header-section-number">7.6.5.3</span> Creating viewpoint layer</h4>
+<p>Before we can perform visibility analysis, a viewpoint layer must be created.</p>
+<ul>
+<li>From the menu bar, select <strong>Processing</strong> -&gt; <strong>Toolbox</strong>.</li>
+</ul>
+<p><img src="img06/image57.jpg" class="img-fluid"></p>
+<p>Notice that <strong>Processing Toolbox</strong> panel is added on the right of the <strong>View</strong> window.</p>
+<p><img src="img06/image58.jpg" class="img-fluid"></p>
+<ul>
+<li><p>At the <strong>Processing Toolbox</strong> panel, click on the black triangle in front <strong>Visibility Analysis</strong> to expand the menu options.</p></li>
+<li><p>Then, click on the triangle next to <strong>Create viewpoints</strong> and double-click on <strong>Create viewpoints</strong> tool.</p></li>
+</ul>
+<p><img src="img06/image59.jpg" class="img-fluid" width="307"></p>
+<p><strong>Create Viewpoints</strong> dialog window appears.</p>
+<ul>
+<li><p>For <strong>Observer location(s)</strong>, select <em>Satellite_Earth_Station</em> from the drop-down list.</p></li>
+<li><p>For <strong>Digital elevation model</strong>, select <em>DEM</em> from the drop-down list.</p></li>
+<li><p>For <strong>Radius of analysis, meter</strong>s, type <em>70000</em>.</p></li>
+<li><p>For <strong>Observer height, meters</strong>, type <em>5</em>.</p></li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img06/image60.jpg" class="img-fluid"></p>
+<ul>
+<li><p>When you are ready to run the function, click on <strong>Run</strong> button.</p></li>
+<li><p>When the process ended without any error message, click on <strong>Close</strong> button to close the dialog window.</p></li>
+</ul>
+<p>Notice that a new temporary layer called <em>Output</em> layer has been added in the Layers panel and display on View window,</p>
+<p><img src="img06/image61.jpg" class="img-fluid"></p>
+<p>Let us examine the content of the attribute table of this newly derived GIS layer.</p>
+<ul>
+<li>From the <strong>Layers</strong> panel, right-click on <em>Output layer</em> then select <strong>Open Attribute Table</strong> from the context menu.</li>
+</ul>
+<p>Attribute table of Output layer appears.</p>
+<p><img src="img06/image62.jpg" class="img-fluid" width="1235"></p>
+<p>Notice that two new fields have been added into the attribute table of Output layer. They are <em>observ_hgt</em> and <em>radius</em>. Also note that the field name <em>POI_ID</em> has changed to <em>ID</em>.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, save Output layer into Geopackage format. Name the layer <em>Viewpoints</em>. Also, remember to remove <em>Output layer</em> from <strong>Layers</strong> panel.</p>
+</blockquote>
+<p>Now we are ready to perform visibility analysis by using <strong>Viewshed</strong> function of Visibility Analysis plugin.</p>
+<ul>
+<li>From Processing toolbox, click on <strong>Visibility analysis</strong> -&gt; <strong>Analysis</strong> -&gt; <strong>Viewshed</strong>.</li>
+</ul>
+<p><img src="img06/image63.jpg" class="img-fluid" width="270"></p>
+<p>Viewshed dialog window appears.</p>
+<ul>
+<li>For <strong>Analysis type</strong>, select <em>Binary viewshed</em> from the drop-down list.</li>
+</ul>
+<p>This option will output a raster with values 0 and 1. 0 indicates not visible locations and 1 indicates visible locations.</p>
+<ul>
+<li><p>For <strong>Observer location(s)</strong>, select <em>Viewpoints</em> from the drop-down list.</p></li>
+<li><p>For <strong>Digital elevation model</strong>, select <em>DEM</em> from the drop-down list,</p></li>
+</ul>
+<p><strong>Be warn:</strong> It is important to ensure that the CRS of both the Observer location(s) layer and Digital elevation layer are the same.</p>
+<ul>
+<li>For <strong>Combining multiple outputs</strong>, select <em>Addition</em> from the drop-down list because multiple viewpoints are used.</li>
+</ul>
+<p><img src="img06/image64.jpg" class="img-fluid"></p>
+<ul>
+<li>When you are ready to run the function, click on <strong>Run</strong> button.</li>
+</ul>
+<p>When the process ended, read the process log to ensure that the process has been completed without any error.</p>
+<ul>
+<li>Click on Close button to close the dialog window.</li>
+</ul>
+<p>Notice that a new binary raster layer called <em>Output file</em> has been added into Layers panel and display on View window.</p>
+<p><img src="img06/image65.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, save <em>Output file</em> temporary layer into Geopackage format. Name the layer <em>Visibility layer</em>.</p>
+</blockquote>
+</section>
+<section id="symbolising-raster-layer" class="level4" data-number="7.6.5.4">
+<h4 data-number="7.6.5.4" class="anchored" data-anchor-id="symbolising-raster-layer"><span class="header-section-number">7.6.5.4</span> Symbolising raster layer</h4>
+<p>By default Visibility layer is shaded with gray colour. Now, we are going to symbolise Visibility layer.</p>
+<ul>
+<li><p>From <strong>Layers</strong> panel, right-click on <em>Visibility</em> and select <strong>Properties</strong> from the context menu.</p></li>
+<li></li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
