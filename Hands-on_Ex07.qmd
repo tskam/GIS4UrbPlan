@@ -17,10 +17,10 @@ In this exercise, you are tasked to identify location suitable for building a na
 Three major data sets will be used in this hands-on exercise. They are:
 
 -   Master Plan 2014 Subzone Boundary from URA. This data can be downloaded from data.gov.sg.
--   Roads and buildings data from OpenStreetMap (OSM) data sets. These data can be downloaded from BBBike\@Singapore.
--   ASTER Global Digital Elevation Model (GDEM) dataset jointly prepared by NASA and METI, Japan. This data can be downloaded from NASA's EarthData Search site.
+-   Roads and buildings data from OpenStreetMap (OSM) data sets. These data can be downloaded from [Malaysia, Singapore, and Brunei](https://download.geofabrik.de/asia/malaysia-singapore-brunei.html) at Geofabrik download server.
+-   [Shuttle Radar Topography Mission (SRTM)](https://gisgeography.com/srtm-shuttle-radar-topography-mission/) 30-meter digital elevation model data from the [USGS Earth Explorer](https://earthexplorer.usgs.gov/).
 
-The GDEM data set is already provided in the hands-on exercise data folder. Both Master Plan 2014 and the OSM data sets, on the other hand, have to be downloaded from their respective sources provided above.
+The STRM data set is already provided in the hands-on exercise data folder. Both Master Plan 2014 and the OSM data sets, on the other hand, have to be downloaded from their respective sources provided above.
 
 ## Data Preparation
 
@@ -200,12 +200,12 @@ Your screen should look similar to the screenshot below.
 
 ## Extracting raster data
 
-In this section, you will learn how to extract the Digital Elevation Model (DEM) data fall within Gombak planning subzone by using appropriate raster-based GIS operations. Before we get started, we will important the ASTER GDEM provided into QGIS project.
+In this section, you will learn how to extract the Digital Elevation Model (DEM) data fall within Gombak planning subzone by using appropriate raster-based GIS operations. Before we get started, we will important the DEM provided into QGIS project.
 
 ### Importing raster GIS data layer
 
--   From **Browser** panel, navigate to raster sub-folder
--   Drag and drop `ASTER_GDEM_combined.tif` into **Layers** panel.
+-   From **Browser** panel, navigate to SRTM sub-folder
+-   Drag and drop `DEM.tif` into **Layers** panel.
 
 ![](img07/image18.jpg){width="35%"}
 

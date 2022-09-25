@@ -255,10 +255,10 @@ ul.task-list{list-style: none;}
 <p>Three major data sets will be used in this hands-on exercise. They are:</p>
 <ul>
 <li>Master Plan 2014 Subzone Boundary from URA. This data can be downloaded from data.gov.sg.</li>
-<li>Roads and buildings data from OpenStreetMap (OSM) data sets. These data can be downloaded from BBBike@Singapore.</li>
-<li>ASTER Global Digital Elevation Model (GDEM) dataset jointly prepared by NASA and METI, Japan. This data can be downloaded from NASA’s EarthData Search site.</li>
+<li>Roads and buildings data from OpenStreetMap (OSM) data sets. These data can be downloaded from <a href="https://download.geofabrik.de/asia/malaysia-singapore-brunei.html">Malaysia, Singapore, and Brunei</a> at Geofabrik download server.</li>
+<li><a href="https://gisgeography.com/srtm-shuttle-radar-topography-mission/">Shuttle Radar Topography Mission (SRTM)</a> 30-meter digital elevation model data from the <a href="https://earthexplorer.usgs.gov/">USGS Earth Explorer</a>.</li>
 </ul>
-<p>The GDEM data set is already provided in the hands-on exercise data folder. Both Master Plan 2014 and the OSM data sets, on the other hand, have to be downloaded from their respective sources provided above.</p>
+<p>The STRM data set is already provided in the hands-on exercise data folder. Both Master Plan 2014 and the OSM data sets, on the other hand, have to be downloaded from their respective sources provided above.</p>
 </section>
 </section>
 <section id="data-preparation" class="level2" data-number="8.2">
@@ -416,12 +416,12 @@ ul.task-list{list-style: none;}
 </section>
 <section id="extracting-raster-data" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="extracting-raster-data"><span class="header-section-number">8.4</span> Extracting raster data</h2>
-<p>In this section, you will learn how to extract the Digital Elevation Model (DEM) data fall within Gombak planning subzone by using appropriate raster-based GIS operations. Before we get started, we will important the ASTER GDEM provided into QGIS project.</p>
+<p>In this section, you will learn how to extract the Digital Elevation Model (DEM) data fall within Gombak planning subzone by using appropriate raster-based GIS operations. Before we get started, we will important the DEM provided into QGIS project.</p>
 <section id="importing-raster-gis-data-layer" class="level3" data-number="8.4.1">
 <h3 data-number="8.4.1" class="anchored" data-anchor-id="importing-raster-gis-data-layer"><span class="header-section-number">8.4.1</span> Importing raster GIS data layer</h3>
 <ul>
-<li>From <strong>Browser</strong> panel, navigate to raster sub-folder</li>
-<li>Drag and drop <code>ASTER_GDEM_combined.tif</code> into <strong>Layers</strong> panel.</li>
+<li>From <strong>Browser</strong> panel, navigate to SRTM sub-folder</li>
+<li>Drag and drop <code>DEM.tif</code> into <strong>Layers</strong> panel.</li>
 </ul>
 <p><img src="img07/image18.jpg" class="img-fluid" style="width:35.0%"></p>
 <p>Your screen should look similar to the figure below.</p>
