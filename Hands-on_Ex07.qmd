@@ -221,7 +221,7 @@ QGIS provides two operators to perform raster clipping, namely: **Clip Raster by
 
 The Clip Raster by Extent dialog window appears.
 
--   For **Input layer**, select *ASTER_GDEM_combined* from the drop-down list.
+-   For **Input layer**, select *DEM* from the drop-down list.
 -   For **Clipping extent**, click on the icon at the end of the option then select **Calculate from Layer**.
 -   Select `Gombak` from the drop-down list.
 
