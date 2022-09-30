@@ -494,7 +494,9 @@ Plugin dialog window appears.
 
 -   Click on Visibility Analysis then click on Install Plugin button.
 
--   Clock the dialog window after the installation completed.
+When the installation completed,
+
+-   Click on **Close** button to close the dialog window.
 
 #### Creating viewpoint layer
 
@@ -588,4 +590,139 @@ By default Visibility layer is shaded with gray colour. Now, we are going to sym
 
 -   From **Layers** panel, right-click on *Visibility* and select **Properties** from the context menu.
 
--   
+You screen should look similar to the screenshot below.
+
+![](img06/image80.jpg)
+
+-   For **Render type**, select **Paletted/Unique values** from the drop-down list.
+
+![](img06/image81.jpg){width="264"}
+
+-   Click on **Classify** button.
+
+![](img06/image82.jpg)
+
+Notice that the colour palette changed.
+
+![](img06/image83.jpg)
+
+-   Click on Apply button to update the changes.
+
+-   When it is done, click on OK button to close the dialog window.
+
+You screen should look similar to the screenshot below.
+
+![](img06/image84.jpg)
+
+The areas shaded in green are location not visible from both Satellite towers. The areas shaded in red are locations observed by at least one of the satellite tower. Lastly, areas shaded in purple-blue are locations visible by both satellite towers.
+
+### Profile Analysis
+
+Another useful GIS analysis using DEM is calling profile analysis. Profiles or more appropriately called topographic profiles are cross-sectional views **showing elevation along a line**. In other words, if you could slice the Earth along that line and view it from the side, that two-dimensional graph displaying height would be a topographic profile.
+
+Figure below shows a cross-section profile view of Singapore Island Country Club. The red line on the map is the cross-section line. The line graph below the map is popularly known as profile graph whereby the x-axis is distance between the starting point and the end point of the cross-section line. The y-axis, on-the-other-hand, shows the elevation heights of the cross-section line. The unit of measurement is in meter.
+
+![](img06/image66.jpg)
+
+Topographic profiles have different terms to describe them -- vertical profiles, cross-section graphs, or 2D elevation charts. They can help you assess the difficulty of a trail or evaluate the feasibility of placing a rail line along a given route.
+
+Profile analysis have different uses in engineering (like fiber optic cable design), hydrology (slope along a channel with a rise-over-run), and land use planning (ski slope design).
+
+In this section of the hands-on exercise, you will learn how to perform profile analysis **Profile tool** plugin of QGIS.
+
+#### Installing Profile tool plugin
+
+First, let us install Profile tool plugin if you have yet to do so.
+
+-   From the menu bar, select **Plugins** -\> **Manage and Install Plugin**.
+
+![](img06/image55.jpg){width="347"}
+
+Plugin dialog window appears.
+
+-   At **Search** bar, type *Profile*.
+
+![](img06/image67.jpg)
+
+-   Click on **Profile tool** then click on **Install Plugin b**utton.
+
+When the installation completed,
+
+-   Click on **Close** button to close the dialog window.
+
+#### Analysing and visualising profile of a straight line
+
+Let say we are interested to analyse the topographic profile of Singapore Island Country Club.
+
+-   From **Browser** panel, click to expand **XYZ Tiles**.
+
+![](img06/image68.jpg){width="284"}
+
+-   Double click on OSM.
+
+Notice that OSM image layer is added on View window.
+
+-   Zoom and navigate to Singapore Island Country Club.
+
+Your View window should look similar to the screenshot below.
+
+![](img06/image69.jpg)
+
+Next, we will launch **Profile tool**.
+
+-   From menu bar, click on ![](img06/image70.jpg){width="15" height="16"} button.
+
+Profile dialog window appears.
+
+![](img06/image71.jpg)
+
+Next we are going to draw a straight line across the gulf course as shown below.
+
+![](img06/image72.jpg)
+
+-   Hover over the lower position on the line, then click on the left hand mouse once.
+
+-   Hover over the upper position of the line, double click to end the digitising.
+
+-   From the Layers panel, click on DEM to make it active.
+
+![](img06/image73.jpg){width="202"}
+
+-   From **Profile** dialog window, click on **Add Layer** button.
+
+![](img06/image74.jpg)
+
+Notice that DEM is added onto Profile dialog and a Profile plot appears.
+
+![](img06/image75.jpg)
+
+Notice that by default, the profile plot is interactive. When you hover the mouse on the profile plot as shown below, the corresponding location will be shown as a little red dot along the line-of-sight on the map view.
+
+![](img06/image76.jpg)
+
+#### Analysing and visualising profile along a path
+
+Another common application of profile analysis is to visualising the profile along a path such as golfing track in the following use case.
+
+> DIY: Using the steps you had learned, import OSM_pathGIS data from shapefile folder.
+
+Your screen should look similar to the screenshot below.
+
+![](img06/image77.jpg)
+
+-   Next click on Profile tool icon to launch the dialog window if necessary.
+
+-   From the lower right panel of Profile dialog window, select **Selected polyline** from the drop-down list.
+
+![](img06/image78.jpg){width="396"}
+
+-   From **Layer** panel, click on `OSM_path` to make if active.
+-   Hover the mouse over any one of the path and click on the left-hand button to select the path.
+
+The profile of the path will be plotted as shown in the screenshot below.
+
+![](img06/image79.jpg)
+
+You can save the profile plot as image file for reporting purpose.
+
+-   At the lower right corner of **Profile** pane, click on **Save as** button.

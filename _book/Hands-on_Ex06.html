@@ -196,6 +196,7 @@ ul.task-list{list-style: none;}
   <li><a href="#combining-adjacent-raster-layers-into-one" id="toc-combining-adjacent-raster-layers-into-one" class="nav-link" data-scroll-target="#combining-adjacent-raster-layers-into-one"> <span class="header-section-number">7.6.3</span> Combining adjacent raster layers into one</a></li>
   <li><a href="#extracting-raster-data-layer" id="toc-extracting-raster-data-layer" class="nav-link" data-scroll-target="#extracting-raster-data-layer"> <span class="header-section-number">7.6.4</span> Extracting raster data layer</a></li>
   <li><a href="#visibility-analysis-with-raster-gis" id="toc-visibility-analysis-with-raster-gis" class="nav-link" data-scroll-target="#visibility-analysis-with-raster-gis"> <span class="header-section-number">7.6.5</span> Visibility Analysis with Raster GIS</a></li>
+  <li><a href="#profile-analysis" id="toc-profile-analysis" class="nav-link" data-scroll-target="#profile-analysis"> <span class="header-section-number">7.6.6</span> Profile Analysis</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -652,7 +653,10 @@ Visibility analysis proves useful when selecting the best or optimal locations i
 <ul>
 <li><p>At <strong>Search</strong> bar, type <em>Visibilit</em>y.</p></li>
 <li><p>Click on Visibility Analysis then click on Install Plugin button.</p></li>
-<li><p>Clock the dialog window after the installation completed.</p></li>
+</ul>
+<p>When the installation completed,</p>
+<ul>
+<li>Click on <strong>Close</strong> button to close the dialog window.</li>
 </ul>
 </section>
 <section id="creating-viewpoint-layer" class="level4" data-number="7.6.5.3">
@@ -730,8 +734,118 @@ Visibility analysis proves useful when selecting the best or optimal locations i
 <h4 data-number="7.6.5.4" class="anchored" data-anchor-id="symbolising-raster-layer"><span class="header-section-number">7.6.5.4</span> Symbolising raster layer</h4>
 <p>By default Visibility layer is shaded with gray colour. Now, we are going to symbolise Visibility layer.</p>
 <ul>
-<li><p>From <strong>Layers</strong> panel, right-click on <em>Visibility</em> and select <strong>Properties</strong> from the context menu.</p></li>
-<li></li>
+<li>From <strong>Layers</strong> panel, right-click on <em>Visibility</em> and select <strong>Properties</strong> from the context menu.</li>
+</ul>
+<p>You screen should look similar to the screenshot below.</p>
+<p><img src="img06/image80.jpg" class="img-fluid"></p>
+<ul>
+<li>For <strong>Render type</strong>, select <strong>Paletted/Unique values</strong> from the drop-down list.</li>
+</ul>
+<p><img src="img06/image81.jpg" class="img-fluid" width="264"></p>
+<ul>
+<li>Click on <strong>Classify</strong> button.</li>
+</ul>
+<p><img src="img06/image82.jpg" class="img-fluid"></p>
+<p>Notice that the colour palette changed.</p>
+<p><img src="img06/image83.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Click on Apply button to update the changes.</p></li>
+<li><p>When it is done, click on OK button to close the dialog window.</p></li>
+</ul>
+<p>You screen should look similar to the screenshot below.</p>
+<p><img src="img06/image84.jpg" class="img-fluid"></p>
+<p>The areas shaded in green are location not visible from both Satellite towers. The areas shaded in red are locations observed by at least one of the satellite tower. Lastly, areas shaded in purple-blue are locations visible by both satellite towers.</p>
+</section>
+</section>
+<section id="profile-analysis" class="level3" data-number="7.6.6">
+<h3 data-number="7.6.6" class="anchored" data-anchor-id="profile-analysis"><span class="header-section-number">7.6.6</span> Profile Analysis</h3>
+<p>Another useful GIS analysis using DEM is calling profile analysis. Profiles or more appropriately called topographic profiles are cross-sectional views <strong>showing elevation along a line</strong>. In other words, if you could slice the Earth along that line and view it from the side, that two-dimensional graph displaying height would be a topographic profile.</p>
+<p>Figure below shows a cross-section profile view of Singapore Island Country Club. The red line on the map is the cross-section line. The line graph below the map is popularly known as profile graph whereby the x-axis is distance between the starting point and the end point of the cross-section line. The y-axis, on-the-other-hand, shows the elevation heights of the cross-section line. The unit of measurement is in meter.</p>
+<p><img src="img06/image66.jpg" class="img-fluid"></p>
+<p>Topographic profiles have different terms to describe them – vertical profiles, cross-section graphs, or 2D elevation charts. They can help you assess the difficulty of a trail or evaluate the feasibility of placing a rail line along a given route.</p>
+<p>Profile analysis have different uses in engineering (like fiber optic cable design), hydrology (slope along a channel with a rise-over-run), and land use planning (ski slope design).</p>
+<p>In this section of the hands-on exercise, you will learn how to perform profile analysis <strong>Profile tool</strong> plugin of QGIS.</p>
+<section id="installing-profile-tool-plugin" class="level4" data-number="7.6.6.1">
+<h4 data-number="7.6.6.1" class="anchored" data-anchor-id="installing-profile-tool-plugin"><span class="header-section-number">7.6.6.1</span> Installing Profile tool plugin</h4>
+<p>First, let us install Profile tool plugin if you have yet to do so.</p>
+<ul>
+<li>From the menu bar, select <strong>Plugins</strong> -&gt; <strong>Manage and Install Plugin</strong>.</li>
+</ul>
+<p><img src="img06/image55.jpg" class="img-fluid" width="347"></p>
+<p>Plugin dialog window appears.</p>
+<ul>
+<li>At <strong>Search</strong> bar, type <em>Profile</em>.</li>
+</ul>
+<p><img src="img06/image67.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>Profile tool</strong> then click on <strong>Install Plugin b</strong>utton.</li>
+</ul>
+<p>When the installation completed,</p>
+<ul>
+<li>Click on <strong>Close</strong> button to close the dialog window.</li>
+</ul>
+</section>
+<section id="analysing-and-visualising-profile-of-a-straight-line" class="level4" data-number="7.6.6.2">
+<h4 data-number="7.6.6.2" class="anchored" data-anchor-id="analysing-and-visualising-profile-of-a-straight-line"><span class="header-section-number">7.6.6.2</span> Analysing and visualising profile of a straight line</h4>
+<p>Let say we are interested to analyse the topographic profile of Singapore Island Country Club.</p>
+<ul>
+<li>From <strong>Browser</strong> panel, click to expand <strong>XYZ Tiles</strong>.</li>
+</ul>
+<p><img src="img06/image68.jpg" class="img-fluid" width="284"></p>
+<ul>
+<li>Double click on OSM.</li>
+</ul>
+<p>Notice that OSM image layer is added on View window.</p>
+<ul>
+<li>Zoom and navigate to Singapore Island Country Club.</li>
+</ul>
+<p>Your View window should look similar to the screenshot below.</p>
+<p><img src="img06/image69.jpg" class="img-fluid"></p>
+<p>Next, we will launch <strong>Profile tool</strong>.</p>
+<ul>
+<li>From menu bar, click on <img src="img06/image70.jpg" width="15" height="16"> button.</li>
+</ul>
+<p>Profile dialog window appears.</p>
+<p><img src="img06/image71.jpg" class="img-fluid"></p>
+<p>Next we are going to draw a straight line across the gulf course as shown below.</p>
+<p><img src="img06/image72.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Hover over the lower position on the line, then click on the left hand mouse once.</p></li>
+<li><p>Hover over the upper position of the line, double click to end the digitising.</p></li>
+<li><p>From the Layers panel, click on DEM to make it active.</p></li>
+</ul>
+<p><img src="img06/image73.jpg" class="img-fluid" width="202"></p>
+<ul>
+<li>From <strong>Profile</strong> dialog window, click on <strong>Add Layer</strong> button.</li>
+</ul>
+<p><img src="img06/image74.jpg" class="img-fluid"></p>
+<p>Notice that DEM is added onto Profile dialog and a Profile plot appears.</p>
+<p><img src="img06/image75.jpg" class="img-fluid"></p>
+<p>Notice that by default, the profile plot is interactive. When you hover the mouse on the profile plot as shown below, the corresponding location will be shown as a little red dot along the line-of-sight on the map view.</p>
+<p><img src="img06/image76.jpg" class="img-fluid"></p>
+</section>
+<section id="analysing-and-visualising-profile-along-a-path" class="level4" data-number="7.6.6.3">
+<h4 data-number="7.6.6.3" class="anchored" data-anchor-id="analysing-and-visualising-profile-along-a-path"><span class="header-section-number">7.6.6.3</span> Analysing and visualising profile along a path</h4>
+<p>Another common application of profile analysis is to visualising the profile along a path such as golfing track in the following use case.</p>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, import OSM_pathGIS data from shapefile folder.</p>
+</blockquote>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img06/image77.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Next click on Profile tool icon to launch the dialog window if necessary.</p></li>
+<li><p>From the lower right panel of Profile dialog window, select <strong>Selected polyline</strong> from the drop-down list.</p></li>
+</ul>
+<p><img src="img06/image78.jpg" class="img-fluid" width="396"></p>
+<ul>
+<li>From <strong>Layer</strong> panel, click on <code>OSM_path</code> to make if active.</li>
+<li>Hover the mouse over any one of the path and click on the left-hand button to select the path.</li>
+</ul>
+<p>The profile of the path will be plotted as shown in the screenshot below.</p>
+<p><img src="img06/image79.jpg" class="img-fluid"></p>
+<p>You can save the profile plot as image file for reporting purpose.</p>
+<ul>
+<li>At the lower right corner of <strong>Profile</strong> pane, click on <strong>Save as</strong> button.</li>
 </ul>
 
 
