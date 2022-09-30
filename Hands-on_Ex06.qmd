@@ -616,6 +616,10 @@ You screen should look similar to the screenshot below.
 
 The areas shaded in green are location not visible from both Satellite towers. The areas shaded in red are locations observed by at least one of the satellite tower. Lastly, areas shaded in purple-blue are locations visible by both satellite towers.
 
+> DIY: By applying appropriate symbolising methods for raster layer you had learned, design a cartography quality view look similar to the screenshot below.
+
+![](img06/image85.jpg)
+
 ### Profile Analysis
 
 Another useful GIS analysis using DEM is calling profile analysis. Profiles or more appropriately called topographic profiles are cross-sectional views **showing elevation along a line**. In other words, if you could slice the Earth along that line and view it from the side, that two-dimensional graph displaying height would be a topographic profile.
