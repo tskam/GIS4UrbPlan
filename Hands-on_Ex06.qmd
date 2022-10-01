@@ -522,9 +522,9 @@ Notice that **Processing Toolbox** panel is added on the right of the **View** w
 
 -   For **Digital elevation model**, select *DEM* from the drop-down list.
 
--   For **Radius of analysis, meter**s, type *70000*.
+-   For **Radius of analysis, meters**, type *5000*.
 
--   For **Observer height, meters**, type *5*.
+-   For **Observer height, meters**, type *10*.
 
 Your screen should look similar to the screenshot below.
 
