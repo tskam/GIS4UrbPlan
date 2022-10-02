@@ -551,5 +551,4 @@ When the operation completed, a new data layer called TOTPOP2000 will be added i
 
 ![](img03/image53.jpg){width="311"}
 
->DIY: Using the steps you had learned, remove QueryLayer from Layer panel.
-
+> DIY: Using the steps you had learned, remove QueryLayer from Layer panel.
