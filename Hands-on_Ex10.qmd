@@ -1,6 +1,7 @@
-# Urban Land-use/Land-cover (LULC) Classification and Changes Detection by using digital image analysis 
+# Urban 3D Modelling and Visualisation with QGIS
 
-In this hands-on exercise, you well learn how to perform urban LULC classification and change detection by using QGIS methods.
+In this hands-on exercise, you will learn how to build and visualise 3D urban models with QGIS.
+
 
 ```{r echo=FALSE, eval=FALSE}
 library(pagedown)

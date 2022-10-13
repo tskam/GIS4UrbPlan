@@ -1,9 +1,0 @@
-# Urban 3D Modelling and Visualisation with QGIS
-
-In this hands-on exercise, you will learn how to build and visualise 3D urban models with QGIS.
-
-
-```{r echo=FALSE, eval=FALSE}
-library(pagedown)
-pagedown::chrome_print("Hands-on_Ex09.html")
-```
