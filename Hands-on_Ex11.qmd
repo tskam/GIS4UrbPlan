@@ -1,29 +1,26 @@
-# Delineating Network Service Area: QGIS methods
+# Delineating Network Service Areas: QGIS methods
 
-**Accessibility** is the measure of the capacity of a location to be reached from, or to be reached by, different locations. It is a key element in urban planning and management since it is a direct expression of mobility either in terms of people, freight, or information within a city or between cities.
+A network service area is a region that encompasses all accessible streets (that is, streets that are within a specified impedance). For instance, the 5-minute service area for a point on a network includes all the streets that can be reached within five minutes from that point.
 
-Well-developed and efficient urban transport systems offer high accessibility levels, while less-developed ones have lower levels of accessibility. Thus, accessibility is linked with an array of economic and social opportunities.
+Network service areas also help evaluate accessibility. Concentric service areas show how accessibility varies with impedance. Once service areas are created, you can use them to identify how much land, how many people, or how much of anything else is within the neighborhood or region.  Depend on the applications, some time the term network catchment areas or network trade areas are used.   
 
-All locations are not equal because some are more accessible than others, which implies **inequalities**. Thus, accessibility is a proxy for **spatial inequalities**.
+In this hands-on exercise, you will gain hands-on experience on using QNeat3 plugin of QGIS to delineate service areas of fire stations in Singapore. By the end of this hands-on exercise, you will be able to:
 
-In this hands-on exercise, you will gain hands-on experience on using both build in and plug-in network analysis functions of QGIS to derive accessibility indexes. By the end of this hands-on exercise, you will be able to:
-
--   derive hexagon layer,
 -   extract, clean and process network data from roads layer of OSM data, and
--   performing network accessibility by using network analysis tools of QNEAT plug-in.
+-   delineating service areas by using iso-areas functions of QNEAT3 plug-in.
 
 ## Setting the scene
 
 ### The Task
 
-In this hands-on exercise, you are tasked to derive an accessibility to eldercare centre map of Singapore.
+In this hands-on exercise, you are tasked to derive service areas of fire stations of Singapore.
 
 ### The Data
 
 Three major data sets will be used in this hands-on exercise. They are:
 
 -   Master Plan 2014 Subzone Boundary from URA. This data can be downloaded from data.gov.sg.
--   Eldercare services from Ministry of Social and Family Development. This data can be downloaded from data.gov.sg.
+-   Fire stations from Singapore Civil Defence Force, Ministry of Home Affairs. This data can be downloaded from data.gov.sg.
 -   Roads data from OpenStreetMap (OSM) data sets. OSM data sets can be downloaded from Geofabrik's free download [server](https://download.geofabrik.de/).
 
 **Note:** I recommend this download site instead of [bbbike](https://www.bbbike.org/) because I found out that the quality of the data provided by Geofabrik is better than bbbike.
@@ -32,7 +29,7 @@ Three major data sets will be used in this hands-on exercise. They are:
 
 ### Start a new QGIS Project
 
-> DIY: Using the steps you had learned in previous hands-on exercise, start a new QGIS project. Save the project and give it a name (i.e. Hands-on_Ex10).
+> DIY: Using the steps you had learned in previous hands-on exercise, start a new QGIS project. Save the project and give it a name (i.e. Hands-on_Ex11).
 
 **Reminder:** Ensure that svy21 projection system is used.
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GIS for Urban Planning: QGIS methods - 12&nbsp; Delineating Network Service Area: QGIS methods</title>
+<title>GIS for Urban Planning: QGIS methods - 12&nbsp; Delineating Network Service Areas: QGIS methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Delineating Network Service Area: QGIS methods</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Delineating Network Service Areas: QGIS methods</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -150,7 +150,7 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Hands-on_Ex11.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Delineating Network Service Area: QGIS methods</span></a>
+  <a href="./Hands-on_Ex11.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Delineating Network Service Areas: QGIS methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -208,7 +208,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Delineating Network Service Area: QGIS methods</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Delineating Network Service Areas: QGIS methods</span></h1>
 </div>
 
 
@@ -222,27 +222,25 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p><strong>Accessibility</strong> is the measure of the capacity of a location to be reached from, or to be reached by, different locations. It is a key element in urban planning and management since it is a direct expression of mobility either in terms of people, freight, or information within a city or between cities.</p>
-<p>Well-developed and efficient urban transport systems offer high accessibility levels, while less-developed ones have lower levels of accessibility. Thus, accessibility is linked with an array of economic and social opportunities.</p>
-<p>All locations are not equal because some are more accessible than others, which implies <strong>inequalities</strong>. Thus, accessibility is a proxy for <strong>spatial inequalities</strong>.</p>
-<p>In this hands-on exercise, you will gain hands-on experience on using both build in and plug-in network analysis functions of QGIS to derive accessibility indexes. By the end of this hands-on exercise, you will be able to:</p>
+<p>A network service area is a region that encompasses all accessible streets (that is, streets that are within a specified impedance). For instance, the 5-minute service area for a point on a network includes all the streets that can be reached within five minutes from that point.</p>
+<p>Network service areas also help evaluate accessibility. Concentric service areas show how accessibility varies with impedance. Once service areas are created, you can use them to identify how much land, how many people, or how much of anything else is within the neighborhood or region. Depend on the applications, some time the term network catchment areas or network trade areas are used.</p>
+<p>In this hands-on exercise, you will gain hands-on experience on using QNeat3 plugin of QGIS to delineate service areas of fire stations in Singapore. By the end of this hands-on exercise, you will be able to:</p>
 <ul>
-<li>derive hexagon layer,</li>
 <li>extract, clean and process network data from roads layer of OSM data, and</li>
-<li>performing network accessibility by using network analysis tools of QNEAT plug-in.</li>
+<li>delineating service areas by using iso-areas functions of QNEAT3 plug-in.</li>
 </ul>
 <section id="setting-the-scene" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="setting-the-scene"><span class="header-section-number">12.1</span> Setting the scene</h2>
 <section id="the-task" class="level3" data-number="12.1.1">
 <h3 data-number="12.1.1" class="anchored" data-anchor-id="the-task"><span class="header-section-number">12.1.1</span> The Task</h3>
-<p>In this hands-on exercise, you are tasked to derive an accessibility to eldercare centre map of Singapore.</p>
+<p>In this hands-on exercise, you are tasked to derive service areas of fire stations of Singapore.</p>
 </section>
 <section id="the-data" class="level3" data-number="12.1.2">
 <h3 data-number="12.1.2" class="anchored" data-anchor-id="the-data"><span class="header-section-number">12.1.2</span> The Data</h3>
 <p>Three major data sets will be used in this hands-on exercise. They are:</p>
 <ul>
 <li>Master Plan 2014 Subzone Boundary from URA. This data can be downloaded from data.gov.sg.</li>
-<li>Eldercare services from Ministry of Social and Family Development. This data can be downloaded from data.gov.sg.</li>
+<li>Fire stations from Singapore Civil Defence Force, Ministry of Home Affairs. This data can be downloaded from data.gov.sg.</li>
 <li>Roads data from OpenStreetMap (OSM) data sets. OSM data sets can be downloaded from Geofabrik’s free download <a href="https://download.geofabrik.de/">server</a>.</li>
 </ul>
 <p><strong>Note:</strong> I recommend this download site instead of <a href="https://www.bbbike.org/">bbbike</a> because I found out that the quality of the data provided by Geofabrik is better than bbbike.</p>
@@ -253,7 +251,7 @@ ul.task-list{list-style: none;}
 <section id="start-a-new-qgis-project" class="level3" data-number="12.2.1">
 <h3 data-number="12.2.1" class="anchored" data-anchor-id="start-a-new-qgis-project"><span class="header-section-number">12.2.1</span> Start a new QGIS Project</h3>
 <blockquote class="blockquote">
-<p>DIY: Using the steps you had learned in previous hands-on exercise, start a new QGIS project. Save the project and give it a name (i.e.&nbsp;Hands-on_Ex10).</p>
+<p>DIY: Using the steps you had learned in previous hands-on exercise, start a new QGIS project. Save the project and give it a name (i.e.&nbsp;Hands-on_Ex11).</p>
 </blockquote>
 <p><strong>Reminder:</strong> Ensure that svy21 projection system is used.</p>
 </section>
