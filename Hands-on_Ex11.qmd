@@ -1,14 +1,3 @@
-# Delineating Network Service Areas: QGIS methods
-
-A network service area is a region that encompasses all accessible streets (that is, streets that are within a specified impedance). For instance, the 5-minute service area for a point on a network includes all the streets that can be reached within five minutes from that point.
-
-Network service areas also help evaluate accessibility. Concentric service areas show how accessibility varies with impedance. Once service areas are created, you can use them to identify how much land, how many people, or how much of anything else is within the neighborhood or region.  Depend on the applications, some time the term network catchment areas or network trade areas are used.   
-
-In this hands-on exercise, you will gain hands-on experience on using QNeat3 plugin of QGIS to delineate service areas of fire stations in Singapore. By the end of this hands-on exercise, you will be able to:
-
--   extract, clean and process network data from roads layer of OSM data, and
--   delineating service areas by using iso-areas functions of QNEAT3 plug-in.
-
 ## Setting the scene
 
 ### The Task
@@ -17,136 +6,14 @@ In this hands-on exercise, you are tasked to derive service areas of fire statio
 
 ### The Data
 
-Three major data sets will be used in this hands-on exercise. They are:
+For the purpose of this exercise, twodata sets will be used. They are:
 
--   Master Plan 2014 Subzone Boundary from URA. This data can be downloaded from data.gov.sg.
 -   Fire stations from Singapore Civil Defence Force, Ministry of Home Affairs. This data can be downloaded from data.gov.sg.
 -   Roads data from OpenStreetMap (OSM) data sets. OSM data sets can be downloaded from Geofabrik's free download [server](https://download.geofabrik.de/).
 
 **Note:** I recommend this download site instead of [bbbike](https://www.bbbike.org/) because I found out that the quality of the data provided by Geofabrik is better than bbbike.
 
-## Data Preparation
-
-### Start a new QGIS Project
-
-> DIY: Using the steps you had learned in previous hands-on exercise, start a new QGIS project. Save the project and give it a name (i.e. Hands-on_Ex11).
-
-**Reminder:** Ensure that svy21 projection system is used.
-
-### Preparing base layer for the study area
-
-> DIY: Download Master Plan 2014 Subzone Boundary from data.gov.sg and import it into QGIS. Then, save the GIS layer into GeoPackage format. Name the output layer as `mpsz2014`.
-
-### Preparing eldercare layer
-
-> DIY: Download eldercare services data from data.gov.sg and import it into QGIS (Ideally, the shapefile version should be used). Then, save the GIS layer into GeoPackage format. Name the output layer as `eldercare`.
-
-### Extracting and preparing road network layer
-
-#### Selecting all road network with the study area
-
-> DIY: Using appropriate QGIS function(s) you had learned from previous hands-on exercise, clip the road network with Singapore mainland (excluding outer insland, Pulau Tekong and Pulau Ubi). Save the GIS layer into GeoPackage format. Call the layer `all_roads`.
-
-### Extracting motor vehicle road network
-
-> DIY: Using appropriate QGIS function(s) you had learned from previous hands-on Exercise, extract motor vechicle road network (i.e. motorway, motorway_link, primary, primary_link, secondary, secondary_link, tertiary, tertiary_link, residential, trunk and trunk_link) from the all_roads layer. Save the GIS layer into GeoPackage format. Name the layer `roads`.
-
-**Be warn:** The original data is in **wgs84**. For the purpose of network analysis, all network should be in projected coordinates system.
-
-**Reminder:** Remove all the source data from QGIS project before continue to the next section.
-
-## Analytical Hexagon
-
-In GIS analysis, regularly shaped grids is used for many reasons such as normalizing geography for mapping or to mitigate the issues of using irregularly shaped polygons created arbitrarily (such as county boundaries or block groups that have been created from a political process). Regularly shaped grids can only be comprised of equilateral triangles, squares, or hexagons, as these three polygon shapes are the only three that can tessellate (repeating the same shape over and over again, edge to edge, to cover an area without gaps or overlaps) to create an evenly spaced grid.
-
-![](img09/image1.png)
-
-Though the square (fishnet) grid is the predominantly used shape type in GIS analysis and thematic mapping, there are ways in which hexagons may be better suited for your analysis based on the nature of your question.
-
-Hexagons reduce sampling bias due to edge effects of the grid shape, this is related to the low perimeter-to-area ratio of the shape of the hexagon. A circle has the lowest ratio but cannot tessellate to form a continuous grid. Hexagons are the most circular-shaped polygon that can tessellate to form an evenly spaced grid.
-
-![](img09/image2.png){width="55%"}
-
-### Creating hexagon layer
-
-Now, we are going to create a hexagon layer by using `mpsz` layer as the based. The hexagon distance is 250m.
-
--   From the menu bar, select **Vector** -\> **Research Tools** -\> **Create Grids**.
-
-**Create Grids** dialog window appears.
-
--   For **Grid type:** select *Hexagon (Polygon)* from the drop down list.
-
-![](img09/image1.jpg){width="35%"}
-
--   For **Grid extend:**, select *Calculate from Layer* -\> `mpsz`
-
-![](img09/image2.jpg){width="55%"}
-
--   For **Horizontal spacing**, type *500*.
--   For **Vertical spacing**, type *500*.
-
-> Question: Do you know why 500 is used?
-
--   For **Grid CRS**, make sure that *EPSG 3414* is used.
-
-When you are ready to run the process,
-
--   Click on **Run** button.
-
-**Reminder:** Read the Log before closing the dialog window.
-
--   Click on **Close** button.
-
-Notice that a new temporary layer called `Grid` is added on the Layer pane and display on Map window.
-
-![](img09/image3.jpg)
-
-### Editing the hexagon layer
-
-> DIY: Using appropriate QGIS functions, edit the temporary `Grid` layer until it looks similar to the screenshot below.
-
-![](img09/image4.jpg)
-
-### Saving the hexagon layer
-
-> DIY: Using the steps you had learned in previous hands-on exercise, save the edited `Grid` layer into GeoPackage format. Give the layer a name (i.e. `hexagon`)
-
-Before you move on to the next section, remember to remove the temporary `Grid` layer.
-
-### Computing hexagon centroid
-
-In general, network analysis required the demand in a point feature. Hexagon, on the other hand, is a polygon feature. In order to meet the analysis need, we will compute the centroids of the hexagons.
-
--   From the menu bar, select **Vector** -\> **Geometry Tools** -\> **Centroids**.
-
-**Centroids** dialog window appears.
-
--   For **Input layer**, select *hexagon* from the drop-down list.
-
-When you are ready to run the process,
-
--   Click on **Run** button.
-
-**Reminder:** Read the log before closing.
-
--   Click on **Close** button.
-
-Notice that a new temporary layer called Centroid is added onto Layers panel and display on Map view.
-
-![](img09/image5.jpg)
-
-### Saving the centroid layer
-
-> DIY: Using the steps you had learned in previous hands-on exercise, save the temporary `Centroids` layer into GepPackage format. Name the newly created layer `hex_centroid`.
-
-Before you move on to the next section, remember to remove the temporary `Centroids` layer.
-
-## Network Accessibility Analysis with NEAT3 Plugin
-
-In this section, you will learn how to perform network accessibility analysis by using QGIS Network Analysis Toolbox (QNEAT3) plugin.
-
-### Installing QNEAT3 plugin.
+## Installing QNEAT3 plugin.
 
 Before getting started, you need to install QNEAT3 plugin.
 
@@ -166,156 +33,318 @@ When the installation is completed, close the dialog box by
 
 -   click on **Close** button.
 
-### Working with OD Matrix tool
+In order to activate the Iso-Area as Polygon/Contour algorithms you have to add the **matplotlib** library to your QGIS-Python installation. Depending on your operating system you may install matplotlib manually using the following options:
 
-Next, we will use the Origin-Destination Matrix (OD Matrix) tool of QNEAT3 plugin to calculate the distances between hexagon centrois (as the demand points) and eldercare centres (as the supply points).
+### Windows:
 
--   From the menu bar, click on **Processing** -\> **Toolbox**
+Open the OSGeo4W shell that has been installed alongside QGIS.
 
--   At the **Search** pane, type `OD Matrix`.
+-   Click **Start** then type ***OSGeo4W Shell***, and hit **Enter** key.
 
-You screen should look similar to the screenshot below.
+-   At the **OSGeo4W Shell**, type the command below.
 
-![](img09/image26.jpg){width="45%"}
+> python-qgis -m pip install matplotlib
 
--   Click on **OD Matrix Layers as Table (m:n)**.
+-   Press **Enter** key.
+-   When the installation is completed, restart QGIS3
 
-**OD Matrix Layers as Table (m:n)** dialog window appears.
+### macOS
 
--   For **Network Layer**, select `roads` from the drop-down list.
+-   Open a terminal.
 
--   For **From-Point Layer**, select `hex_centroid` from the drop-down list.
+-   Type the following command:
 
--   For **Unique Point ID Field**, select `fid` from the drop-down list.
+> /Library/Frameworks/Python.framework/Versions/3.x/bin/pip3.x install matplotlib
 
--   For **To-Point Layer**, select `eldercare` fro mthe drop-down list.
+Note: Replace the version number x according to your installation) into the terminal,
 
--   For **Unique Point ID Field**, select `fid` from the drop-down list.
+-   Press **Enter** and confirm installation with *yes* when prompted
 
--   For **Optimization Criterion**, select `Shortest Path (distance optimization)` from the drop-down list.
+-   Restart QGIS3
 
--   For **Entry Cost calculation method**, select `Ellipsoidal` from the drop-down list.
+After this installation, you are ready to use all QNEAT3 Algorithms.
 
--   For **Direction field**, select `oneway` from the drop-down list.
+Before using the plugin, you must at least read the concept and methods of [Iso-area](https://root676.github.io/IsoAreaAlgs.html) because it will be used in this hands-on exercise.
 
--   For **Value for forward direction**, type `F`.
+## Start a new QGIS Project
 
--   For **Value for backward direction**, type `T`.
+> DIY: Using the steps you had learned in previous hands-on exercise, start a new QGIS project. Save the project and give it a name (i.e. Hands-on_Ex11).
 
--   For **Value for both direction**, type `B`.
+**Reminder:** Ensure that svy21 projection system is used.
 
--   For Topology tolerance, type *0.5* (i.e. 0.5 m).
+## Data Preparation
 
-The completed dialog widnow should look similar to the screenshot below.
+### Downloading the fire stations layer
 
-![](img09/image27.jpg)
+> DIY: Using the steps you had learned, perform the following steps:
+>
+> -   Download fire stations data from data.gov.sg and import it into QGIS.
+>
+> -   In data.gov.sg portal, fire station data set is in kml and geojson formats. Import the most **usable** format into QGIS as a GIS layer.
+>
+> -   Save the GIS layer into GeoPackage format. Name the output layer as `firestations`.
 
-When you are ready to run the process.
+**Be warn:** The original data is in **wgs84**. For the purpose of network analysis, the GIS data must be be in projected coordinates system (i.e. SVY21 for Singapore).
 
--   At the **OD Matrix** dialog window, click on **Run** button.
+### Extracting and preparing road network layer
 
-Be patient, the process is computationally intensive.
+I can't emphasize enough the importance of a quality data preparation in GIS analysis. In this sub-section, you will use basic QGIS functions to perform the following data preparation tasks:
 
-**Reminder:** Read the log before closing it.
+-   selecting all roads features with the study area
 
-When you are ready to close the dialog window.
+-   extracting appropriate road classes for the analysis, and
 
--   Click on **Close** button.
+-   updating speed values of the road feature classes.
 
-Notice that a new temporary table called `Output OD Matrix` is added onto Layers panel.
+Table 1 below shows
 
-![](img09/image28.jpg){width="35%"}
+| Road feature class | Speed (km/h) |
+|--------------------|--------------|
+| motorway           | 90           |
+| motorway_link      | 50           |
+| primary            | 60           |
+| primary_link       | 60           |
+| residential        | 50           |
+| secondary          | 50           |
+| secondary_link     | 50           |
+| service            | 15           |
+| tertiary           | 40           |
+| tertiary_link      | 40           |
+| trunk              | 60           |
+| trunk_link         | 60           |
+| unclassified       | 15           |
 
--   At the Layers panel, right-click on `Output OD Matrix` and select **Open Attribute Table** from the context menu.
+: Table 1: Road feature classes and their speeds
 
-A data table look similar to the screenshot below appears.
+#### Selecting all road network with the study area
 
-![](img09/image29.jpg)
+> DIY: Performing the following task by using appropriate QGIS function(s) you had learned from previous hands-on exercises.:
+>
+> -   import road data set of OSM into QGIS,
+>
+> -   extract the road network within Singapore mainland (excluding outer insland, Pulau Tekong and Pulau Ubi), and
+>
+> -   save the GIS layer into GeoPackage format. Call the layer `all_roads`.
 
-> Question: Do you know what are the values of these fields?
+**Be warn:** The original data is in **wgs84**. For the purpose of network analysis, the road data must bein projected coordinates system (i.e. svy21 in Singapore).
 
-> DIY: Using the steps you had learned, save the temporary Output OD Matrix table as GeoPackage format. Name the layer `OD_eldercare`.
+#### Extracting motor vehicle road network
 
-### Extracting shortest distance pairs
+> DIY: Using appropriate QGIS function(s) you had learned from previous hands-on exercise, select road feature classes listed in Table 1 above from the `all_roads` layer. Save the GIS layer into GeoPackage format. Name the layer `roads`.
 
-Next, we will use the SQL tool of QGIS to select destination points with the shortest distance.
+**Reminder:** Remove all the source data from QGIS project before continue to the next section.
 
--   At the **Search** pane of **Processing Toolbox**, type `SQL`.
+#### Updating speed values of the road feature classes
 
-**SQL** function appears on the list.
+In order to derive drive-time service areas from a road network, the road data must have a field containing the speed of each network feature class. The steps below will be used to update the speed field of road layer.
 
-![](img09/image30.jpg){width="45%"}
+-   From **Layers** panel, right-click on Roads.
 
--   Double-click on **Execute SQL** of **Vector general**.
+-   Select **Open Attribute Table** from the context menu.
 
-**Execute SQL** dialog window appears.
+The attribute table of Roads layer appears.
 
--   For **Additional input datasources**, select on the button at the right end.
+![](img11/image2.jpg)
 
--   Click on the checkbox **Output OD Matrix**.
+-   From the menu bar of the attribute table, click on **Open field calculator** icon ![](img11/image3.jpg).
 
-![](img09/image31.jpg){width="65%"}
+The Field calculator dialog window appears.
 
--   Click on **OK** button.
+Since we are going to create a new field called `speed`,
 
--   At SQL query panel, type the following SQL
+-   Click on the check-box in front of **Create a new field**.
+-   For **Output field name**, type `speed`.
+-   For **Output field typ**e, select Integer (32bit) from the drop-down list.
+-   At the Expression panel, type as shown below.
 
-![](img09/image32.jpg){width="55%"}
+![](img11/image4.jpg){width="410"}
 
--   For *Geometry type*, select `No Geometry` from the drop-down list.
+**Best practice**: check the Preview below the Expression panel to ensure that the syntax are valid.
 
-![](img09/image33.jpg){width="45%"}
+-   Click on **OK** button to run the operation.
 
-Notice that a temporary table called `SQL Output` is added onto **Layers** panel. It consists of four fields. The values in `shortest_distance` field are shortest distance between demand points and its nearest eldercare centre.
+Upon completion, the Field calculator dialog window will close by itself.
 
-![](img09/image34.jpg){width="65%"}
+Notice that a new attribute field called speed has been added into the attribute table of Roads layer.
 
-> DIY: Using the steps you had learned, save the temporary `SQL Output` table as GeoPackage format. Name the layer `acc_eldercare`.
+![](img11/image5.jpg)
 
-### Mapping Accessibility Values
+Lastly, remember to save the changes before ending the process.
 
-In this section, we are going to use mapping function of QGIS to show the distribution of accessibility to eldercare
+-   From the icon menu of the attribute table of Roads, click on **Toggle editing mode** icon ![](img11/image6.jpg).
 
-#### Creating a duplicate layer
+The **Stop Editin**g dialog window appears.
 
-Before we getting started, let us create a duplicate copy of `hexagon` layer
+![](img11/image7.jpg){width="291"}
 
--   At the Layers panel, right-click on `hexagon` layer and select **Duplicate Layer** from the context menu.
+-   Click on **Save** button to save the changes.
 
-A new layer called `hexagon` copy is added onto Layers panel.
+-   Close the attribute table of Roads layer.
 
--   Rename the layer to `Accesibility to eldercare`.
+## Delineating Network Service Areas with NEAT3 Plugin
 
-#### Performing relational join.
+In this section, you will learn how to delineating network service areas by using QGIS Network Analysis Toolbox (QNEAT3) plugin.
 
-Before we can prepare the choropleth map, we need to join `acc_eldercare` data table to the newly created `Accesibility to eldercare` by using *fid* of `acc_eldercare` data table and *fid* of `Accessibility to eldercare` attribute table as unique join fields.
+#### Buffering method
 
--   At the Layer panel, right-click on `Accesibility to eldercare` layer and select **Properties** from the context menu.
+Buffering is one of the most commonly used GIS method to delineating service area. It is based on the concept of Euclidean distance (as-the-crow-flies). In general, this is done by creating a buffer zone with a certain radius (i.e. 5 kilometeres) around a target location.
 
-The Properties dialog window appears.
+For the purpose of this hands-on exercise, Bukit Batok Fire Station will be used as the target location.
 
--   At the option panel, click on **Joins**.
+> DIY: Using the steps you had learned, select Bukit Batok Fire Station.
 
--   Click on **+** button to add a join.
+Your screen shout look similar to the screenshot below.
 
-The **Add Vector Join** dialog window appears.
+![](img11/image16.jpg)
 
--   For **Join layer**, select `acc_eldercare` from th drop-down list.
+Notice that the selected target fire station is highlighted in yellow.
 
--   For **Join field**, select `fid` from the drop-down list.
+Next, we will delineate the 5-km service area of Bukit Batok Fire Station by using buffering method of QGIS.
 
--   For **Target field**, select `fid` from the drop-down lsit.
+-   From QGIS's menu bar, select **Vector** -\> **Geoprocessing Tool**s -\> **Buffer**.
 
--   Keep the checkbox in front of **Cache join layer in memory** checked.
+The Buffer dialog windows appears.
 
-![](img09/image36.jpg){width="45%"}
+-   For **Input layer**, select firestations from the drop-down list.
 
--   When you are ready, click on **OK** button.
+-   For **Distance**, type *5000*. Make sure that the unit of measurement is in *meter*s.
 
-#### Preparing choropleth map
+-   For Segments, type *100* for smoother buffer zone.
 
-> DIY: Using the steps you had learned, prepare a choropleth map showing the distribution of accessibility to eldercare centres.
+The completed Buffer dialog window should look similar to the screenshot below.
 
-Your choropleth map should look similar to the screenshot below.
+![](img11/image8.jpg)
 
-![](img09/image35.jpg)
+When you are ready,
+
+-   Click on **Run** button.
+
+In the blink of an eye, a temporary layer called `Buffered` is added into Layers panel and display on QGIS view window as shown below.
+
+![5-km buffer around Bukit Batok Fire Station](img11/image9.jpg)
+
+Despite its popularity, using straight-line distances to delineate a service area can be rather misleading is real world geography. This is because the commonly used fire engines need to travel along a road in order to reach the fire incident location rather than flying like a crow where by the speed is almost constant.
+
+![](img11/image17.jpg)
+
+#### Shortest network distance method
+
+A more realistic approach to delineating service area is by using network distance. By and large, there are two approaches, namely shortest network distance and fastest network distance. In this sub-section, shortest network distance approach will be used. You will learn how to delineate service area using fastest distance approach in the next sub-section.
+
+To delineate service area using shortest distance approach, Iso-Area as Polygons (from Layer) function of QNEAT3 will be used.
+
+-   From QGIS's menu bar, select **Processing** -\> **Toolbox**.
+
+The Processing Toolbox panel appears.
+
+-   Select **QNEATS3** -\> **Iso-Areas** -\> **Iso-Area as Polygons (from Layer)**.
+
+![](img11/image18.jpg){fig-align="center" width="278"}
+
+The **Iso-Area as Polygons (From Layer)** dialog window appears.
+
+-   For **Vector layer representing network**, select *Roads* from the drop-down list.
+
+-   For **Start Points**, select *firestations* from the drop-down list.
+
+Notice that both GIS layers are in projected coordinates system (i.e. EPSG:3414 which is svy21).
+
+-   Keep the check-box in front of **Selected features** only checked.
+
+-   For **Unique Point ID field**, select *Name* from the drop-down list.
+
+-   For **Size of Iso-Area (distance or time value)**, type *5000*.
+
+-   For **Contour Interval**, type *5000*.
+
+-   For **Path type to calculate**, select *Shortest Path (distance optimization)* from the drop-down list.
+
+-   For **Direction field**, select *oneway* from the drop-down list.
+
+-   For **Value for forward direction**, type *F*.
+
+-   For **Value for backward direction**, type *T.*
+
+-   For **Value for both directions**, type *B*.
+
+Keep the rest of the entries as default.
+
+Your screen should look similar to the screenshot below.
+
+![](img11/image10.jpg)
+
+When you are ready to run the function,
+
+-   click on the **Run** button.
+
+The process involves massive computation and will take awhile to complete (usually less than 5 mins in a standard 64bit machine).
+
+When the process completed, two temporary layers namely: `Output Polygon` and `Output Interpolation` will be added onto Layers panel and display on QGIS View window.
+
+![5000-km shortest service area of Bukit Batok Fire Station](img11/image11.jpg)
+
+The `Output Interpolation` layer is a raster layer created using triangular irregular network (TIN). On the other hand, `Output Polygon` layer is a polygon feature showing the 5-km service area of Bukit Batok Fire Station by road network.
+
+The `Output Polygon` is popularly know as isochrone. It is originated from Greek: *iso* means "the same" and *chronos* means "time".
+
+#### Fastest distance method
+
+Instead of using distance to compute the shortest path, the fasted distance approach uses the speed to delineate the service area of a target location, in our case, Bukit Batok Fire Station. In this sub-section, you are going learn how to delineate a 5-min service area by using QNEAT3.
+
+-   From QGIS's menu bar, select **Processing** -\> **Toolbox**.
+
+The Processing Toolbox panel appears.
+
+-   Select **QNEATS3** -\> **Iso-Areas** -\> **Iso-Area as Polygons (from Layer)**.
+
+The Iso-Area as Polygons (From Layer) dialog window appears.
+
+-   For **Vector layer representing network**, select *Roads* from the drop-down list.
+
+-   For **Start Points**, select *firestations* from the drop-down list.
+
+-   Keep the check-box in front of **Selected features** only checked.
+
+-   For **Unique Point ID field**, select *Name* from the drop-down list.
+
+-   For **Size of Iso-Area (distance or time value)**, type *300*.
+
+-   For **Contour Interval**, type *300*.
+
+-   For **Path type to calculate**, select *Fastest Path (time optimization)* from the drop-down list.
+
+-   For **Direction field**, select *oneway* from the drop-down list.
+
+-   For **Value for forward direction**, type *F*.
+
+-   For **Value for backward direction**, type *T*.
+
+-   For **Value for both directions**, type *B*.
+
+-   For **Speed field**, select *speed* from the drop-down list.
+
+Keep the rest of the entries as default.
+
+Your screen should look similar to the screenshot below.
+
+![](img11/image12.jpg)
+
+When you are ready to run the operation,
+
+-   click on **Run** button.
+
+Again, the process will take some time to complete. Usually not going to take more than 5 minutes for a standard 64bit machine.
+
+When the operation completed, two new temporary layers will be added onto Layer panel and display on QGIS View window. Similar to Shortest network distance methods, one of the output is called `Output Polygon` which shows the 5-minutes drive-time service area of Bukit Batok Fire Station as shown in figure below.
+
+![5-minutes drive-time service area of Bukit Batok Fire Station](img11/image13.jpg)
+
+## Comparing Buffer, Shortest and Fastest Service Area
+
+Figure below comparing the buffer service area and shortest distance service area.
+
+![](img11/image14.jpg)
+
+Figure below compares the difference between buffer, shortest distance and fastest distance of Bukit Batok Fire Station.
+
+![](img11/image15.jpg)
