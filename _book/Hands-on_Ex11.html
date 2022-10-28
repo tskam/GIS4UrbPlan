@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GIS for Urban Planning: QGIS methods - 12&nbsp; Setting the scene</title>
+<title>GIS for Urban Planning: QGIS methods - 12&nbsp; Delineating Service Area Using Network Distance Approach</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Setting the scene</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Delineating Service Area Using Network Distance Approach</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -150,7 +150,7 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Hands-on_Ex11.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Setting the scene</span></a>
+  <a href="./Hands-on_Ex11.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Delineating Service Area Using Network Distance Approach</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -172,21 +172,24 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-task" id="toc-the-task" class="nav-link active" data-scroll-target="#the-task"> <span class="header-section-number">12.0.1</span> The Task</a></li>
-  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"> <span class="header-section-number">12.0.2</span> The Data</a></li>
-  <li><a href="#installing-qneat3-plugin." id="toc-installing-qneat3-plugin." class="nav-link" data-scroll-target="#installing-qneat3-plugin."> <span class="header-section-number">12.1</span> Installing QNEAT3 plugin.</a>
+  <li><a href="#setting-the-scene" id="toc-setting-the-scene" class="nav-link active" data-scroll-target="#setting-the-scene"> <span class="header-section-number">13</span> Setting the scene</a>
   <ul class="collapse">
-  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows"> <span class="header-section-number">12.1.1</span> Windows:</a></li>
-  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos"> <span class="header-section-number">12.1.2</span> macOS</a></li>
-  </ul></li>
-  <li><a href="#start-a-new-qgis-project" id="toc-start-a-new-qgis-project" class="nav-link" data-scroll-target="#start-a-new-qgis-project"> <span class="header-section-number">12.2</span> Start a new QGIS Project</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"> <span class="header-section-number">12.3</span> Data Preparation</a>
+  <li><a href="#the-task" id="toc-the-task" class="nav-link" data-scroll-target="#the-task"> <span class="header-section-number">13.0.1</span> The Task</a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"> <span class="header-section-number">13.0.2</span> The Data</a></li>
+  <li><a href="#installing-qneat3-plugin." id="toc-installing-qneat3-plugin." class="nav-link" data-scroll-target="#installing-qneat3-plugin."> <span class="header-section-number">13.1</span> Installing QNEAT3 plugin.</a>
   <ul class="collapse">
-  <li><a href="#downloading-the-fire-stations-layer" id="toc-downloading-the-fire-stations-layer" class="nav-link" data-scroll-target="#downloading-the-fire-stations-layer"> <span class="header-section-number">12.3.1</span> Downloading the fire stations layer</a></li>
-  <li><a href="#extracting-and-preparing-road-network-layer" id="toc-extracting-and-preparing-road-network-layer" class="nav-link" data-scroll-target="#extracting-and-preparing-road-network-layer"> <span class="header-section-number">12.3.2</span> Extracting and preparing road network layer</a></li>
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows"> <span class="header-section-number">13.1.1</span> Windows:</a></li>
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos"> <span class="header-section-number">13.1.2</span> macOS</a></li>
   </ul></li>
-  <li><a href="#delineating-network-service-areas-with-neat3-plugin" id="toc-delineating-network-service-areas-with-neat3-plugin" class="nav-link" data-scroll-target="#delineating-network-service-areas-with-neat3-plugin"> <span class="header-section-number">12.4</span> Delineating Network Service Areas with NEAT3 Plugin</a></li>
-  <li><a href="#comparing-buffer-shortest-and-fastest-service-area" id="toc-comparing-buffer-shortest-and-fastest-service-area" class="nav-link" data-scroll-target="#comparing-buffer-shortest-and-fastest-service-area"> <span class="header-section-number">12.5</span> Comparing Buffer, Shortest and Fastest Service Area</a></li>
+  <li><a href="#start-a-new-qgis-project" id="toc-start-a-new-qgis-project" class="nav-link" data-scroll-target="#start-a-new-qgis-project"> <span class="header-section-number">13.2</span> Start a new QGIS Project</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"> <span class="header-section-number">13.3</span> Data Preparation</a>
+  <ul class="collapse">
+  <li><a href="#downloading-the-fire-stations-layer" id="toc-downloading-the-fire-stations-layer" class="nav-link" data-scroll-target="#downloading-the-fire-stations-layer"> <span class="header-section-number">13.3.1</span> Downloading the fire stations layer</a></li>
+  <li><a href="#extracting-and-preparing-road-network-layer" id="toc-extracting-and-preparing-road-network-layer" class="nav-link" data-scroll-target="#extracting-and-preparing-road-network-layer"> <span class="header-section-number">13.3.2</span> Extracting and preparing road network layer</a></li>
+  </ul></li>
+  <li><a href="#delineating-network-service-areas-with-neat3-plugin" id="toc-delineating-network-service-areas-with-neat3-plugin" class="nav-link" data-scroll-target="#delineating-network-service-areas-with-neat3-plugin"> <span class="header-section-number">13.4</span> Delineating Network Service Areas with NEAT3 Plugin</a></li>
+  <li><a href="#comparing-buffer-shortest-and-fastest-service-area" id="toc-comparing-buffer-shortest-and-fastest-service-area" class="nav-link" data-scroll-target="#comparing-buffer-shortest-and-fastest-service-area"> <span class="header-section-number">13.5</span> Comparing Buffer, Shortest and Fastest Service Area</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -195,7 +198,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Setting the scene</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Delineating Service Area Using Network Distance Approach</span></h1>
 </div>
 
 
@@ -209,12 +212,14 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<section id="the-task" class="level3" data-number="12.0.1">
-<h3 data-number="12.0.1" class="anchored" data-anchor-id="the-task"><span class="header-section-number">12.0.1</span> The Task</h3>
+<section id="setting-the-scene" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Setting the scene</h1>
+<section id="the-task" class="level3" data-number="13.0.1">
+<h3 data-number="13.0.1" class="anchored" data-anchor-id="the-task"><span class="header-section-number">13.0.1</span> The Task</h3>
 <p>In this hands-on exercise, you are tasked to derive service areas of fire stations of Singapore.</p>
 </section>
-<section id="the-data" class="level3" data-number="12.0.2">
-<h3 data-number="12.0.2" class="anchored" data-anchor-id="the-data"><span class="header-section-number">12.0.2</span> The Data</h3>
+<section id="the-data" class="level3" data-number="13.0.2">
+<h3 data-number="13.0.2" class="anchored" data-anchor-id="the-data"><span class="header-section-number">13.0.2</span> The Data</h3>
 <p>For the purpose of this exercise, twodata sets will be used. They are:</p>
 <ul>
 <li>Fire stations from Singapore Civil Defence Force, Ministry of Home Affairs. This data can be downloaded from data.gov.sg.</li>
@@ -222,8 +227,8 @@ ul.task-list{list-style: none;}
 </ul>
 <p><strong>Note:</strong> I recommend this download site instead of <a href="https://www.bbbike.org/">bbbike</a> because I found out that the quality of the data provided by Geofabrik is better than bbbike.</p>
 </section>
-<section id="installing-qneat3-plugin." class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="installing-qneat3-plugin."><span class="header-section-number">12.1</span> Installing QNEAT3 plugin.</h2>
+<section id="installing-qneat3-plugin." class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="installing-qneat3-plugin."><span class="header-section-number">13.1</span> Installing QNEAT3 plugin.</h2>
 <p>Before getting started, you need to install QNEAT3 plugin.</p>
 <ul>
 <li>From the menu bar, select <strong>Plugins</strong> -&gt; <strong>Manage and Install plugins</strong>.</li>
@@ -242,8 +247,8 @@ ul.task-list{list-style: none;}
 <li>click on <strong>Close</strong> button.</li>
 </ul>
 <p>In order to activate the Iso-Area as Polygon/Contour algorithms you have to add the <strong>matplotlib</strong> library to your QGIS-Python installation. Depending on your operating system you may install matplotlib manually using the following options:</p>
-<section id="windows" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="windows"><span class="header-section-number">12.1.1</span> Windows:</h3>
+<section id="windows" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="windows"><span class="header-section-number">13.1.1</span> Windows:</h3>
 <p>Open the OSGeo4W shell that has been installed alongside QGIS.</p>
 <ul>
 <li><p>Click <strong>Start</strong> then type <strong><em>OSGeo4W Shell</em></strong>, and hit <strong>Enter</strong> key.</p></li>
@@ -257,8 +262,8 @@ ul.task-list{list-style: none;}
 <li>When the installation is completed, restart QGIS3</li>
 </ul>
 </section>
-<section id="macos" class="level3" data-number="12.1.2">
-<h3 data-number="12.1.2" class="anchored" data-anchor-id="macos"><span class="header-section-number">12.1.2</span> macOS</h3>
+<section id="macos" class="level3" data-number="13.1.2">
+<h3 data-number="13.1.2" class="anchored" data-anchor-id="macos"><span class="header-section-number">13.1.2</span> macOS</h3>
 <ul>
 <li><p>Open a terminal.</p></li>
 <li><p>Type the following command:</p></li>
@@ -275,17 +280,17 @@ ul.task-list{list-style: none;}
 <p>Before using the plugin, you must at least read the concept and methods of <a href="https://root676.github.io/IsoAreaAlgs.html">Iso-area</a> because it will be used in this hands-on exercise.</p>
 </section>
 </section>
-<section id="start-a-new-qgis-project" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="start-a-new-qgis-project"><span class="header-section-number">12.2</span> Start a new QGIS Project</h2>
+<section id="start-a-new-qgis-project" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="start-a-new-qgis-project"><span class="header-section-number">13.2</span> Start a new QGIS Project</h2>
 <blockquote class="blockquote">
 <p>DIY: Using the steps you had learned in previous hands-on exercise, start a new QGIS project. Save the project and give it a name (i.e.&nbsp;Hands-on_Ex11).</p>
 </blockquote>
 <p><strong>Reminder:</strong> Ensure that svy21 projection system is used.</p>
 </section>
-<section id="data-preparation" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">12.3</span> Data Preparation</h2>
-<section id="downloading-the-fire-stations-layer" class="level3" data-number="12.3.1">
-<h3 data-number="12.3.1" class="anchored" data-anchor-id="downloading-the-fire-stations-layer"><span class="header-section-number">12.3.1</span> Downloading the fire stations layer</h3>
+<section id="data-preparation" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">13.3</span> Data Preparation</h2>
+<section id="downloading-the-fire-stations-layer" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="downloading-the-fire-stations-layer"><span class="header-section-number">13.3.1</span> Downloading the fire stations layer</h3>
 <blockquote class="blockquote">
 <p>DIY: Using the steps you had learned, perform the following steps:</p>
 <ul>
@@ -296,8 +301,8 @@ ul.task-list{list-style: none;}
 </blockquote>
 <p><strong>Be warn:</strong> The original data is in <strong>wgs84</strong>. For the purpose of network analysis, the GIS data must be be in projected coordinates system (i.e.&nbsp;SVY21 for Singapore).</p>
 </section>
-<section id="extracting-and-preparing-road-network-layer" class="level3" data-number="12.3.2">
-<h3 data-number="12.3.2" class="anchored" data-anchor-id="extracting-and-preparing-road-network-layer"><span class="header-section-number">12.3.2</span> Extracting and preparing road network layer</h3>
+<section id="extracting-and-preparing-road-network-layer" class="level3" data-number="13.3.2">
+<h3 data-number="13.3.2" class="anchored" data-anchor-id="extracting-and-preparing-road-network-layer"><span class="header-section-number">13.3.2</span> Extracting and preparing road network layer</h3>
 <p>I can’t emphasize enough the importance of a quality data preparation in GIS analysis. In this sub-section, you will use basic QGIS functions to perform the following data preparation tasks:</p>
 <ul>
 <li><p>selecting all roads features with the study area</p></li>
@@ -368,8 +373,8 @@ ul.task-list{list-style: none;}
 </tr>
 </tbody>
 </table>
-<section id="selecting-all-road-network-with-the-study-area" class="level4" data-number="12.3.2.1">
-<h4 data-number="12.3.2.1" class="anchored" data-anchor-id="selecting-all-road-network-with-the-study-area"><span class="header-section-number">12.3.2.1</span> Selecting all road network with the study area</h4>
+<section id="selecting-all-road-network-with-the-study-area" class="level4" data-number="13.3.2.1">
+<h4 data-number="13.3.2.1" class="anchored" data-anchor-id="selecting-all-road-network-with-the-study-area"><span class="header-section-number">13.3.2.1</span> Selecting all road network with the study area</h4>
 <blockquote class="blockquote">
 <p>DIY: Performing the following task by using appropriate QGIS function(s) you had learned from previous hands-on exercises.:</p>
 <ul>
@@ -380,15 +385,15 @@ ul.task-list{list-style: none;}
 </blockquote>
 <p><strong>Be warn:</strong> The original data is in <strong>wgs84</strong>. For the purpose of network analysis, the road data must bein projected coordinates system (i.e.&nbsp;svy21 in Singapore).</p>
 </section>
-<section id="extracting-motor-vehicle-road-network" class="level4" data-number="12.3.2.2">
-<h4 data-number="12.3.2.2" class="anchored" data-anchor-id="extracting-motor-vehicle-road-network"><span class="header-section-number">12.3.2.2</span> Extracting motor vehicle road network</h4>
+<section id="extracting-motor-vehicle-road-network" class="level4" data-number="13.3.2.2">
+<h4 data-number="13.3.2.2" class="anchored" data-anchor-id="extracting-motor-vehicle-road-network"><span class="header-section-number">13.3.2.2</span> Extracting motor vehicle road network</h4>
 <blockquote class="blockquote">
 <p>DIY: Using appropriate QGIS function(s) you had learned from previous hands-on exercise, select road feature classes listed in Table 1 above from the <code>all_roads</code> layer. Save the GIS layer into GeoPackage format. Name the layer <code>roads</code>.</p>
 </blockquote>
 <p><strong>Reminder:</strong> Remove all the source data from QGIS project before continue to the next section.</p>
 </section>
-<section id="updating-speed-values-of-the-road-feature-classes" class="level4" data-number="12.3.2.3">
-<h4 data-number="12.3.2.3" class="anchored" data-anchor-id="updating-speed-values-of-the-road-feature-classes"><span class="header-section-number">12.3.2.3</span> Updating speed values of the road feature classes</h4>
+<section id="updating-speed-values-of-the-road-feature-classes" class="level4" data-number="13.3.2.3">
+<h4 data-number="13.3.2.3" class="anchored" data-anchor-id="updating-speed-values-of-the-road-feature-classes"><span class="header-section-number">13.3.2.3</span> Updating speed values of the road feature classes</h4>
 <p>In order to derive drive-time service areas from a road network, the road data must have a field containing the speed of each network feature class. The steps below will be used to update the speed field of road layer.</p>
 <ul>
 <li><p>From <strong>Layers</strong> panel, right-click on Roads.</p></li>
@@ -428,11 +433,11 @@ ul.task-list{list-style: none;}
 </section>
 </section>
 </section>
-<section id="delineating-network-service-areas-with-neat3-plugin" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="delineating-network-service-areas-with-neat3-plugin"><span class="header-section-number">12.4</span> Delineating Network Service Areas with NEAT3 Plugin</h2>
+<section id="delineating-network-service-areas-with-neat3-plugin" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="delineating-network-service-areas-with-neat3-plugin"><span class="header-section-number">13.4</span> Delineating Network Service Areas with NEAT3 Plugin</h2>
 <p>In this section, you will learn how to delineating network service areas by using QGIS Network Analysis Toolbox (QNEAT3) plugin.</p>
-<section id="buffering-method" class="level4" data-number="12.4.0.1">
-<h4 data-number="12.4.0.1" class="anchored" data-anchor-id="buffering-method"><span class="header-section-number">12.4.0.1</span> Buffering method</h4>
+<section id="buffering-method" class="level4" data-number="13.4.0.1">
+<h4 data-number="13.4.0.1" class="anchored" data-anchor-id="buffering-method"><span class="header-section-number">13.4.0.1</span> Buffering method</h4>
 <p>Buffering is one of the most commonly used GIS method to delineating service area. It is based on the concept of Euclidean distance (as-the-crow-flies). In general, this is done by creating a buffer zone with a certain radius (i.e.&nbsp;5 kilometeres) around a target location.</p>
 <p>For the purpose of this hands-on exercise, Bukit Batok Fire Station will be used as the target location.</p>
 <blockquote class="blockquote">
@@ -467,8 +472,8 @@ ul.task-list{list-style: none;}
 <p>Despite its popularity, using straight-line distances to delineate a service area can be rather misleading is real world geography. This is because the commonly used fire engines need to travel along a road in order to reach the fire incident location rather than flying like a crow where by the speed is almost constant.</p>
 <p><img src="img11/image17.jpg" class="img-fluid"></p>
 </section>
-<section id="shortest-network-distance-method" class="level4" data-number="12.4.0.2">
-<h4 data-number="12.4.0.2" class="anchored" data-anchor-id="shortest-network-distance-method"><span class="header-section-number">12.4.0.2</span> Shortest network distance method</h4>
+<section id="shortest-network-distance-method" class="level4" data-number="13.4.0.2">
+<h4 data-number="13.4.0.2" class="anchored" data-anchor-id="shortest-network-distance-method"><span class="header-section-number">13.4.0.2</span> Shortest network distance method</h4>
 <p>A more realistic approach to delineating service area is by using network distance. By and large, there are two approaches, namely shortest network distance and fastest network distance. In this sub-section, shortest network distance approach will be used. You will learn how to delineate service area using fastest distance approach in the next sub-section.</p>
 <p>To delineate service area using shortest distance approach, Iso-Area as Polygons (from Layer) function of QNEAT3 will be used.</p>
 <ul>
@@ -518,8 +523,8 @@ ul.task-list{list-style: none;}
 <p>The <code>Output Interpolation</code> layer is a raster layer created using triangular irregular network (TIN). On the other hand, <code>Output Polygon</code> layer is a polygon feature showing the 5-km service area of Bukit Batok Fire Station by road network.</p>
 <p>The <code>Output Polygon</code> is popularly know as isochrone. It is originated from Greek: <em>iso</em> means “the same” and <em>chronos</em> means “time”.</p>
 </section>
-<section id="fastest-distance-method" class="level4" data-number="12.4.0.3">
-<h4 data-number="12.4.0.3" class="anchored" data-anchor-id="fastest-distance-method"><span class="header-section-number">12.4.0.3</span> Fastest distance method</h4>
+<section id="fastest-distance-method" class="level4" data-number="13.4.0.3">
+<h4 data-number="13.4.0.3" class="anchored" data-anchor-id="fastest-distance-method"><span class="header-section-number">13.4.0.3</span> Fastest distance method</h4>
 <p>Instead of using distance to compute the shortest path, the fasted distance approach uses the speed to delineate the service area of a target location, in our case, Bukit Batok Fire Station. In this sub-section, you are going learn how to delineate a 5-min service area by using QNEAT3.</p>
 <ul>
 <li>From QGIS’s menu bar, select <strong>Processing</strong> -&gt; <strong>Toolbox</strong>.</li>
@@ -560,14 +565,15 @@ ul.task-list{list-style: none;}
 </div>
 </section>
 </section>
-<section id="comparing-buffer-shortest-and-fastest-service-area" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="comparing-buffer-shortest-and-fastest-service-area"><span class="header-section-number">12.5</span> Comparing Buffer, Shortest and Fastest Service Area</h2>
+<section id="comparing-buffer-shortest-and-fastest-service-area" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="comparing-buffer-shortest-and-fastest-service-area"><span class="header-section-number">13.5</span> Comparing Buffer, Shortest and Fastest Service Area</h2>
 <p>Figure below comparing the buffer service area and shortest distance service area.</p>
 <p><img src="img11/image14.jpg" class="img-fluid"></p>
 <p>Figure below compares the difference between buffer, shortest distance and fastest distance of Bukit Batok Fire Station.</p>
 <p><img src="img11/image15.jpg" class="img-fluid"></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
