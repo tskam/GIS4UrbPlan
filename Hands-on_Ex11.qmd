@@ -1,4 +1,4 @@
-# Delineating Service Area Using Network Distance Approach 
+# Delineating Service Area Using Network Distance Approach
 
 ## Setting the scene
 
