@@ -1,4 +1,4 @@
-# My First Date with QGIS
+# First Date with QGIS
 
 In this hands-on exercise, you will learn the basic operations of a GIS software in general and the graphic user interfaces (GUIs) of QGIS specifically.
 

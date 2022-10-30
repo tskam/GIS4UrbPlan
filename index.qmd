@@ -1,6 +1,6 @@
 # Welcome {.unnumbered}
 
-This workbook consists of a collection QGIS methods specially designed to support the teaching needs of **SMT201 Geographic Information Systems for Urban Planning**. Each exercise maps closely to the topic covers in the weekly lesson. Having said that, this workbook can be useful also for others who are interested find out more about the potential used of QGIS for urban planning and management.
+This workbook consists of a collection QGIS methods specially designed to support the teaching needs of **SMT201 Geographic Information Systems for Urban Planning**. Each exercise maps closely to the topic covers in the weekly lesson. Having said that, this workbook can be useful also for others who are interested to find out more about the potential used of QGIS for urban planning and management.
 
 ![](img/cover.jpg)
 

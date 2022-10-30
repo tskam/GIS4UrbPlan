@@ -5,7 +5,7 @@ project:
 book:
   title: "GIS for Urban Planning: QGIS methods"
   author: "Dr. Kam Tin Seong"
-  date: "09/11/2022"
+  date: "10/30/2022"
   chapters:
     - index.qmd
     - intro.qmd

@@ -100,7 +100,7 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Hands-on_Ex01.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">My First Date with QGIS</span></a>
+  <a href="./Hands-on_Ex01.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First Date with QGIS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -188,7 +188,12 @@ ul.task-list{list-style: none;}
   <li><a href="#downloading-the-fire-stations-layer" id="toc-downloading-the-fire-stations-layer" class="nav-link" data-scroll-target="#downloading-the-fire-stations-layer"> <span class="header-section-number">12.4.1</span> Downloading the fire stations layer</a></li>
   <li><a href="#extracting-and-preparing-road-network-layer" id="toc-extracting-and-preparing-road-network-layer" class="nav-link" data-scroll-target="#extracting-and-preparing-road-network-layer"> <span class="header-section-number">12.4.2</span> Extracting and preparing road network layer</a></li>
   </ul></li>
-  <li><a href="#delineating-network-service-areas-with-neat3-plugin" id="toc-delineating-network-service-areas-with-neat3-plugin" class="nav-link" data-scroll-target="#delineating-network-service-areas-with-neat3-plugin"> <span class="header-section-number">12.5</span> Delineating Network Service Areas with NEAT3 Plugin</a></li>
+  <li><a href="#delineating-network-service-areas-with-neat3-plugin" id="toc-delineating-network-service-areas-with-neat3-plugin" class="nav-link" data-scroll-target="#delineating-network-service-areas-with-neat3-plugin"> <span class="header-section-number">12.5</span> Delineating Network Service Areas with NEAT3 Plugin</a>
+  <ul class="collapse">
+  <li><a href="#buffering-method" id="toc-buffering-method" class="nav-link" data-scroll-target="#buffering-method"> <span class="header-section-number">12.5.1</span> Buffering method</a></li>
+  <li><a href="#shortest-network-distance-method" id="toc-shortest-network-distance-method" class="nav-link" data-scroll-target="#shortest-network-distance-method"> <span class="header-section-number">12.5.2</span> Shortest network distance method</a></li>
+  <li><a href="#fastest-distance-method" id="toc-fastest-distance-method" class="nav-link" data-scroll-target="#fastest-distance-method"> <span class="header-section-number">12.5.3</span> Fastest distance method</a></li>
+  </ul></li>
   <li><a href="#comparing-buffer-shortest-and-fastest-service-area" id="toc-comparing-buffer-shortest-and-fastest-service-area" class="nav-link" data-scroll-target="#comparing-buffer-shortest-and-fastest-service-area"> <span class="header-section-number">12.6</span> Comparing Buffer, Shortest and Fastest Service Area</a></li>
   </ul>
 </nav>
@@ -437,8 +442,8 @@ ul.task-list{list-style: none;}
 <section id="delineating-network-service-areas-with-neat3-plugin" class="level2" data-number="12.5">
 <h2 data-number="12.5" class="anchored" data-anchor-id="delineating-network-service-areas-with-neat3-plugin"><span class="header-section-number">12.5</span> Delineating Network Service Areas with NEAT3 Plugin</h2>
 <p>In this section, you will learn how to delineating network service areas by using QGIS Network Analysis Toolbox (QNEAT3) plugin.</p>
-<section id="buffering-method" class="level4" data-number="12.5.0.1">
-<h4 data-number="12.5.0.1" class="anchored" data-anchor-id="buffering-method"><span class="header-section-number">12.5.0.1</span> Buffering method</h4>
+<section id="buffering-method" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="buffering-method"><span class="header-section-number">12.5.1</span> Buffering method</h3>
 <p>Buffering is one of the most commonly used GIS method to delineating service area. It is based on the concept of Euclidean distance (as-the-crow-flies). In general, this is done by creating a buffer zone with a certain radius (i.e.&nbsp;5 kilometeres) around a target location.</p>
 <p>For the purpose of this hands-on exercise, Bukit Batok Fire Station will be used as the target location.</p>
 <blockquote class="blockquote">
@@ -473,8 +478,8 @@ ul.task-list{list-style: none;}
 <p>Despite its popularity, using straight-line distances to delineate a service area can be rather misleading is real world geography. This is because the commonly used fire engines need to travel along a road in order to reach the fire incident location rather than flying like a crow where by the speed is almost constant.</p>
 <p><img src="img11/image17.jpg" class="img-fluid"></p>
 </section>
-<section id="shortest-network-distance-method" class="level4" data-number="12.5.0.2">
-<h4 data-number="12.5.0.2" class="anchored" data-anchor-id="shortest-network-distance-method"><span class="header-section-number">12.5.0.2</span> Shortest network distance method</h4>
+<section id="shortest-network-distance-method" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="shortest-network-distance-method"><span class="header-section-number">12.5.2</span> Shortest network distance method</h3>
 <p>A more realistic approach to delineating service area is by using network distance. By and large, there are two approaches, namely shortest network distance and fastest network distance. In this sub-section, shortest network distance approach will be used. You will learn how to delineate service area using fastest distance approach in the next sub-section.</p>
 <p>To delineate service area using shortest distance approach, Iso-Area as Polygons (from Layer) function of QNEAT3 will be used.</p>
 <ul>
@@ -524,8 +529,8 @@ ul.task-list{list-style: none;}
 <p>The <code>Output Interpolation</code> layer is a raster layer created using triangular irregular network (TIN). On the other hand, <code>Output Polygon</code> layer is a polygon feature showing the 5-km service area of Bukit Batok Fire Station by road network.</p>
 <p>The <code>Output Polygon</code> is popularly know as isochrone. It is originated from Greek: <em>iso</em> means “the same” and <em>chronos</em> means “time”.</p>
 </section>
-<section id="fastest-distance-method" class="level4" data-number="12.5.0.3">
-<h4 data-number="12.5.0.3" class="anchored" data-anchor-id="fastest-distance-method"><span class="header-section-number">12.5.0.3</span> Fastest distance method</h4>
+<section id="fastest-distance-method" class="level3" data-number="12.5.3">
+<h3 data-number="12.5.3" class="anchored" data-anchor-id="fastest-distance-method"><span class="header-section-number">12.5.3</span> Fastest distance method</h3>
 <p>Instead of using distance to compute the shortest path, the fasted distance approach uses the speed to delineate the service area of a target location, in our case, Bukit Batok Fire Station. In this sub-section, you are going learn how to delineate a 5-min service area by using QNEAT3.</p>
 <ul>
 <li>From QGIS’s menu bar, select <strong>Processing</strong> -&gt; <strong>Toolbox</strong>.</li>

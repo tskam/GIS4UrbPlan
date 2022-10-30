@@ -187,7 +187,7 @@ The **Stop Editin**g dialog window appears.
 
 In this section, you will learn how to delineating network service areas by using QGIS Network Analysis Toolbox (QNEAT3) plugin.
 
-#### Buffering method
+### Buffering method
 
 Buffering is one of the most commonly used GIS method to delineating service area. It is based on the concept of Euclidean distance (as-the-crow-flies). In general, this is done by creating a buffer zone with a certain radius (i.e. 5 kilometeres) around a target location.
 
@@ -229,7 +229,7 @@ Despite its popularity, using straight-line distances to delineate a service are
 
 ![](img11/image17.jpg)
 
-#### Shortest network distance method
+### Shortest network distance method
 
 A more realistic approach to delineating service area is by using network distance. By and large, there are two approaches, namely shortest network distance and fastest network distance. In this sub-section, shortest network distance approach will be used. You will learn how to delineate service area using fastest distance approach in the next sub-section.
 
@@ -289,7 +289,7 @@ The `Output Interpolation` layer is a raster layer created using triangular irre
 
 The `Output Polygon` is popularly know as isochrone. It is originated from Greek: *iso* means "the same" and *chronos* means "time".
 
-#### Fastest distance method
+### Fastest distance method
 
 Instead of using distance to compute the shortest path, the fasted distance approach uses the speed to delineate the service area of a target location, in our case, Bukit Batok Fire Station. In this sub-section, you are going learn how to delineate a 5-min service area by using QNEAT3.
 
