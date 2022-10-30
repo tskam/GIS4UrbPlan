@@ -490,9 +490,16 @@
     "text": "12.6 Comparing Buffer, Shortest and Fastest Service Area\nFigure below comparing the buffer service area and shortest distance service area.\n\nFigure below compares the difference between buffer, shortest distance and fastest distance of Bukit Batok Fire Station."
   },
   {
+    "objectID": "Hands-on_Ex12.html",
+    "href": "Hands-on_Ex12.html",
+    "title": "13  Building GeoWeb Mapping Application using QGIS",
+    "section": "",
+    "text": "By the end of this hands-on exercise, you will be able to:"
+  },
+  {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "13  Summary",
+    "title": "14  Summary",
     "section": "",
     "text": "I sincerely hope that you have fun working with QGIS so far and had gain useful hands-on experiences on how to use QGIS to meet urban planning task."
   }
