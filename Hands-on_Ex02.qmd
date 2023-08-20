@@ -443,4 +443,4 @@ Your screen should look similar to the figure below.
 
 ![](img02/image30.jpg)
 
-> DIY: Use the skills you had learned from previous sections, 1. Re-organise the GIS layers so that you can see the polyclinics, and childcare centres are plotted on top of OpenStreetMap layer. 2. Navigate around the map areas and look for details.
+> DIY: Use the skills you had learned from previous sections, 1. Re-organise the GIS layers so that you can see schools, street and places and childcare centres are plotted on top of OpenStreetMap layer. 2. Navigate around the map areas and look for details.
