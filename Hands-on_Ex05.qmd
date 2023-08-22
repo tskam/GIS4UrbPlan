@@ -30,7 +30,7 @@ Three GIS data are available for this study. They are:
 -   Location SME and their associated information (i.e. SME)
 -   Outline map of Singapore (i.e. CoastalOutline)
 
-These dataset can be found in the `Hands-on_Ex06.zip`. You are required to download them and save into your local drive. Throughout this hands-on exercise, we will assume that these GIS data and other derived GIS data are stored in the `\SMT201\Hands-on_Ex06` sub-folder of your local drive.
+These dataset can be found in the `Hands-on_Ex05.zip`. You are required to download them and save into your local drive. Throughout this hands-on exercise, we will assume that these GIS data and other derived GIS data are stored in the `\SMT201\Hands-on_Ex05` sub-folder of your local drive.
 
 ## Data Preparation
 
