@@ -457,9 +457,42 @@ Your screen should look similar to the screenshot below.
 
 Notice that a new layer called *Clipped* has been added on **Layers** panel and display on **View** window.
 
+### Saving the clipped DEM into geopackage
+
 > DIY: Using the steps you had learned, save the *Clipped* layer into Geopackage database. Call the raster layer DEM.
 
-> DIY: Using the steps you had learned, remove the raw DEM layers, temporaly *Merged* and *Clipped* layers from QGIS.
+**The Solution:**
+
+The original DEM rater data are in wgs84 geographic coordinate system. Hence, before we can save the clipped DEM raster layer into Geopackage format, we need to reproject the raster GIS layer into svy21 Project Coodrinate System (i.e. EPSG 3414)
+
+-   From menu bar, click on Raster -\> Projection -\> Warp (Reproject).
+
+![](img06/image53a.jpg){width="400"}
+
+The **Wrap(Reproject)** dialog window appears.
+
+-   For **Input layer**, select *Clipped (mask) \[EPSG: 4326\]* from the drop-down menu.
+-   For **Source CRS\[optional\]**, select *EPSG:3414 - WGS 84* from the selection list.
+-   For **Target CRS\[optional\]**, select *Project CRS: EPSG: 3414 - SVY21 / Singapore TM* from the list.
+-   For **Resampling method to us**e, select *Nearest Neighbour*.
+
+Your screen should look similar to the screen shot below.
+
+![](img06/image53b.jpg)
+
+-   Keep the rest of the setting as default, click on Run button to execute the process.
+
+![](img06/image53c.jpg)
+
+-   Close the dialog window if the process completed without any error.
+
+Notice that a new virtual layer called Reproject has been added onto the layer panel.
+
+![](img06/image53d.jpg){width="400"}
+
+> DIY: Using the steps you had learned, save the Reprojected virtual layer into Geopackage. Call the raster layer DEM.
+
+> DIY: Using the steps you had learned, remove the raw DEM layers, temporaly *Merged*, *Clipped* and Reprojected layers from QGIS.
 
 ### Visibility Analysis with Raster GIS
 

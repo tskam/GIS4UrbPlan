@@ -223,8 +223,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#importing-dem-data-into-qgis" id="toc-importing-dem-data-into-qgis" class="nav-link" data-scroll-target="#importing-dem-data-into-qgis"><span class="header-section-number">7.6.2</span> Importing DEM data into QGIS</a></li>
   <li><a href="#combining-adjacent-raster-layers-into-one" id="toc-combining-adjacent-raster-layers-into-one" class="nav-link" data-scroll-target="#combining-adjacent-raster-layers-into-one"><span class="header-section-number">7.6.3</span> Combining adjacent raster layers into one</a></li>
   <li><a href="#extracting-raster-data-layer" id="toc-extracting-raster-data-layer" class="nav-link" data-scroll-target="#extracting-raster-data-layer"><span class="header-section-number">7.6.4</span> Extracting raster data layer</a></li>
-  <li><a href="#visibility-analysis-with-raster-gis" id="toc-visibility-analysis-with-raster-gis" class="nav-link" data-scroll-target="#visibility-analysis-with-raster-gis"><span class="header-section-number">7.6.5</span> Visibility Analysis with Raster GIS</a></li>
-  <li><a href="#profile-analysis" id="toc-profile-analysis" class="nav-link" data-scroll-target="#profile-analysis"><span class="header-section-number">7.6.6</span> Profile Analysis</a></li>
+  <li><a href="#saving-the-clipped-dem-into-geopackage" id="toc-saving-the-clipped-dem-into-geopackage" class="nav-link" data-scroll-target="#saving-the-clipped-dem-into-geopackage"><span class="header-section-number">7.6.5</span> Saving the clipped DEM into geopackage</a></li>
+  <li><a href="#visibility-analysis-with-raster-gis" id="toc-visibility-analysis-with-raster-gis" class="nav-link" data-scroll-target="#visibility-analysis-with-raster-gis"><span class="header-section-number">7.6.6</span> Visibility Analysis with Raster GIS</a></li>
+  <li><a href="#profile-analysis" id="toc-profile-analysis" class="nav-link" data-scroll-target="#profile-analysis"><span class="header-section-number">7.6.7</span> Profile Analysis</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -649,20 +650,50 @@ ul.task-list li input[type="checkbox"] {
 <li>Close the dialog window if the process completed without any error.</li>
 </ul>
 <p>Notice that a new layer called <em>Clipped</em> has been added on <strong>Layers</strong> panel and display on <strong>View</strong> window.</p>
+</section>
+<section id="saving-the-clipped-dem-into-geopackage" class="level3" data-number="7.6.5">
+<h3 data-number="7.6.5" class="anchored" data-anchor-id="saving-the-clipped-dem-into-geopackage"><span class="header-section-number">7.6.5</span> Saving the clipped DEM into geopackage</h3>
 <blockquote class="blockquote">
 <p>DIY: Using the steps you had learned, save the <em>Clipped</em> layer into Geopackage database. Call the raster layer DEM.</p>
 </blockquote>
+<p><strong>The Solution:</strong></p>
+<p>The original DEM rater data are in wgs84 geographic coordinate system. Hence, before we can save the clipped DEM raster layer into Geopackage format, we need to reproject the raster GIS layer into svy21 Project Coodrinate System (i.e.&nbsp;EPSG 3414)</p>
+<ul>
+<li>From menu bar, click on Raster -&gt; Projection -&gt; Warp (Reproject).</li>
+</ul>
+<p><img src="img06/image53a.jpg" class="img-fluid" width="400"></p>
+<p>The <strong>Wrap(Reproject)</strong> dialog window appears.</p>
+<ul>
+<li>For <strong>Input layer</strong>, select <em>Clipped (mask) [EPSG: 4326]</em> from the drop-down menu.</li>
+<li>For <strong>Source CRS[optional]</strong>, select <em>EPSG:3414 - WGS 84</em> from the selection list.</li>
+<li>For <strong>Target CRS[optional]</strong>, select <em>Project CRS: EPSG: 3414 - SVY21 / Singapore TM</em> from the list.</li>
+<li>For <strong>Resampling method to us</strong>e, select <em>Nearest Neighbour</em>.</li>
+</ul>
+<p>Your screen should look similar to the screen shot below.</p>
+<p><img src="img06/image53b.jpg" class="img-fluid"></p>
+<ul>
+<li>Keep the rest of the setting as default, click on Run button to execute the process.</li>
+</ul>
+<p><img src="img06/image53c.jpg" class="img-fluid"></p>
+<ul>
+<li>Close the dialog window if the process completed without any error.</li>
+</ul>
+<p>Notice that a new virtual layer called Reproject has been added onto the layer panel.</p>
+<p><img src="img06/image53d.jpg" class="img-fluid" width="400"></p>
 <blockquote class="blockquote">
-<p>DIY: Using the steps you had learned, remove the raw DEM layers, temporaly <em>Merged</em> and <em>Clipped</em> layers from QGIS.</p>
+<p>DIY: Using the steps you had learned, save the Reprojected virtual layer into Geopackage. Call the raster layer DEM.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>DIY: Using the steps you had learned, remove the raw DEM layers, temporaly <em>Merged</em>, <em>Clipped</em> and Reprojected layers from QGIS.</p>
 </blockquote>
 </section>
-<section id="visibility-analysis-with-raster-gis" class="level3" data-number="7.6.5">
-<h3 data-number="7.6.5" class="anchored" data-anchor-id="visibility-analysis-with-raster-gis"><span class="header-section-number">7.6.5</span> Visibility Analysis with Raster GIS</h3>
+<section id="visibility-analysis-with-raster-gis" class="level3" data-number="7.6.6">
+<h3 data-number="7.6.6" class="anchored" data-anchor-id="visibility-analysis-with-raster-gis"><span class="header-section-number">7.6.6</span> Visibility Analysis with Raster GIS</h3>
 <p>Visibility analysis is a widely used function in GIS. It identifies areas that can or cannot be seen from a single (or a set of) viewpoint(s). The clearly visible parts of an observer’s surrounding area, as well as hidden parts, may thus be evaluated.<br>
 Visibility analysis proves useful when selecting the best or optimal locations in urban studies, e.g., placement of various facilities which should be made visible (nice, interesting places) or those which should be rather hidden (e.g.&nbsp;wind turbines). Apart from architecture, visibility analysis is useful for tourism purposes, archaeology, communication engineering, and may be highly serviceable in the military.</p>
 <p>In this section, you will learn how to perform visibility between two Satellite Earth Stations by using QGIS.</p>
-<section id="importing-the-satellite-earth-station-gis-data" class="level4" data-number="7.6.5.1">
-<h4 data-number="7.6.5.1" class="anchored" data-anchor-id="importing-the-satellite-earth-station-gis-data"><span class="header-section-number">7.6.5.1</span> Importing the Satellite Earth Station GIS data</h4>
+<section id="importing-the-satellite-earth-station-gis-data" class="level4" data-number="7.6.6.1">
+<h4 data-number="7.6.6.1" class="anchored" data-anchor-id="importing-the-satellite-earth-station-gis-data"><span class="header-section-number">7.6.6.1</span> Importing the Satellite Earth Station GIS data</h4>
 <p>First, you need to import the Satellite Earth Station shapefile into QGIS.</p>
 <blockquote class="blockquote">
 <p>DIY: Using the steps you had learned, import Satellite_Earth_Station shapefile from shapefile folder into QGIS.</p>
@@ -670,8 +701,8 @@ Visibility analysis proves useful when selecting the best or optimal locations i
 <p>Your screen should look similar to the screenshot below.</p>
 <p><img src="img06/image54.jpg" class="img-fluid"></p>
 </section>
-<section id="installing-visual-analysis-plugin" class="level4" data-number="7.6.5.2">
-<h4 data-number="7.6.5.2" class="anchored" data-anchor-id="installing-visual-analysis-plugin"><span class="header-section-number">7.6.5.2</span> Installing Visual Analysis plugin</h4>
+<section id="installing-visual-analysis-plugin" class="level4" data-number="7.6.6.2">
+<h4 data-number="7.6.6.2" class="anchored" data-anchor-id="installing-visual-analysis-plugin"><span class="header-section-number">7.6.6.2</span> Installing Visual Analysis plugin</h4>
 <p>Next, you will install Visibility Analysis plugin.</p>
 <ul>
 <li>From the menu bar, select <strong>Plugins</strong> -&gt; <strong>Manage and Install Plugin</strong>.</li>
@@ -688,8 +719,8 @@ Visibility analysis proves useful when selecting the best or optimal locations i
 <li>Click on <strong>Close</strong> button to close the dialog window.</li>
 </ul>
 </section>
-<section id="creating-viewpoint-layer" class="level4" data-number="7.6.5.3">
-<h4 data-number="7.6.5.3" class="anchored" data-anchor-id="creating-viewpoint-layer"><span class="header-section-number">7.6.5.3</span> Creating viewpoint layer</h4>
+<section id="creating-viewpoint-layer" class="level4" data-number="7.6.6.3">
+<h4 data-number="7.6.6.3" class="anchored" data-anchor-id="creating-viewpoint-layer"><span class="header-section-number">7.6.6.3</span> Creating viewpoint layer</h4>
 <p>Before we can perform visibility analysis, a viewpoint layer must be created.</p>
 <ul>
 <li>From the menu bar, select <strong>Processing</strong> -&gt; <strong>Toolbox</strong>.</li>
@@ -759,8 +790,8 @@ Visibility analysis proves useful when selecting the best or optimal locations i
 <p>DIY: Using the steps you had learned, save <em>Output file</em> temporary layer into Geopackage format. Name the layer <em>Visibility layer</em>.</p>
 </blockquote>
 </section>
-<section id="symbolising-raster-layer" class="level4" data-number="7.6.5.4">
-<h4 data-number="7.6.5.4" class="anchored" data-anchor-id="symbolising-raster-layer"><span class="header-section-number">7.6.5.4</span> Symbolising raster layer</h4>
+<section id="symbolising-raster-layer" class="level4" data-number="7.6.6.4">
+<h4 data-number="7.6.6.4" class="anchored" data-anchor-id="symbolising-raster-layer"><span class="header-section-number">7.6.6.4</span> Symbolising raster layer</h4>
 <p>By default Visibility layer is shaded with gray colour. Now, we are going to symbolise Visibility layer.</p>
 <ul>
 <li>From <strong>Layers</strong> panel, right-click on <em>Visibility</em> and select <strong>Properties</strong> from the context menu.</li>
@@ -790,16 +821,16 @@ Visibility analysis proves useful when selecting the best or optimal locations i
 <p><img src="img06/image85.jpg" class="img-fluid"></p>
 </section>
 </section>
-<section id="profile-analysis" class="level3" data-number="7.6.6">
-<h3 data-number="7.6.6" class="anchored" data-anchor-id="profile-analysis"><span class="header-section-number">7.6.6</span> Profile Analysis</h3>
+<section id="profile-analysis" class="level3" data-number="7.6.7">
+<h3 data-number="7.6.7" class="anchored" data-anchor-id="profile-analysis"><span class="header-section-number">7.6.7</span> Profile Analysis</h3>
 <p>Another useful GIS analysis using DEM is calling profile analysis. Profiles or more appropriately called topographic profiles are cross-sectional views <strong>showing elevation along a line</strong>. In other words, if you could slice the Earth along that line and view it from the side, that two-dimensional graph displaying height would be a topographic profile.</p>
 <p>Figure below shows a cross-section profile view of Singapore Island Country Club. The red line on the map is the cross-section line. The line graph below the map is popularly known as profile graph whereby the x-axis is distance between the starting point and the end point of the cross-section line. The y-axis, on-the-other-hand, shows the elevation heights of the cross-section line. The unit of measurement is in meter.</p>
 <p><img src="img06/image66.jpg" class="img-fluid"></p>
 <p>Topographic profiles have different terms to describe them – vertical profiles, cross-section graphs, or 2D elevation charts. They can help you assess the difficulty of a trail or evaluate the feasibility of placing a rail line along a given route.</p>
 <p>Profile analysis have different uses in engineering (like fiber optic cable design), hydrology (slope along a channel with a rise-over-run), and land use planning (ski slope design).</p>
 <p>In this section of the hands-on exercise, you will learn how to perform profile analysis <strong>Profile tool</strong> plugin of QGIS.</p>
-<section id="installing-profile-tool-plugin" class="level4" data-number="7.6.6.1">
-<h4 data-number="7.6.6.1" class="anchored" data-anchor-id="installing-profile-tool-plugin"><span class="header-section-number">7.6.6.1</span> Installing Profile tool plugin</h4>
+<section id="installing-profile-tool-plugin" class="level4" data-number="7.6.7.1">
+<h4 data-number="7.6.7.1" class="anchored" data-anchor-id="installing-profile-tool-plugin"><span class="header-section-number">7.6.7.1</span> Installing Profile tool plugin</h4>
 <p>First, let us install Profile tool plugin if you have yet to do so.</p>
 <ul>
 <li>From the menu bar, select <strong>Plugins</strong> -&gt; <strong>Manage and Install Plugin</strong>.</li>
@@ -818,8 +849,8 @@ Visibility analysis proves useful when selecting the best or optimal locations i
 <li>Click on <strong>Close</strong> button to close the dialog window.</li>
 </ul>
 </section>
-<section id="analysing-and-visualising-profile-of-a-straight-line" class="level4" data-number="7.6.6.2">
-<h4 data-number="7.6.6.2" class="anchored" data-anchor-id="analysing-and-visualising-profile-of-a-straight-line"><span class="header-section-number">7.6.6.2</span> Analysing and visualising profile of a straight line</h4>
+<section id="analysing-and-visualising-profile-of-a-straight-line" class="level4" data-number="7.6.7.2">
+<h4 data-number="7.6.7.2" class="anchored" data-anchor-id="analysing-and-visualising-profile-of-a-straight-line"><span class="header-section-number">7.6.7.2</span> Analysing and visualising profile of a straight line</h4>
 <p>Let say we are interested to analyse the topographic profile of Singapore Island Country Club.</p>
 <ul>
 <li>From <strong>Browser</strong> panel, click to expand <strong>XYZ Tiles</strong>.</li>
@@ -857,8 +888,8 @@ Visibility analysis proves useful when selecting the best or optimal locations i
 <p>Notice that by default, the profile plot is interactive. When you hover the mouse on the profile plot as shown below, the corresponding location will be shown as a little red dot along the line-of-sight on the map view.</p>
 <p><img src="img06/image76.jpg" class="img-fluid"></p>
 </section>
-<section id="analysing-and-visualising-profile-along-a-path" class="level4" data-number="7.6.6.3">
-<h4 data-number="7.6.6.3" class="anchored" data-anchor-id="analysing-and-visualising-profile-along-a-path"><span class="header-section-number">7.6.6.3</span> Analysing and visualising profile along a path</h4>
+<section id="analysing-and-visualising-profile-along-a-path" class="level4" data-number="7.6.7.3">
+<h4 data-number="7.6.7.3" class="anchored" data-anchor-id="analysing-and-visualising-profile-along-a-path"><span class="header-section-number">7.6.7.3</span> Analysing and visualising profile along a path</h4>
 <p>Another common application of profile analysis is to visualising the profile along a path such as golfing track in the following use case.</p>
 <blockquote class="blockquote">
 <p>DIY: Using the steps you had learned, import OSM_pathGIS data from shapefile folder.</p>
