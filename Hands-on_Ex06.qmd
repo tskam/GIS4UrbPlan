@@ -457,11 +457,7 @@ Your screen should look similar to the screenshot below.
 
 Notice that a new layer called *Clipped* has been added on **Layers** panel and display on **View** window.
 
-### Saving the clipped DEM into geopackage
-
-> DIY: Using the steps you had learned, save the *Clipped* layer into Geopackage database. Call the raster layer DEM.
-
-**The Solution:**
+### Reprojecting raster GIS layer
 
 The original DEM rater data are in wgs84 geographic coordinate system. Hence, before we can save the clipped DEM raster layer into Geopackage format, we need to reproject the raster GIS layer into svy21 Project Coodrinate System (i.e. EPSG 3414)
 

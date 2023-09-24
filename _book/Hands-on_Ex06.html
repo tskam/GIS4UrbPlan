@@ -223,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#importing-dem-data-into-qgis" id="toc-importing-dem-data-into-qgis" class="nav-link" data-scroll-target="#importing-dem-data-into-qgis"><span class="header-section-number">7.6.2</span> Importing DEM data into QGIS</a></li>
   <li><a href="#combining-adjacent-raster-layers-into-one" id="toc-combining-adjacent-raster-layers-into-one" class="nav-link" data-scroll-target="#combining-adjacent-raster-layers-into-one"><span class="header-section-number">7.6.3</span> Combining adjacent raster layers into one</a></li>
   <li><a href="#extracting-raster-data-layer" id="toc-extracting-raster-data-layer" class="nav-link" data-scroll-target="#extracting-raster-data-layer"><span class="header-section-number">7.6.4</span> Extracting raster data layer</a></li>
-  <li><a href="#saving-the-clipped-dem-into-geopackage" id="toc-saving-the-clipped-dem-into-geopackage" class="nav-link" data-scroll-target="#saving-the-clipped-dem-into-geopackage"><span class="header-section-number">7.6.5</span> Saving the clipped DEM into geopackage</a></li>
+  <li><a href="#reprojecting-raster-gis-layer" id="toc-reprojecting-raster-gis-layer" class="nav-link" data-scroll-target="#reprojecting-raster-gis-layer"><span class="header-section-number">7.6.5</span> Reprojecting raster GIS layer</a></li>
   <li><a href="#visibility-analysis-with-raster-gis" id="toc-visibility-analysis-with-raster-gis" class="nav-link" data-scroll-target="#visibility-analysis-with-raster-gis"><span class="header-section-number">7.6.6</span> Visibility Analysis with Raster GIS</a></li>
   <li><a href="#profile-analysis" id="toc-profile-analysis" class="nav-link" data-scroll-target="#profile-analysis"><span class="header-section-number">7.6.7</span> Profile Analysis</a></li>
   </ul></li>
@@ -651,12 +651,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Notice that a new layer called <em>Clipped</em> has been added on <strong>Layers</strong> panel and display on <strong>View</strong> window.</p>
 </section>
-<section id="saving-the-clipped-dem-into-geopackage" class="level3" data-number="7.6.5">
-<h3 data-number="7.6.5" class="anchored" data-anchor-id="saving-the-clipped-dem-into-geopackage"><span class="header-section-number">7.6.5</span> Saving the clipped DEM into geopackage</h3>
-<blockquote class="blockquote">
-<p>DIY: Using the steps you had learned, save the <em>Clipped</em> layer into Geopackage database. Call the raster layer DEM.</p>
-</blockquote>
-<p><strong>The Solution:</strong></p>
+<section id="reprojecting-raster-gis-layer" class="level3" data-number="7.6.5">
+<h3 data-number="7.6.5" class="anchored" data-anchor-id="reprojecting-raster-gis-layer"><span class="header-section-number">7.6.5</span> Reprojecting raster GIS layer</h3>
 <p>The original DEM rater data are in wgs84 geographic coordinate system. Hence, before we can save the clipped DEM raster layer into Geopackage format, we need to reproject the raster GIS layer into svy21 Project Coodrinate System (i.e.&nbsp;EPSG 3414)</p>
 <ul>
 <li>From menu bar, click on Raster -&gt; Projection -&gt; Warp (Reproject).</li>
