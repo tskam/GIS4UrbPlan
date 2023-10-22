@@ -1,6 +1,6 @@
 # Shortest Path Analysis: QGIS methods
 
-Calculating the shortest distance between two points is a very common spatial problem that appears in our daily life quite often.  In this hands-on exercise, you will learn how to use QGIS tool as a solution for finding the shortest path distance or time by calculating cumulative cost between two points in a network. 
+Calculating the shortest distance between two points is a very common spatial problem that appears in our daily life quite often. In this hands-on exercise, you will learn how to use QGIS tool as a solution for finding the shortest path distance or time by calculating cumulative cost between two points in a network.
 
 By the end of this hands-on exercise, you will be able to:
 
@@ -17,7 +17,7 @@ In this hands-on exercise, you are tasked to derive an accessibility to eldercar
 
 Three major data sets will be used in this hands-on exercise. They are:
 
--   Master Plan 2014 Subzone Boundary from URA. This data can be downloaded from data.gov.sg.
+-   Master Plan 2019 Subzone Boundary from URA. This data can be downloaded from data.gov.sg.
 -   Eldercare services from Ministry of Social and Family Development. This data can be downloaded from data.gov.sg.
 -   Roads data from OpenStreetMap (OSM) data sets. OSM data sets can be downloaded from Geofabrik's free download [server](https://download.geofabrik.de/).
 
@@ -27,13 +27,13 @@ Three major data sets will be used in this hands-on exercise. They are:
 
 ### Start a new QGIS Project
 
-> DIY: Using the steps you had learned in previous hands-on exercise, start a new QGIS project. Save the project and give it a name (i.e. Hands-on_Ex10).
+> DIY: Using the steps you had learned in previous hands-on exercise, start a new QGIS project. Save the project and give it a name (i.e. Hands-on_Ex09).
 
 **Reminder:** Ensure that svy21 projection system is used.
 
 ### Preparing base layer for the study area
 
-> DIY: Download Master Plan 2014 Subzone Boundary from data.gov.sg and import it into QGIS. Then, save the GIS layer into GeoPackage format. Name the output layer as `mpsz2014`.
+> DIY: Download Master Plan 2019 Subzone Boundary from data.gov.sg and import it into QGIS. Then, save the GIS layer into GeoPackage format. Name the output layer as `mpsz2019`.
 
 ### Preparing eldercare layer
 
@@ -222,4 +222,3 @@ You screen should look similar to the screenshot below.
 > DIY: Using the steps you had learned from previous hands-on exercise, save the temporary Shortest Path layer into GeoPackage format. Name the layer `Shortest_path` and add it onto the map view.
 
 > DIY: Remove the temparory layer from the Layers panel.
-
