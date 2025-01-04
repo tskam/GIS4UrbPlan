@@ -14,21 +14,29 @@ The website should look something like this:
 
 ![](img/image1.jpg)
 
--   Click on **Download Now** button.
+-   Click on **Download** button.
+
+Your screen should look similar to the figure below.
+
+![](img/image1-1.jpg)
+
+-   Scroll downward and click on ![](img/image1-2.jpg){width="140" height="26"}
 
 Your screen should look similar to the figure below.
 
 ![](img/image2.jpg)
 
--   Click on **QGIS Standalone Installer Version 3.26**
+-   Click on **Latest Version for Windows (3.40)**.
 
-![](img/image3.jpg)
+Note:
 
-After a few seconds (depend on your network speed), a pop-up window appears.
+-   The version appears on your screen might be slightly different from the screenshot. It is alright at long as it is the latest version.
 
-![](img/image4.jpg)
+-   Change to other OS if your computer is not running Windows OS.
 
--   Click on the **Save File** button.
+After a few seconds (depend on your network speed), QGIS installer will start downloading.
+
+![](img/image3.jpg){width="350"}
 
 Be patient, the downloading will take a few minutes depend on the speed of your internet.
 

@@ -10,7 +10,9 @@ By the end of this session, you will be able to:
 -   create geospatially-enabled data
 -   create GIS Layer from a text data with georeference information
 -   transform a GIS data onto a different projection system
--   work with raster GIS data • work with internet geospatial services • work with geospatial database
+-   work with raster GIS data
+-   work with internet geospatial services
+-   work with geospatial database
 
 ## Working with Geospatial Data from data.gov.sg
 
