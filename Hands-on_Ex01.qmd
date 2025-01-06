@@ -6,15 +6,13 @@ In this hands-on exercise, you will learn the basic operations of a GIS software
 
 First, you will launch QGIS.
 
--   At your window desktop, double-click on **QGIS Desktop3.26** icon.
+-   At your window desktop, double-click on **QGIS Desktop 3.40.2** icon.
 
 After a few seconds, QGIS window appears.
 
--   On the *QGIS Tips! Dialog* window, click on the **OK** button.
-
 Your screen should look similar to the figure below.
 
-![](img/image1-5.jpg)
+![](img01/image1-5.jpg)
 
 ### Getting to know a GIS project file
 
@@ -31,7 +29,7 @@ You will find a file called `Hands-On01.qgs` in the sub-folder.
 
 The Notedpad window should look similar to the figure below.
 
-![](img/image1-6.jpg)
+![](img01/image1-6.jpg)
 
 Notice that the QGIS project file is actually in XML format.
 
@@ -50,21 +48,21 @@ The `Choose a QGIS project file to open` dialog window appears.
 
 Your screen should look similar to the figure below.
 
-![](img/image1-7.jpg)
+![](img01/image1-7.jpg)
 
 ## Exploring QGIS interfaces
 
 The QGIS interface comprises six major components. They are: menu bar, toolbar, map legend, browser, status bar and map view. The **Menu Bar** provides access to various features and functions of QGIS using hierarchical menu. The location of the menu and menu items is fixed, although if you activate certain plugins, they may add an additional menu to the bar.
 
-![](img/image1-8.jpg)
+![](img01/image1-8.jpg)
 
 The **Toolbar** replicates many of the features and functions in the Menu Bar, providing access to common features in a single click. The location of the toolbar is not fixed; if you hover over the edge of the toolbar and hold down the left mouse button you can drag the toolbar wherever you like.
 
-![](img/image1-9.jpg)
+![](img01/image1-9.jpg)
 
 The **Map Legend** lists data layers that are linked with the current project.
 
-![](img/image1-10.jpg){width="30%"}
+![](img01/image1-10.jpg){width="30%"}
 
 You can turn each of the data layer on and off by clicking on the checkbox in front of each data layer.
 
@@ -78,11 +76,11 @@ Notice that the Singapore boundary map on the Map View window re-appears.
 
 The **Browser**, a new feature in QGIS 2.0, allows users to see their file system and all of the GIS data files and databases. It also allows users to drag files from the file system into QGIS project.
 
-![](img/image1-11.jpg){width="30%"}
+![](img01/image1-11.jpg){width="30%"}
 
 The **Status Bar** shows the current scale of the map view, the coordinates of the current position of the cursor and the coordinate system used by the project. When a computation operation such as buffering is used, the progress meters will appear here to show the progress of the operations.
 
-![](img/image1-12.jpg)
+![](img01/image1-12.jpg)
 
 Last but not least, the **Map View** window displays all the active layers in the project.
 
@@ -92,14 +90,14 @@ Last but not least, the **Map View** window displays all the active layers in th
 
 In this section, you will learn how to navigate around the Map View. First, you will work with the navigation tools.
 
-![](img/image1-13.jpg){width="30%"}
+![](img01/image1-13.jpg){width="30%"}
 
 -   From the **Toolbar**, click on the **Zoom In** tool.
 -   Hover the mouse to the centre of Singapore, click once.
 
 Your screen should look similar to the figure below.
 
-![](img/image1-14.jpg)
+![](img01/image1-14.jpg)
 
 Notice that the map layer zooms into a new extent.
 
@@ -118,7 +116,7 @@ Next, you will learn how to zoom into a specific location using the Zoom In tool
 
 Your screen should look similar to the figure below. Notice that the URA MP2014 Landuse Plan layer appears now.
 
-![](img/image1-15.jpg)
+![](img01/image1-15.jpg)
 
 Next, you will return to the previous extent using alternative zooming tool.
 
@@ -136,14 +134,14 @@ In this section, you will learn how to change the map view by changing the map s
 -   Select **1:25,000**.
 -   Use the **Pan tool** to move the map area so that it looks similar to the figure below.
 
-![](img/image1-16.jpg)
+![](img01/image1-16.jpg)
 
 -   From the **Scale** of at the **Status bar**, click on the drop-down list again.
 -   Select **1:4500**.
 
 Your screen should look similar to the figure below. Notice that more detail appears when the map scale increases.
 
-![](img/image1-17.jpg)
+![](img01/image1-17.jpg)
 
 ## Exploring GIS data
 
@@ -158,7 +156,7 @@ In this sub-section, you will learn how to explore the information of individual
 
 The Layer Properties of Building layer appears. It provides the full metadata of Building layer, it symbolization configuration and the data fields.
 
-![](img/image1-18.jpg)
+![](img01/image1-18.jpg)
 
 By default, QGIS will display the general information of the selected layer. You can retrieve other information or configurations of the layer by clicking on the appropriate tab.
 
@@ -176,7 +174,7 @@ Let us examine other tab.
 
 You screen should look similar to the figure below.
 
-![](img/image1-19.jpg)
+![](img01/image1-19.jpg)
 
 Note that and the minimum map scale is 5000. That explains why the building layer only appears when the map scale of Map View is less than or equal to 1:5000.
 
@@ -186,7 +184,7 @@ Next, you will explore the data fields of Building layer.
 
 Your screen should look similar to the figure below.
 
-![](img/image1-20.jpg)
+![](img01/image1-20.jpg)
 
 Notice that there are 12 fields in the corresponding attribute table of Building layer. The Layer Properties window also shows the data type, length and precision of each field.
 
@@ -210,7 +208,7 @@ In this section, you will learn how to query information of a selected Shopping 
 
 Your screen should look similar to the figure below.
 
-![](img/image1-21.jpg)
+![](img01/image1-21.jpg)
 
 Notice that the selected shopping feature was highlighted (i.e. in red) and the Identify Results window appears.
 
@@ -226,7 +224,7 @@ The ability to interactively select a geographic feature and query its associate
 
 The **Attribute table** window appears.
 
-![](img/image1-22.jpg)
+![](img01/image1-22.jpg)
 
 The table provide detail information of each geographical feature (i.e. building) such as building name, postal code, road name, block number, just to name a few of them.
 

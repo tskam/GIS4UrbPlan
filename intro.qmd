@@ -42,11 +42,9 @@ Be patient, the downloading will take a few minutes depend on the speed of your 
 
 ## Installing QGIS
 
-In this section, you will learn how to install QGIS into your computer.
+In this section, you will learn how to install QGIS into your computer. Note that the instructions are based on Windows machine, if your computer is not Windows based, please adjust according to the OS of your computer.
 
--   Find the QGIS installer on your computer, right-click and select **Install** from the context menu to launch the setup.
-
--   Click on the **Yes** button when Windows prompt you with the dialog "Do you want to allow this app to make change to your device?"
+-   Find the QGIS installer on your computer, right-click and select **Open with** -\> **Windows installer** from the context menu to launch the setup.
 
 After a few second, the Setup Wizard dialog window appears.
 
@@ -66,19 +64,21 @@ The Destination Folder dialog window appears.
 
 ![](img/image7.jpg)
 
--   Ensure that the Destination Folder is at `C:\Program Files\QGIS 3.26.1\`
+-   Ensure that the Destination Folder is at `C:\Program Files\QGIS 3.40.2\`
 
 -   Keep both checkboxes selected.
 
 -   Click on the **Next** button.
 
-The **Ready to install QGIS 3.26.1 'Buenos Aires'** dialog window appears.
+The **Ready to install QGIS 3.40.2 'Bratislava'** dialog window appears.
 
 ![](img/image8.jpg)
 
 -   Click on **Install** button to start the installation process.
 
 ![](img/image9.jpg)
+
+-   Provide the administrator right when prompted.
 
 QGIS will begin to install. It may take a few minutes to install so be patient.
 
