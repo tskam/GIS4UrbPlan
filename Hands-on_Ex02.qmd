@@ -25,7 +25,7 @@ First, you are required to download the following geospatial and aspatial data f
 -   Master Plan 2014 Subzone Boundary (No Sea),
 -   Child Care Services,
 -   Street and Places, and
--   School Directory and Information
+-   General information of schools from School Directory and Information.
 
 ### Managing the imported data
 
@@ -37,15 +37,11 @@ For any GIS project, it is important for us to practice good document management
     -   unzipped their respective zipped files,
     -   extract the unzipped files, and
     -   place them in `geospatial` folder.
--   place the downloaded School Directory and Information zipped file into aspatial sub-folder.
-    -   unzipped the file,
-    -   copy and paste `general-information-of-schools.csv` into `aspatial` sub-folder.
+-   place the downloaded `Generalinformationofschools.csv` into `aspatial` sub-folder.
 
 The geospatial folder should look similar to the screenshot below.
 
 ![](img02/image1.jpg)
-
-Notice that besides the geospatial data files, I also include the metadata of the data into the folder. This is because the metadata provide useful information of the data and it is important for us to keep them for future references.
 
 ### Examining the geospatial data
 
@@ -82,13 +78,13 @@ You will start a new QGIS project.
 
 Next, you are going to learn how to bring geospatial data sets into QGIS via the **Browser** panel.
 
--   From the Browser panel, navigate to the path of Hands-on_Ex02\data\data.gov\geospatial as shown in the screenshot below.
+-   From the Browser panel, navigate to the path of `Hands-on_Ex02\geospatial` as shown in the screenshot below.
 
-![](img02/image4.jpg)
+![](img02/image4.jpg){width="450"}
 
--   Double-click on `child-care-services-geojson.geojson`.
+-   Double-click on `ChildCareServices.geojson`.
 
-Notice that `child-care-services-geojson.geojson` is added in the **Layer** panel and display on the View window as shown below.
+Notice that `ChildCareServices.geojson` is added in the **Layer** panel and display on the View window as shown below.
 
 ![](img02/image5.jpg)
 
@@ -98,10 +94,10 @@ Your screen should look similar to the figure below.
 
 ![](img02/image6.jpg)
 
-Notice that `child-care-services-geojson` layers does not appear on Map View. This is because it is covered by `MP14_SUBZONE_NO_SEA_PL` layer.
+Notice that `ChildCareServices` layers does not appear on Map View. This is because it is covered by `MP14_SUBZONE_NO_SEA_PL` layer.
 
 -   From the **Layer** panel, click on `MP14_SUBZONE_NO_SEA_PL` layer.
--   Hold down the left mouse button, drag and place it below `child-care-services-geojson`.
+-   Hold down the left mouse button, drag and place it below `ChildCareServices`.
 
 Now you should see all the active layers appear on the View window as shown below.
 
@@ -167,37 +163,37 @@ Before you move on to the next section, you should save the latest changes on th
 
 In a GIS project, it is always a good practice to keep the geospatial data set(s) in a same projected coordinate system, using the national projected coordinate system such as svy21 of Singapore.
 
-In this section, you will learn how to transform a geospatial data set from WGS84 Geographic Coordinate System to SVY21 Projected Coordinates System. You will also learn how to save the output into a new shapefile for permanent storage purpose. For the purpose of this exercise, `child-care-services-geojson` layer will be used.
+In this section, you will learn how to transform a geospatial data set from WGS84 Geographic Coordinate System to SVY21 Projected Coordinates System. You will also learn how to save the output into a new shapefile for permanent storage purpose. For the purpose of this exercise, `ChildCareServices` layer will be used.
 
 First, let us verify if an appropriate projection system was used.
 
--   From the **Layers** panel, right-click on `child-care-services-geojson` layer.
+-   From the **Layers** panel, right-click on `ChildCareServices` layer.
 -   Select **Properties**.
 
-The Layer Properties dialog window of `child-care-services-geojson` layer appears.
+The Layer Properties dialog window of `ChildCareServices` layer appears.
 
 ![](img02/image12.jpg)
 
 -   Click on **Source**.
 
-Notice that `child-care-services-geojson` layer is in WGS geographic coordinates system and not in SVY21 projected coordinates system.
+Notice that `ChildCareServices` layer is in WGS geographic coordinates system and not in SVY21 projected coordinates system.
 
 -   Click on **OK** button to close the dialog window.
 
-Next, we are going export the `child-care-services-geojson` layer into a new shapefile and at the same time transform the newly created shapefile into svy21 projected coordinates systems.
+Next, we are going export the `ChildCareServices` layer into a new shapefile and at the same time transform the newly created shapefile into svy21 projected coordinates systems.
 
--   From the **Layers** panel, right-click on `child-care-services-geojson` layer.
+-   From the **Layers** panel, right-click on `ChildCareServices` layer.
 -   Select **Export** -\> **Save Features As** from the context menu.
 
 The **Save Vector Layer** dialog window appears.
 
--   For **Format:**, select ESRI Shapefile from the drop-down list.
+-   For **Format:**, select **ESRI Shapefile** from the drop-down list.
 -   For **Save as**, click on the *Browse* button.
 
 The **Save Layer As** dialog window appear.
 
--   Navigate to `\SMT201\Hands-On02\data\data.gov\geospatial\` sub-folder.
--   For File Name, type `ChildcareServices`.
+-   Navigate to `\SMT201\Hands-On02\geospatial\` sub-folder.
+-   For File Name, type `ChildCareServices`.
 
 ![](img02/image13.jpg)
 
@@ -220,7 +216,7 @@ Notice that the **CRS** is **EPSG:3414 - SVY21 / SINGAPORE TM** now.
 
 Keep the rest of the default option check and you are ready to convert the geospatial data set into ESRI shapefile format and at the same time transform it into SVY21 projected coordinate system.
 
--   Click on the OK button.
+-   Click on the **OK** button.
 
 Notice that a new geospatial layer called `ChildcareServices` has been added on `Layers` panel and was plotted on the View window.
 
@@ -230,11 +226,11 @@ Notice that a new geospatial layer called `ChildcareServices` has been added on 
 
 You screen should look similar to the screensht above.
 
-Notice that `ChildcareServices` layer is in ESRI Shapefile format and its Coordinate Reference System in SVY21 / SINGAPORE TM.
+Notice that `ChildCareServices` layer is in ESRI Shapefile format and its Coordinate Reference System in SVY21 / SINGAPORE TM.
 
 -   Click on OK button to close the dialog window.
 
-> DIY: You can also remove `child-care-services-geojson` layer from Layers dialog window.
+> DIY: You can also remove `ChildCareServices` layer from Layers dialog window.
 
 ## Creating Geospatially-Enabled Data
 
@@ -244,30 +240,30 @@ Geocoding is the process of finding associated geographic coordinates (often exp
 
 ### Data Preparation
 
-In this section, you will learn how to create geospatially enable data by using `general-information-of-schools.csv` you downloaded from data.gov.sg.
+In this section, you will learn how to create geospatially enable data by using `Generalinformationofschools.csv` you downloaded from data.gov.sg.
 
-Note: In this section, we assume that `general-information-of-schools.csv` is stored in `\Hands-on_Ex02\data\data.gov\aspatial\` sub-folder and you have Microsoft Excel installed in your computer.
+Note: In this section, we assume that `Generalinformationofschools.csv` is stored in `\Hands-on_Ex02\aspatial\` sub-folder and you have Microsoft Excel installed in your computer.
 
-Let us review the content of `general-information-of-schools.csv` file.
+Let us review the content of `Generalinformationofschools.csv` file.
 
--   At File Explorer, navigate to the sub-folder where `general-information-of-schools.csv` is stored.
--   Right-click on `general-information-of-schools.csv` file.
+-   At File Explorer, navigate to the sub-folder where `Generalinformationofschools.csv` is stored.
+-   Right-click on `Generalinformationofschools.csv` file.
 -   From the context menu, select **Open with** -\> **Excel**.
 
 Your screen should look similar to the figure below.
 
 ![](img02/image16.jpg)
 
-Notice that `general-information-of-schools.csv` file consists of 31 fields. However, we only need to retain `school_name`, `address` and `postal_code` field.
+Notice that `Generalinformationofschools.csv` file consists of 31 fields. However, we only need to retain `school_name`, `address` and `postal_code` field.
 
 -   Use appropriate Excel function to delete the unwanted fields.
 
-Next, we will create two create two new fields. They are: `country` and `city`.
+Next, we will create two new fields. They are: `country` and `city`.
 
 -   Use appropriate Excel function to create two new fields. Call them `country` and `city`.
 -   Fill in the cell below `country` and `city` fields with `Singapore`.
 
-The final `general-information-of-schools.csv` should look similar to the screenshot below.
+The final `Generalinformationofschools.csv` should look similar to the screenshot below.
 
 ![](img02/image17.jpg)
 
@@ -339,12 +335,12 @@ In this exercise, OpenStreetmap/Nominatim geocoding service will be used.
 
 Geocode Tool will generate two output files. They are a point feature GIS data set along with a *Not Found CSV* file containing all rows that could not be geocoded (for whatever reason). We need to tell Geocode Tool where to keep these two output files.
 
--   Use File Explorer to create a new sub-folder called geocoding in \Hands-on_Ex02\data directory.
+-   Use File Explorer to create a new sub-folder called `geocoding` in `Hands-on_Ex02` directory.
 -   For **Output File Name**, click on **Browse** button.
 
 **Create or select a file** dialog window appears.
 
--   Navigate to the newly create *geocoding* sub-folder.
+-   Navigate to the newly create `geocoding` sub-folder.
 -   For **File name**, type `geocoded_sch.shp`.
 -   Click on **Save** button.
 
@@ -366,11 +362,13 @@ Now, you are ready to perform the geocoding function.
 
 • At the **Web Service Geocode** dialog window, click on **Apply** button.
 
+Be patient, the process will take some time to complete.
+
 When the geocoding function is completed, notice that a new shapefile layer will be added on QGIS map window. At the same time, the progress bar will indicate numbers of records that have been geocoded successfully as shown below.
 
 ![](img02/image23.jpg)
 
-The output report shows that out of the 346 schools data records, 325 of them have been geocoded successfully.
+The output report shows that out of the 337 schools data records, 336 of them have been geocoded successfully.
 
 -   click on **Close** button to closed the dialog window.
 
@@ -378,7 +376,7 @@ Let us examine the layer properties of the newly created `geocoded_sch` layer.
 
 -   Hover your mouse over geocoded_sch layer, right-click and select **Open Attribute Table** from the context menu.
 
-The **Attribute tabl**e of `geocoded_sch` appears.
+The **Attribute table** of `geocoded_sch` appears.
 
 ![](img02/image24.jpg)
 
@@ -388,10 +386,10 @@ Notice that all columns from the input CSV file are added as attributes in the o
 
 ## Working with Raster GIS data
 
-Raster data such as those collected by remote sensing satellite or airplanes are one of the important data sources of a GIS project. By and large, these data are stored in image file format such as TIF, GeoTIF, JPG and GeoJPG. In this section, you will learn how to bring a raster data in GeoTIF file format into QGIS. The raster data is called Chinatown.tif. It is available in \Hands-on_Ex02\data\RasterData sub-folder.
+Raster data such as those collected by remote sensing satellite or airplanes are one of the important data sources of a GIS project. By and large, these data are stored in image file format such as TIF, GeoTIF, JPG and GeoJPG. In this section, you will learn how to bring a raster data in GeoTIF file format into QGIS. The raster data is called Chinatown.tif. It is available in `Hands-on_Ex02\RasterData` sub-folder.
 
 -   Start **File Explorer**.
--   Navigate to \Hands-on_Ex02\data\RasterData sub-folder.
+-   Navigate to `Hands-on_Ex02\data\RasterData` sub-folder.
 
 You should see the following files in the sub-folders.
 
@@ -411,7 +409,7 @@ Next, you will important Chinatown raster data into QGIS.
 
 -   From **Browser** panel, navigate to sub-folder as shown in the screenshot below.
 
-![](img02/image27.jpg)
+![](img02/image27.jpg){width="350"}
 
 -   Double-click on `Chinatown.tif`.
 
@@ -437,7 +435,7 @@ DIY: Before we can use OSM service, let us display the map view by using the ful
 
 OpenStreetMap icon appears as shown in the screenshot below.
 
-![](img02/image29.jpg)
+![](img02/image29.jpg){width="350"}
 
 -   Double-click on **OpenStreetMap** icon.
 

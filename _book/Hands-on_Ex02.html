@@ -282,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Master Plan 2014 Subzone Boundary (No Sea),</li>
 <li>Child Care Services,</li>
 <li>Street and Places, and</li>
-<li>School Directory and Information</li>
+<li>General information of schools from School Directory and Information.</li>
 </ul>
 </section>
 <section id="managing-the-imported-data" class="level3" data-number="3.2.2">
@@ -298,15 +298,10 @@ ul.task-list li input[type="checkbox"] {
 <li>extract the unzipped files, and</li>
 <li>place them in <code>geospatial</code> folder.</li>
 </ul></li>
-<li>place the downloaded School Directory and Information zipped file into aspatial sub-folder.
-<ul>
-<li>unzipped the file,</li>
-<li>copy and paste <code>general-information-of-schools.csv</code> into <code>aspatial</code> sub-folder.</li>
-</ul></li>
+<li>place the downloaded <code>Generalinformationofschools.csv</code> into <code>aspatial</code> sub-folder.</li>
 </ul>
 <p>The geospatial folder should look similar to the screenshot below.</p>
 <p><img src="img02/image1.jpg" class="img-fluid"></p>
-<p>Notice that besides the geospatial data files, I also include the metadata of the data into the folder. This is because the metadata provide useful information of the data and it is important for us to keep them for future references.</p>
 </section>
 <section id="examining-the-geospatial-data" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="examining-the-geospatial-data"><span class="header-section-number">3.2.3</span> Examining the geospatial data</h3>
@@ -338,23 +333,23 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Next, you are going to learn how to bring geospatial data sets into QGIS via the <strong>Browser</strong> panel.</p>
 <ul>
-<li>From the Browser panel, navigate to the path of Hands-on_Ex02.govas shown in the screenshot below.</li>
+<li>From the Browser panel, navigate to the path of <code>Hands-on_Ex02\geospatial</code> as shown in the screenshot below.</li>
 </ul>
-<p><img src="img02/image4.jpg" class="img-fluid"></p>
+<p><img src="img02/image4.jpg" class="img-fluid" width="450"></p>
 <ul>
-<li>Double-click on <code>child-care-services-geojson.geojson</code>.</li>
+<li>Double-click on <code>ChildCareServices.geojson</code>.</li>
 </ul>
-<p>Notice that <code>child-care-services-geojson.geojson</code> is added in the <strong>Layer</strong> panel and display on the View window as shown below.</p>
+<p>Notice that <code>ChildCareServices.geojson</code> is added in the <strong>Layer</strong> panel and display on the View window as shown below.</p>
 <p><img src="img02/image5.jpg" class="img-fluid"></p>
 <blockquote class="blockquote">
 <p>DIY: Using the steps you had learned, bring in <code>MP14_SUBZONE_NO_SEA_PL.shp</code> and <code>StreetsandPlaces.shp</code> into QGIS.</p>
 </blockquote>
 <p>Your screen should look similar to the figure below.</p>
 <p><img src="img02/image6.jpg" class="img-fluid"></p>
-<p>Notice that <code>child-care-services-geojson</code> layers does not appear on Map View. This is because it is covered by <code>MP14_SUBZONE_NO_SEA_PL</code> layer.</p>
+<p>Notice that <code>ChildCareServices</code> layers does not appear on Map View. This is because it is covered by <code>MP14_SUBZONE_NO_SEA_PL</code> layer.</p>
 <ul>
 <li>From the <strong>Layer</strong> panel, click on <code>MP14_SUBZONE_NO_SEA_PL</code> layer.</li>
-<li>Hold down the left mouse button, drag and place it below <code>child-care-services-geojson</code>.</li>
+<li>Hold down the left mouse button, drag and place it below <code>ChildCareServices</code>.</li>
 </ul>
 <p>Now you should see all the active layers appear on the View window as shown below.</p>
 <p><img src="img02/image7.jpg" class="img-fluid"></p>
@@ -412,35 +407,35 @@ ul.task-list li input[type="checkbox"] {
 <section id="transforming-coordinate-system" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="transforming-coordinate-system"><span class="header-section-number">3.3.2</span> Transforming coordinate system</h3>
 <p>In a GIS project, it is always a good practice to keep the geospatial data set(s) in a same projected coordinate system, using the national projected coordinate system such as svy21 of Singapore.</p>
-<p>In this section, you will learn how to transform a geospatial data set from WGS84 Geographic Coordinate System to SVY21 Projected Coordinates System. You will also learn how to save the output into a new shapefile for permanent storage purpose. For the purpose of this exercise, <code>child-care-services-geojson</code> layer will be used.</p>
+<p>In this section, you will learn how to transform a geospatial data set from WGS84 Geographic Coordinate System to SVY21 Projected Coordinates System. You will also learn how to save the output into a new shapefile for permanent storage purpose. For the purpose of this exercise, <code>ChildCareServices</code> layer will be used.</p>
 <p>First, let us verify if an appropriate projection system was used.</p>
 <ul>
-<li>From the <strong>Layers</strong> panel, right-click on <code>child-care-services-geojson</code> layer.</li>
+<li>From the <strong>Layers</strong> panel, right-click on <code>ChildCareServices</code> layer.</li>
 <li>Select <strong>Properties</strong>.</li>
 </ul>
-<p>The Layer Properties dialog window of <code>child-care-services-geojson</code> layer appears.</p>
+<p>The Layer Properties dialog window of <code>ChildCareServices</code> layer appears.</p>
 <p><img src="img02/image12.jpg" class="img-fluid"></p>
 <ul>
 <li>Click on <strong>Source</strong>.</li>
 </ul>
-<p>Notice that <code>child-care-services-geojson</code> layer is in WGS geographic coordinates system and not in SVY21 projected coordinates system.</p>
+<p>Notice that <code>ChildCareServices</code> layer is in WGS geographic coordinates system and not in SVY21 projected coordinates system.</p>
 <ul>
 <li>Click on <strong>OK</strong> button to close the dialog window.</li>
 </ul>
-<p>Next, we are going export the <code>child-care-services-geojson</code> layer into a new shapefile and at the same time transform the newly created shapefile into svy21 projected coordinates systems.</p>
+<p>Next, we are going export the <code>ChildCareServices</code> layer into a new shapefile and at the same time transform the newly created shapefile into svy21 projected coordinates systems.</p>
 <ul>
-<li>From the <strong>Layers</strong> panel, right-click on <code>child-care-services-geojson</code> layer.</li>
+<li>From the <strong>Layers</strong> panel, right-click on <code>ChildCareServices</code> layer.</li>
 <li>Select <strong>Export</strong> -&gt; <strong>Save Features As</strong> from the context menu.</li>
 </ul>
 <p>The <strong>Save Vector Layer</strong> dialog window appears.</p>
 <ul>
-<li>For <strong>Format:</strong>, select ESRI Shapefile from the drop-down list.</li>
+<li>For <strong>Format:</strong>, select <strong>ESRI Shapefile</strong> from the drop-down list.</li>
 <li>For <strong>Save as</strong>, click on the <em>Browse</em> button.</li>
 </ul>
 <p>The <strong>Save Layer As</strong> dialog window appear.</p>
 <ul>
-<li>Navigate to <code>\SMT201\Hands-On02\data\data.gov\geospatial\</code> sub-folder.</li>
-<li>For File Name, type <code>ChildcareServices</code>.</li>
+<li>Navigate to <code>\SMT201\Hands-On02\geospatial\</code> sub-folder.</li>
+<li>For File Name, type <code>ChildCareServices</code>.</li>
 </ul>
 <p><img src="img02/image13.jpg" class="img-fluid"></p>
 <ul>
@@ -460,7 +455,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Notice that the <strong>CRS</strong> is <strong>EPSG:3414 - SVY21 / SINGAPORE TM</strong> now.</p>
 <p>Keep the rest of the default option check and you are ready to convert the geospatial data set into ESRI shapefile format and at the same time transform it into SVY21 projected coordinate system.</p>
 <ul>
-<li>Click on the OK button.</li>
+<li>Click on the <strong>OK</strong> button.</li>
 </ul>
 <p>Notice that a new geospatial layer called <code>ChildcareServices</code> has been added on <code>Layers</code> panel and was plotted on the View window.</p>
 <blockquote class="blockquote">
@@ -468,12 +463,12 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p><img src="img02/image15.jpg" class="img-fluid"></p>
 <p>You screen should look similar to the screensht above.</p>
-<p>Notice that <code>ChildcareServices</code> layer is in ESRI Shapefile format and its Coordinate Reference System in SVY21 / SINGAPORE TM.</p>
+<p>Notice that <code>ChildCareServices</code> layer is in ESRI Shapefile format and its Coordinate Reference System in SVY21 / SINGAPORE TM.</p>
 <ul>
 <li>Click on OK button to close the dialog window.</li>
 </ul>
 <blockquote class="blockquote">
-<p>DIY: You can also remove <code>child-care-services-geojson</code> layer from Layers dialog window.</p>
+<p>DIY: You can also remove <code>ChildCareServices</code> layer from Layers dialog window.</p>
 </blockquote>
 </section>
 </section>
@@ -483,26 +478,26 @@ ul.task-list li input[type="checkbox"] {
 <p>Geocoding is the process of finding associated geographic coordinates (often expressed as latitude and longitude) from other geographic data, such as street addresses, zip codes or postal codes (http://en.wikipedia.org/wiki/Geocoding).</p>
 <section id="data-preparation" class="level3" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">3.4.1</span> Data Preparation</h3>
-<p>In this section, you will learn how to create geospatially enable data by using <code>general-information-of-schools.csv</code> you downloaded from data.gov.sg.</p>
-<p>Note: In this section, we assume that <code>general-information-of-schools.csv</code> is stored in <code>\Hands-on_Ex02\data\data.gov\aspatial\</code> sub-folder and you have Microsoft Excel installed in your computer.</p>
-<p>Let us review the content of <code>general-information-of-schools.csv</code> file.</p>
+<p>In this section, you will learn how to create geospatially enable data by using <code>Generalinformationofschools.csv</code> you downloaded from data.gov.sg.</p>
+<p>Note: In this section, we assume that <code>Generalinformationofschools.csv</code> is stored in <code>\Hands-on_Ex02\aspatial\</code> sub-folder and you have Microsoft Excel installed in your computer.</p>
+<p>Let us review the content of <code>Generalinformationofschools.csv</code> file.</p>
 <ul>
-<li>At File Explorer, navigate to the sub-folder where <code>general-information-of-schools.csv</code> is stored.</li>
-<li>Right-click on <code>general-information-of-schools.csv</code> file.</li>
+<li>At File Explorer, navigate to the sub-folder where <code>Generalinformationofschools.csv</code> is stored.</li>
+<li>Right-click on <code>Generalinformationofschools.csv</code> file.</li>
 <li>From the context menu, select <strong>Open with</strong> -&gt; <strong>Excel</strong>.</li>
 </ul>
 <p>Your screen should look similar to the figure below.</p>
 <p><img src="img02/image16.jpg" class="img-fluid"></p>
-<p>Notice that <code>general-information-of-schools.csv</code> file consists of 31 fields. However, we only need to retain <code>school_name</code>, <code>address</code> and <code>postal_code</code> field.</p>
+<p>Notice that <code>Generalinformationofschools.csv</code> file consists of 31 fields. However, we only need to retain <code>school_name</code>, <code>address</code> and <code>postal_code</code> field.</p>
 <ul>
 <li>Use appropriate Excel function to delete the unwanted fields.</li>
 </ul>
-<p>Next, we will create two create two new fields. They are: <code>country</code> and <code>city</code>.</p>
+<p>Next, we will create two new fields. They are: <code>country</code> and <code>city</code>.</p>
 <ul>
 <li>Use appropriate Excel function to create two new fields. Call them <code>country</code> and <code>city</code>.</li>
 <li>Fill in the cell below <code>country</code> and <code>city</code> fields with <code>Singapore</code>.</li>
 </ul>
-<p>The final <code>general-information-of-schools.csv</code> should look similar to the screenshot below.</p>
+<p>The final <code>Generalinformationofschools.csv</code> should look similar to the screenshot below.</p>
 <p><img src="img02/image17.jpg" class="img-fluid"></p>
 <ul>
 <li>Use the <em>Save as</em> function of Excel to save the tidied csv file into Hands-on_Ex02.govsub-folder. Name the output file <code>schools.csv</code>.</li>
@@ -568,12 +563,12 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Geocode Tool will generate two output files. They are a point feature GIS data set along with a <em>Not Found CSV</em> file containing all rows that could not be geocoded (for whatever reason). We need to tell Geocode Tool where to keep these two output files.</p>
 <ul>
-<li>Use File Explorer to create a new sub-folder called geocoding in -on_Ex02&nbsp;directory.</li>
+<li>Use File Explorer to create a new sub-folder called <code>geocoding</code> in <code>Hands-on_Ex02</code> directory.</li>
 <li>For <strong>Output File Name</strong>, click on <strong>Browse</strong> button.</li>
 </ul>
 <p><strong>Create or select a file</strong> dialog window appears.</p>
 <ul>
-<li>Navigate to the newly create <em>geocoding</em> sub-folder.</li>
+<li>Navigate to the newly create <code>geocoding</code> sub-folder.</li>
 <li>For <strong>File name</strong>, type <code>geocoded_sch.shp</code>.</li>
 <li>Click on <strong>Save</strong> button.</li>
 </ul>
@@ -591,6 +586,7 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="img02/image22.jpg" class="img-fluid"></p>
 <p>Now, you are ready to perform the geocoding function.</p>
 <p>• At the <strong>Web Service Geocode</strong> dialog window, click on <strong>Apply</strong> button.</p>
+<p>Be patient, the process will take some time to complete.</p>
 <p>When the geocoding function is completed, notice that a new shapefile layer will be added on QGIS map window. At the same time, the progress bar will indicate numbers of records that have been geocoded successfully as shown below.</p>
 <p><img src="img02/image23.jpg" class="img-fluid"></p>
 <p>The output report shows that out of the 346 schools data records, 325 of them have been geocoded successfully.</p>
@@ -611,10 +607,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="working-with-raster-gis-data" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="working-with-raster-gis-data"><span class="header-section-number">3.5</span> Working with Raster GIS data</h2>
-<p>Raster data such as those collected by remote sensing satellite or airplanes are one of the important data sources of a GIS project. By and large, these data are stored in image file format such as TIF, GeoTIF, JPG and GeoJPG. In this section, you will learn how to bring a raster data in GeoTIF file format into QGIS. The raster data is called Chinatown.tif. It is available in -on_Ex02sub-folder.</p>
+<p>Raster data such as those collected by remote sensing satellite or airplanes are one of the important data sources of a GIS project. By and large, these data are stored in image file format such as TIF, GeoTIF, JPG and GeoJPG. In this section, you will learn how to bring a raster data in GeoTIF file format into QGIS. The raster data is called Chinatown.tif. It is available in <code>Hands-on_Ex02\RasterData</code> sub-folder.</p>
 <ul>
 <li>Start <strong>File Explorer</strong>.</li>
-<li>Navigate to -on_Ex02sub-folder.</li>
+<li>Navigate to <code>Hands-on_Ex02\data\RasterData</code> sub-folder.</li>
 </ul>
 <p>You should see the following files in the sub-folders.</p>
 <p><img src="img02/image25.jpg" class="img-fluid"></p>
@@ -629,7 +625,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>From <strong>Browser</strong> panel, navigate to sub-folder as shown in the screenshot below.</li>
 </ul>
-<p><img src="img02/image27.jpg" class="img-fluid"></p>
+<p><img src="img02/image27.jpg" class="img-fluid" width="350"></p>
 <ul>
 <li>Double-click on <code>Chinatown.tif</code>.</li>
 </ul>
@@ -652,7 +648,7 @@ ul.task-list li input[type="checkbox"] {
 <li>From <strong>Browser</strong> panel, click on the triangle in front of <strong>XYZ Tiles</strong>.</li>
 </ul>
 <p>OpenStreetMap icon appears as shown in the screenshot below.</p>
-<p><img src="img02/image29.jpg" class="img-fluid"></p>
+<p><img src="img02/image29.jpg" class="img-fluid" width="350"></p>
 <ul>
 <li>Double-click on <strong>OpenStreetMap</strong> icon.</li>
 </ul>
