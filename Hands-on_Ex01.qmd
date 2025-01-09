@@ -1,4 +1,18 @@
-# First Date with QGIS
+---
+title: "First Date with QGIS"
+date: "10/30/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
 
 In this hands-on exercise, you will learn the basic operations of a GIS software in general and the graphic user interfaces (GUIs) of QGIS specifically.
 
@@ -277,3 +291,10 @@ Notice that the view will zoom to the same map extend centre at the Downtown Cen
 > DIY: Choose a planning area i.e. Choa Chu Kang. Next, using the steps you had learned from earlier section, create a new spatial bookmark.
 
 Whew! That was a lot to take in! Take a deep breath and relax. By now you should have a good understanding of the basic operations of QGIS. You can start playing with it and practice the techniques that you have learned.
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex01.html",
+                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex01.pdf")
+```
