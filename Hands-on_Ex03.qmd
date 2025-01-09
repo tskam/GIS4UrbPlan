@@ -1,4 +1,18 @@
-# GIS Mapping and Geovisualisation
+---
+title: "GIS Mapping and Geovisualisation"
+date: "10/30/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
 
 Geovisualization or “Geographic Visualization” concerns the visual representations of geospatial data and the use of cartographic techniques to support visual analytics. In this exercise, you will learn how to prepare qualitative and quantitative geovisualisation by using QGIS. You will also learn how to create a joint table by using the concept of georelational data model of GIS.
 
@@ -552,3 +566,11 @@ When the operation completed, a new data layer called `TOTPOP2000` will be added
 ![](img03/image53.jpg){width="250"}
 
 > DIY: Using the steps you had learned, remove `QueryLayer` from **Layer** panel.
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex03.html",
+                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex03.pdf")
+```
+

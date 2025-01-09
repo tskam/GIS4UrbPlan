@@ -1,4 +1,18 @@
-# Working with GIS Data
+---
+title: "Working with GIS Data"
+date: "10/30/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
 
 A GIS is specially designed to manage geospatial data. This hands-on exercise consists of five sections. First, you will learn how to import geospatial data from different sources and file format into QGIS. At the same time, you will also learn how to check their feature type, coordinate system and other related information. You will also learn how to create a GIS data from an aspatial data by using QGIS. Next, you will learn how to transform this newly created GIS layer into Singapore National projected coordinates systems (i.e. SVY21). Lastly, you will also learn how to use the geocoding function of QGIS to create geospatially referenced data from a non-spatial data.
 
@@ -444,3 +458,10 @@ Your screen should look similar to the figure below.
 ![](img02/image30.jpg)
 
 > DIY: Use the skills you had learned from previous sections, 1. Re-organise the GIS layers so that you can see schools, street and places and childcare centres are plotted on top of OpenStreetMap layer. 2. Navigate around the map areas and look for details.
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex02.html",
+                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex02.pdf")
+```
