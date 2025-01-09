@@ -1,6 +1,12 @@
 # Beyond Mapping: Vector-based GIS Analysis for Urban Applications
 
-The true power of a GIS of is its geoprocessing and analysis capability. In this hands-on exercise, you will learn how to combine geoprocessing and GIS analysis function of QGIS to meet urban application needs.
+The true power of a GIS of is its geoprocessing and analysis capability. **Geoprocessing** is a GIS operation used to manipulate GIS data. A typical geoprocessing operation takes an input dataset, performs an operation on that dataset, and returns the result of the operation as an output dataset. Common geoprocessing operations include geographic feature overlay, feature selection and analysis, topology processing, raster processing, and data conversion. 
+
+GIS analysis, on the other hand, is the process of examining the locations, attributes, and relationships of features in spatial data through overlay and other analytical techniques in order to address a question or gain useful geospatial knowledge. GIS analysis extracts or creates new information from spatial data.
+
+In this hands-on exercise, you will learn how to combine geoprocessing and GIS analysis functions of QGIS to meet urban application needs.
+
+## Learning Outcome 
 
 By the end of this session, you will be able to:
 
