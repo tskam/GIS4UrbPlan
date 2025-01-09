@@ -1,4 +1,18 @@
-# Delineating Service Area Using Network Distance Approach
+---
+title: "Delineating Service Area Using Network Distance Approach"
+date: "10/30/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
 
 ## Setting the scene
 
@@ -350,3 +364,12 @@ Figure below comparing the buffer service area and shortest distance service are
 Figure below compares the difference between buffer, shortest distance and fastest distance of Bukit Batok Fire Station.
 
 ![](img11/image15.jpg)
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex11.html",
+                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex11.pdf")
+```
+
+

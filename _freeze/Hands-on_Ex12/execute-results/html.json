@@ -1,0 +1,15 @@
+{
+  "hash": "13f0d6cdb39dd710c0b89d312f2e99da",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Building GeoWeb Mapping Application using QGIS\"\ndate: \"10/30/2022\"\ndate-modified: \"last-modified\"\nformat:\n  html:\n    theme: materia\n    fontsize: 1.2em\n    toc-font-size: 0.8em\nexecute: \n  echo: true\n  eval: true\n  warning: false\n  freeze: true\n---\n\n\n\n\n\n\n\n\nPublishing GIS maps over the internet is a great way to share our GIS discovery to a wider community. However, building a geoweb mapping application required basic web programming skills such as html, JavaScript and CSS which is beyond the capability of most GIS analysts. In this hands-on exercise, you will learn how to use the **QGIS2Web** plugin of QGIS to build a geoweb map application from your QGIS project.\n\nBy the end of this hands-on exercise, you will be able to:\n\n\n\n\n\n\n\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

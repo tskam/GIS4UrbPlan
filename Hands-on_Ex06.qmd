@@ -1,4 +1,18 @@
-# Cartographic Modelling with Raster-based GIS
+---
+title: "Cartographic Modelling with Raster-based GIS"
+date: "10/30/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
 
 The true power of a GIS is its analytical capability. In this hands-on exercise, you will learn how to perform raster-based GIS analysis also popularly known as mapthematics by using QGIS.
 
@@ -759,3 +773,10 @@ The profile of the path will be plotted as shown in the screenshot below.
 You can save the profile plot as image file for reporting purpose.
 
 -   At the lower right corner of **Profile** pane, click on **Save as** button.
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex06.html",
+                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex06.pdf")
+```

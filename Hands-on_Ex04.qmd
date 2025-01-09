@@ -1,12 +1,26 @@
-# Beyond Mapping: Vector-based GIS Analysis for Urban Applications
+---
+title: "Beyond Mapping: Vector-based GIS Analysis for Urban Applications"
+date: "10/30/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
 
-The true power of a GIS of is its geoprocessing and analysis capability. **Geoprocessing** is a GIS operation used to manipulate GIS data. A typical geoprocessing operation takes an input dataset, performs an operation on that dataset, and returns the result of the operation as an output dataset. Common geoprocessing operations include geographic feature overlay, feature selection and analysis, topology processing, raster processing, and data conversion. 
+The true power of a GIS of is its geoprocessing and analysis capability. **Geoprocessing** is a GIS operation used to manipulate GIS data. A typical geoprocessing operation takes an input dataset, performs an operation on that dataset, and returns the result of the operation as an output dataset. Common geoprocessing operations include geographic feature overlay, feature selection and analysis, topology processing, raster processing, and data conversion.
 
 GIS analysis, on the other hand, is the process of examining the locations, attributes, and relationships of features in spatial data through overlay and other analytical techniques in order to address a question or gain useful geospatial knowledge. GIS analysis extracts or creates new information from spatial data.
 
 In this hands-on exercise, you will learn how to combine geoprocessing and GIS analysis functions of QGIS to meet urban application needs.
 
-## Learning Outcome 
+## Learning Outcome
 
 By the end of this session, you will be able to:
 
@@ -937,3 +951,10 @@ Your map should look similar to the screenshot below.
 ![](img04/image122.jpg)
 
 Interesting to note that despite there are four pre-schools located at the Northshore sub-zone however, there are several residential blocks have relatively poor accessibility to pre-schools. (Fruit for Thought!)
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex04.html",
+                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex04.pdf")
+```

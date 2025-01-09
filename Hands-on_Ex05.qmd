@@ -1,4 +1,18 @@
-# Trade Area Analysis with Vector-based GIS
+---
+title: "Trade Area Analysis with Vector-based GIS"
+date: "10/30/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
 
 In this hands-on exercise, you will learn how to perform vector-based geoprocessing and GIS analysis by using QGIS.
 
@@ -335,3 +349,11 @@ The major concerns of choropleth mapping are the method of data classification, 
 Your screen should look similar to the screenshot below.
 
 ![](img05/image28.jpg)
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex05.html",
+                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex05.pdf")
+```
+

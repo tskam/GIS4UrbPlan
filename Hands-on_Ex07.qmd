@@ -1,4 +1,18 @@
-# GIS Modelling for Urban Land Suitability Study
+---
+title: "GIS Modelling for Urban Land Suitability Study"
+date: "10/30/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
 
 ## Overview
 
@@ -532,3 +546,10 @@ Notice that a temporary raster layer called `Output` is added in QGIS project.
 With reference to the Output raster layer, the white grids indicate location suitable for the proposed land development. The black grids, on the other hand, indicate location not suitable for the proposed land developmnet.
 
 > DIY: Using the steps you had learned in previous section, save `Output` layer in GeoPackage format. Call the data layer `binary_model`. Then, remove the temporary `Output` raster layer from QGIS project.
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex07.html",
+                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex07.pdf")
+```

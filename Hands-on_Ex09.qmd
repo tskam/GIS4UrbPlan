@@ -1,4 +1,18 @@
-# Shortest Path Analysis: QGIS methods
+---
+title: "Shortest Path Analysis: QGIS methods"
+date: "10/30/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
 
 Calculating the shortest distance between two points is a very common spatial problem that appears in our daily life quite often. In this hands-on exercise, you will learn how to use QGIS tool as a solution for finding the shortest path distance or time by calculating cumulative cost between two points in a network.
 
@@ -222,3 +236,10 @@ You screen should look similar to the screenshot below.
 > DIY: Using the steps you had learned from previous hands-on exercise, save the temporary Shortest Path layer into GeoPackage format. Name the layer `Shortest_path` and add it onto the map view.
 
 > DIY: Remove the temparory layer from the Layers panel.
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex09.html",
+                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex09.pdf")
+```
