@@ -1,16 +1,16 @@
 # GIS Mapping and Geovisualisation
 
-In this exercise, you will learn how to prepare qualitative and quantitative thematic maps using QGIS. You will also learn how to create a joint table by using the concept of georelational data model of GIS.
+Geovisualization or “Geographic Visualization” concerns the visual representations of geospatial data and the use of cartographic techniques to support visual analytics. In this exercise, you will learn how to prepare qualitative and quantitative geovisualisation by using QGIS. You will also learn how to create a joint table by using the concept of georelational data model of GIS.
 
 ## Learning Outcome
 
-By the end of this session, you will be able to:
+By the end of this session, you will be able to use QGIS
 
--   prepare qualitative maps,
--   create proportional symbol map,
--   perform georelational join,
--   Compute new field from existing fields, and
--   prepare choropleth map.
+-   to prepare qualitative maps,
+-   to create proportional symbol map,
+-   to perform georelational join,
+-   to compute new field from existing fields, and
+-   to prepare choropleth map.
 
 ## Data
 
@@ -20,17 +20,17 @@ For the purpose of this hands-on exercise, three data sets are provided. They ar
 -   `sgpools` provides information of SG Pools outlets and stores information.
 -   `POP2020` provides population by age group as at June 2020. It is downloaded from Department of Statistics (DOS), Singapore. The data set provides multiple years of population data. For the purpose of this exercise, only 2020 data were extracted.
 
-These three data sets are in csv file format. They can be found in `DataTables` of Hand-on_Ex03 folder.
+These three data sets are in csv file format. They can be found in `DataTables` of `Hand-on_Ex03` folder.
 
 Besides the above three data sets, you are required to download the following geospatial from public web sites:
 
--   `National Map Polygon` from Data.gov.sg
--   `Master Plan 2014 Subzone Boundary (No Sea)` from Data.gov.sg
--   `Road Section Line` from LTA Data Mall
+-   *National Map Polygon* from Data.gov.sg
+-   *Master Plan 2014 Subzone Boundary (No Sea)* from Data.gov.sg
+-   *Road Section Line* from [LTA Data Mall](https://datamall.lta.gov.sg/content/datamall/en.html).
 
 ### Data Preparation
 
-> DIY: Using the steps you had learned from the previous hands-on exercise, convert the education and SGPools data sets in DataTables folder into geospatial data layer and store them into an integrated database called `SG`. The geospatial database must be in **GeoPackage** format.
+> DIY: Using the steps you had learned from the previous hands-on exercise, convert the *education* and *SGPools* data sets in `DataTables` folder into geospatial data layer and store them into an integrated database called `SG`. The geospatial database must be in **GeoPackage** format.
 
 > DIY: Using the steps you had learned from the previous hands-on exercise, convert the geospatial data sets downloaded from Data.gov.sg and LTA Data Mall into the newly created `SG` database.
 
@@ -67,17 +67,17 @@ Your screen should look similar to the screenshot below.
 
 -   Select **Categorized** from the **Symbol drop-down** list.
 
-![](img03/image3.jpg)
+![](img03/image3.jpg){width="250"}
 
 -   For **Value**, select *mainlevel_code* from the drop-down list.
 
-![](img03/image4.jpg)
+![](img03/image4.jpg){width="350"}
 
 -   Click on the **Classify** button.
 
 Your screen should look similar to the screenshot below.
 
-![](img03/image5.jpg)
+![](img03/image5.jpg){width="600"}
 
 Figure above shows that `Education` layer has been categorised into five categories. They are, Junior College, Centralised Institute, Mixed Levels, Primary and Secondary.
 
@@ -87,7 +87,7 @@ Next, you will learn how to symbolise them by using the svg vector symbol set.
 
 The **Symbol selector** dialog window appears.
 
-![](img03/image6.jpg)
+![](img03/image6.jpg){width="550"}
 
 -   From **Marker**, click on **Simple marker**.
 
@@ -95,9 +95,9 @@ The **Symbol selector** dialog window appears.
 
 Scroll down the dialog window until you can see the SVG Browser as shown below.
 
-![](img03/image7.jpg)
+![](img03/image7.jpg){width="540"}
 
--   From the **SVG Image**, scroll-down and click on ![](img03/image8.jpg).
+-   From the **SVG Image**, scroll-down and click on ![](img03/image8.jpg){width="35" height="31"}.
 
 > DIY: Change the size value and fill colour and observe the differences.
 
@@ -116,7 +116,7 @@ Your screen should look similar to the figure below.
 
 ![](img03/image9.jpg)
 
-This map is popularly known as Point symbol map among the GIS and cartography communities. Prior to GIS era, this kind of map took more than a month to prepare. With GIS, it only needs less than 15 minutes to prepare. The advantage of GIS-based point symbol map is that the map can be changed easily with very little effort. GIS-based point symbol map is also highly interactive. You can navigate around the digital map and zoom in to view the distribution in greater details.
+This map is popularly known as **point symbol** map among the GIS and cartography communities. Prior to GIS era, this kind of map took more than a month to prepare. With GIS, it only needs less than 15 minutes to prepare. The advantage of GIS-based point symbol map is that the map can be changed easily with very little effort. GIS-based point symbol map is also highly interactive. You can navigate around the digital map and zoom in to view the distribution in greater details.
 
 > DIY: Use the steps you had learned from the previous section, symbolise the
 
@@ -130,7 +130,7 @@ Your screen should look similar to the figure below.
 
 ## Creating Proportional Symbol Map
 
-**Proportional symbol** maps (also known as graduate symbol maps) are a class of maps that use the visual variable of size to represent differences in the magnitude of a discrete, abruptly changing phenomenon, e.g. counts of people. Like choropleth maps, you can create classed or unclassed versions of these maps. The classed ones are known as **range-graded** or **graduated symbols**, and the unclassed are called **proportional symbols**, where the area of the symbols are proportional to the values of the attribute being mapped.
+**Proportional symbol** maps (also known as **graduate symbol** maps) are a class of maps that use the visual variable of size to represent differences in the magnitude of a discrete, abruptly changing phenomenon, e.g. counts of people. Like choropleth maps, you can create classed or unclassed versions of these maps. The classed ones are known as **range-graded** or **graduated symbols**, and the unclassed are called **proportional symbols**, where the area of the symbols are proportional to the values of the attribute being mapped.
 
 In this section, you will learn how to create a proportional symbol map showing the numbers of win by Singapore Pools' outlets.
 
@@ -195,7 +195,7 @@ Notice that there are many proportional symbols were overlapping. Now, you will 
 
 The Layer rendering subpanel extended as shown in the figure below.
 
-![](img03/image15.jpg)
+![](img03/image15.jpg){width="600"}
 
 -   For **Opacity**, type *80%*, alternatively, you can use slider to slide toward the left until it reaches 80%.
 
@@ -237,7 +237,7 @@ Your screen should look similar to the figure below.
 
 ### Adding an attribute table in QGIS project
 
-Now, you will add the POP2020.csv table into the QGIS project. It is stored in `\Hands-on_EX04\DataTables` folder and is in csv format.
+Now, you will add the POP2020.csv table into the QGIS project. It is stored in `\Hands-on_EX03\DataTables` folder and is in csv format.
 
 -   From the **Layers** toolbar, click **Add Layer** -\> **Add Delimited Text Layer ...**.
 
@@ -293,7 +293,7 @@ With reference to the tables above, the *SZ* field of `POP2020` and *SUBZONE_N* 
 
 In view of this problem, we will create a new field to change strings in *SZ* into uppercase. We will call the output field *SUBZONE*.
 
--   At the **POP2020 Feature Table**, click on **Open field calculator** icon ![](img/image23.jpg){width="5%"}
+-   At the **POP2020 Feature Table**, click on **Open field calculator** icon ![](img03/image23.jpg){width="5%"}
 
 The **Field Calculator** dialog window appears.
 
@@ -301,7 +301,7 @@ The **Field Calculator** dialog window appears.
 -   For **Output file type**, select *Text(string)* from the drop-down list.
 -   At the Expression panel, type as shown below.
 
-![](img03/image24.jpg)
+![](img03/image24.jpg){width="400"}
 
 > Best practice: This is always a good practice to check the preview to ensure that the result is inline to what you want.
 
@@ -309,7 +309,7 @@ The **Field Calculator** dialog window appears.
 
 Notice that a new field called SUBZONE has been added into POP2020 data table the strings are all in uppercase.
 
-![](img03/image25.jpg)
+![](img03/image25.jpg){width="500"}
 
 You are ready to join both tables now.
 
@@ -321,9 +321,9 @@ The **Layer Properties** dialog window appears.
 
 Your screen should look similar to the figure below.
 
-![](img03/image26.jpg)
+![](img03/image26.jpg){width="1200"}
 
--   Click on Add new join icon ![](img/image27.jpg){width="5%"}
+-   Click on Add new join icon ![](img03/image27.jpg){width="5%"}
 
 The **Add Vector Join** dialog window appears.
 
@@ -331,7 +331,7 @@ The **Add Vector Join** dialog window appears.
 -   For **Join field**, select *SUBZONE* from the drop-down list.
 -   For **Target field**, select **SUBZONE_N** from the drop-down list.
 
-![](img03/image28.jpg)
+![](img03/image28.jpg){width="350"}
 
 -   Click on **OK** button to perform the relational join.
 
@@ -339,7 +339,7 @@ You will return to the **Layer Properties** dialog window.
 
 Notice that a relational joined between `POP2020` attribute table and the attribute table of `MP14_SubZone` has been created.
 
--   At the **Layer Properties** dialog window, click on the OK button.
+-   At the **Layer Properties** dialog window, click on the **OK** button.
 
 Strange, it seems that nothing had happen!
 
@@ -361,7 +361,7 @@ First, you will create a new field called Age65+ and compute its value by using 
 
 The `MP14_SubZone` attribute table appears.
 
--   Click on **Open Field Calculator** icon ![](img03/image23.jpg).
+-   Click on **Open Field Calculator** icon ![](img03/image23.jpg){width="30"}.
 
 The Field calculator dialog window appears.
 
@@ -370,7 +370,7 @@ The Field calculator dialog window appears.
 -   For **Output field type**, select *Whole number (integer)* from the drop-down list.
 -   At the **Expression** panel, build a formula as shown below.
 
-![](img03/image30.jpg)
+![](img03/image30.jpg){width="350"}
 
 > Gentle reminder: Check the preview to ensure that the result is what you want.
 
@@ -384,11 +384,11 @@ Notice that a new field called Age65+ has been added into the attribute table of
 
 Before you end this session, you need to save the results into the attribute table permanently.
 
--   From the icon bar, click on the Toggle editing mode icon ![](img03/image32.jpg).
+-   From the icon bar, click on the Toggle editing mode icon ![](img03/image32.jpg){width="25"}.
 
 The Stop Editing dialog appears.
 
-![](img03/image33.jpg)
+![](img03/image33.jpg){width="250"}
 
 -   Click on **Save** button.
 -   Close the attribute table of `MP14_SubZone` layer.
@@ -408,7 +408,7 @@ The **Layer Properties** dialog window appears.
 
 Your screen should look similar to the figure below.
 
-![](img03/image34.jpg)
+![](img03/image34.jpg){width="1250"}
 
 You can review the statistical distribution of the classification in histogram.
 
@@ -417,7 +417,7 @@ You can review the statistical distribution of the classification in histogram.
 
 Your screen should look similar to the figure below.
 
-![](img03/image35.jpg)
+![](img03/image35.jpg){width="640"}
 
 This feature is very useful for casual data analyst because the histogram helps us to understand the differences of each classification method.
 
@@ -473,7 +473,7 @@ Next, we are going to examine the content of the data table.
 
 The attribute table of *respopagesex2000to2010* appears.
 
-![](img03/image40.jpg)
+![](img03/image40.jpg){width="480"}
 
 Notice that there are a total of six columns (or known as fields) and 622986 rows (or known as records).
 
@@ -483,7 +483,7 @@ Next, we are going to derive a data table that aggregating the population figure
 
 -   From the menu bar, select **Database** -\> **DB Manager**.
 
-    ![](img03/image41.jpg){width="219"}
+    ![](img03/image41.jpg){width="180"}
 
 DB manager dialog window appears.
 
@@ -491,15 +491,15 @@ DB manager dialog window appears.
 
 Your screen should look similar to the screenshot below. If necessary click on the **Info** tab.
 
-![](img03/image42.jpg)
+![](img03/image42.jpg){width="650"}
 
-Notice that the beauty of DB Manager is that beside GeoPackage, Oracle Spatial PostGIS and SpatialLite, it is also able to work with Virtual Layers in the Layer panel.
+Notice that the beauty of **DB Manager** is that beside GeoPackage, Oracle Spatial PostGIS and SpatialLite, it is also able to work with *Virtual Layers* in the **Layer** panel.
 
 Next we are going to write the first SQL.
 
 -   Click on **SQL Window** button.
 
-![](img03/image43.jpg){width="337"}
+![](img03/image43.jpg){width="300"}
 
 Notice that Query (Project layers) appears.
 
@@ -507,7 +507,7 @@ Notice that Query (Project layers) appears.
 
 -   Type the SQL below onto Query panel.
 
-![](img03/image45.jpg){width="412"}
+![](img03/image45.jpg){width="350"}
 
 Your screen should look similar to the screenshot below.
 
@@ -547,8 +547,8 @@ In general the steps for saving *QeuryLayer* is rather similar to saving geospat
 
 -   Lastly, click on **OK** button to run the process.
 
-When the operation completed, a new data layer called TOTPOP2000 will be added into Layers panel as shown below.
+When the operation completed, a new data layer called `TOTPOP2000` will be added into **Layers** panel as shown below.
 
-![](img03/image53.jpg){width="311"}
+![](img03/image53.jpg){width="250"}
 
-> DIY: Using the steps you had learned, remove QueryLayer from Layer panel.
+> DIY: Using the steps you had learned, remove `QueryLayer` from **Layer** panel.
