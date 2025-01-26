@@ -263,7 +263,7 @@ The **Data Source Manager\|Delimited Text** dialog window appears.
 
 The **Choose a Delimited Text File to Open** dialog window appears.
 
-• Navigate to \Hands-on_Ex04\DataTables sub folder.
+• Navigate to \Hands-on_Ex03\DataTables sub folder.
 
 ![](img03/image19.jpg)
 
@@ -573,4 +573,3 @@ When the operation completed, a new data layer called `TOTPOP2000` will be added
 renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex03.html",
                    to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex03.pdf")
 ```
-
