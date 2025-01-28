@@ -567,9 +567,280 @@ When the operation completed, a new data layer called `TOTPOP2000` will be added
 
 > DIY: Using the steps you had learned, remove `QueryLayer` from **Layer** panel.
 
-```{r}
-#| echo: false
-#| eval: false
-renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex03.html",
-                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex03.pdf")
-```
+## Working with QGIS Print Layout
+
+In this section, you will learn how to use QGIS **Print Layout** platform to create a land use map for printing or publishing purposes. Before getting started, we assume that already have the following two choropleth maps on the QGIS project:
+
+-   population age 65+, 2020, and
+-   total population, 2020.
+
+Both choropleth maps are based on URA Master Plan Subzone 2019 boundary.
+
+### Preparing the print windows
+
+Before we make a map using Print Layout, it is important for us to ensure that an appropriate coordinate referencing system is used. For the purpose of this hands-on exercise, let us use SVY21 as the coordinate referencing system.
+
+-   Ensure that EPSG: 3414 is indicated at the lower right corner on QGIS's Window.
+
+![](img03/image55.jpg)
+
+-   Next, reshape QGIS Window until the white spaces in the GIS layer as minimum as possibe.
+
+![](img03/image54.jpg)
+
+### Starts a new QGIS print layout
+
+-   From the menu bar, select **Project** -\> **New Print Layout**.
+
+Create **Print Layout** dialog window appears.
+
+![](img03/image56.jpg){width="250"}
+
+-   Provide the layout an appropriate title such as *Population*.
+
+-   Click on **OK** button when it is ready.
+
+A new **Print Layout** dialog window appears.
+
+![](img03/image57.jpg)
+
+-   From the menu bar, click on on Zoom full button to display the full extent of Print Layout window.
+
+![](img03/image58.jpg)
+
+### Adding a map layer
+
+Next, we will add the Land Use map layer onto the layout.
+
+-   From menu bar, select **Add Item** -\> **Add Map**.
+
+![](img03/image59.jpg){width="355"}
+
+-   Once the Add Map mode is active, hold the left mouse button and drag a rectangle where you want to insert the map like shown below.
+
+![](img03/image60.jpg)
+
+-   Release your left finger from the left mouse button.
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image61.jpg)
+
+Notice that a new item called Map 1 has been added on the items panel.
+
+### Changing the main properties
+
+Let us adjust the map scale.
+
+-   From the **Item Properties** panel, look for **Main Properties** then enter `350000` as *Scale* value. (Note: Use other rounding values deem appropriate for your layout)
+
+![](img03/image62.jpg){width="350"}
+
+In order to prevent the view on the layout changes when we turn on/off some layers or change their styles, it is important for us to lock the layers and styles.
+
+-   Scroll the Main Properties panel down until Layers appears.
+-   Click on the check box in front of *Lock layers* and *Lock styles for layers*.
+
+![](img03/image63.jpg){width="350"}
+
+### Adding grid reference
+
+Next, we will add grid reference for the map.
+
+-   From the **Items Properties** panel, scroll down until **Grids** sub-panel appears.
+
+-   Click on ![](img04/image52.jpg){width="85" height="25"}
+
+A new grid frame called Grid 1 is added as shown below.
+
+![](img03/image64.jpg){width="350"}
+
+Next ,we are going to add a 1000m by 1000m grid on the layout.
+
+-   Click on **Modify Grid** button.
+
+-   Scroll down until Appearance sub-panel appears.
+
+-   For **X**, enter 10000.
+
+-   For **Y**, enter 10000.
+
+![](img03/image65.jpg){width="420"}
+
+Next, we will change the line colour to gray.
+
+-   Click on the drop-down list behind **Line style**.
+
+![](img03/image66.jpg){width="380"}
+
+The colour panel appears.
+
+![](img03/image67.jpg){width="180"}
+
+-   Choose one of the light gray colour from the panel.
+
+Notice that a light gray grid frame is added on the layout.
+
+![](img03/image68.jpg)
+
+Next, we are going to turn on the coordinates.
+
+-   Scroll down the **Map Grid Properties** panel until **Draw Coordinates** sub-panel appears.
+
+-   Click on the check-box in front of **Draw Coordinates**.
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image69.jpg)
+
+By default the grid reference appears on the four axis of the map layout. We are going to turn off the grid reference on the right and bottom of the layout.
+
+-   From the **Right** sub-panel, click on the drop-down list and select *Disable*.
+
+![](img03/image70.jpg){width="350"}
+
+Notice that the right grid reference disappeared.
+
+![](img03/image71.jpg)
+
+> DIY: Repeat the step you learned to turn off the top grid reference.
+
+The map layout should look similar to the screenshot below.
+
+![](img03/image72.jpg)
+
+Next, we will keep the coordinates value in whole number instead of number with three decimal places.
+
+-   Look for **Coordinate precision** on **Draw Coordinates** pane, change the default value (i.e. 3) to 0 as shown on the screenshot below.
+
+![](img03/image73.jpg){width="420"}
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image74.jpg)
+
+### Adding map legend
+
+Now, we are going to add map legend onto the layout.
+
+-   From the menu bar, select **Add Item** -\> **Add Legend**.
+
+![](img03/image75.jpg){width="380"}
+
+-   Press on the left mouse button, drag a window on the right hand side of the map layout as shown below.
+
+![](img03/image76.jpg)
+
+-   Release the left mouse button.
+
+The map legend will be added onto the layout.
+
+![](img03/image77.jpg)
+
+Since this layout will focus on Population Age 65+ , we are going to remove other unrelated items from the legend.
+
+-   From **Legend Items** sub-panel, click on the check-box in front of *Only show items inside linked map*.
+
+![](img03/image78.jpg){width="300"}
+
+Notice that the unrelated legend items disappeared from the legend as shown in the screenshot below.
+
+![](img03/image79.jpg)
+
+### Adding scale bar
+
+Now we are going to add scale bar onto the layout.
+
+-   From the menu bar, select **Add Item** -\> **Add Scale Bar**.
+
+![](img03/image80.jpg){width="350"}
+
+-   Press on the left mouse button, drag a window at the lower left corner of the layout as shown below.
+
+![](img03/image81.jpg)
+
+-   Release the left mouse button.
+
+Notice that a scale bar has been added onto the lower left corner of the layout.
+
+![](img03/image82.jpg)
+
+Next, we are going to increase the scale bar segment from 2 to 4.
+
+-   From **Segment** sub-panel, at *right*, type *4*.
+
+![](img03/image83.jpg){width="380"}
+
+Notice that the scale bar at the lower left corner of the layout change to four segments.
+
+![](img03/image84.jpg)
+
+### Adding north arrow
+
+Next, we will add a north arrow on top of the scale bar.
+
+-   From the menu bar, select **Add Item** -\> **Add North Arrow**.
+
+![](img03/image85.jpg){width="300"}
+
+-   Press on the left mouse button and drag a small window onto of the scale bar.
+
+![](img03/image86.jpg)
+
+-   Release the left mouse button.
+
+Notice that a north arrow has been added onto the layout.
+
+![](img03/image87.jpg)
+
+### Adding layout title and caption
+
+Next, we are going to add layout title.
+
+-   From the menu bar, select **Add Item** -\> **Add Label**.
+
+![](img03/image88.jpg){width="350"}
+
+-   Press on the left mouse button and drag a small but long window at the top of the map box.
+
+![](img03/image89.jpg)
+
+-   At the Main Properties, type the following text.
+
+![](img03/image90.jpg){width="400"}
+
+Next, we are going change to a bigger font size.
+
+-   From the appearance sub-panel, click on the drop-down list behind Font.
+
+![](img03/image91.jpg){width="350"}
+
+The Font size window appears.
+
+-   Change the font size to *24*.
+
+![](img03/image92.jpg){width="200"}
+
+Next, change the title horizontal alignment to centre and vertical alignment to middle.
+
+-   For *Horizontal alignment*, click on the radio button in front of *Center*.
+
+-   For *Vertical alignment*, click on the radio button in front of *Middle*.
+
+![](img03/image93.jpg){width="400"}
+
+The print layout should look similar to the screenshot below.
+
+![](img03/image94.jpg)
+
+-   Lastly, remember to click on the Save ![](img03/image95.jpg){width="30" height="30"} button to save the layout.
+
+### Exporting print layout
+
+In QGIS, the composed map layout can be exported into three formats, namely: Image, SVG and PDF.
+
+-   To export, click on **Layout** from the menu bar and select on of the format list below.
+
+![](img03/image96.jpg){width="244"}
+
+We are coming to the end of the hands-on exercise. Please be reminded that we are just scratching the surface so far. The **Layout** of QGIS provides many more functions for your to prepare cartography quality and yet high elegent map layout to meet your reporting and presentation need. You are encouraged to explore the rest of the functions as much as you can.

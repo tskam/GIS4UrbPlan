@@ -1,0 +1,11 @@
+---
+title: "Printing"
+author: "Dr. Kam Tin Seong"
+---
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/GIS4UrbPlan/_book/Hands-on_Ex03.html",
+                   to = "C://SMT201_AY2024-25T2/GIS4UrbPlan/Hands-on_Ex03.pdf")
+```
